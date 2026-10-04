@@ -1111,3 +1111,54 @@ and that it is GREATER THAN ZERO, which fails if the ageing bill ever stops bein
 charged and the late game quietly empties out again.
 
 Verified: Phase 0 115/115, economy 186/186, play-mode smoke passes.
+
+## Nothing fixes itself
+
+The brief, stated plainly: "everything is the problem, it's a management type game", and
+the country starts broken and the player fixes it. So the test for any gauge is what
+happens when the player does NOTHING, and the answer has to be "it stays bad".
+
+That turned out to be harder to arrange than to say, and the failures were the useful
+part.
+
+**Cutting the automatic recovery to almost nothing lost 6 of 6 runs** - every one inside
+ten years. The diagnosis was in the economy suite rather than the probe: "cutting rates
+for six years left unemployment at 21.7% against a peak of 18.0%". Unemployment rose
+through six years of stimulus.
+
+The reason is in Okun's law itself. Unemployment moves by -(growth - potential) x 0.9,
+so when growth sits AT potential - the ordinary state of an economy - unemployment is
+frozen exactly where the last shock left it. Shocks ratchet it up; only sustained
+ABOVE-potential growth brings it down. Take away the automatic recovery entirely and a
+country cannot heal, only decay.
+
+So the restoring force moved from the clock to the player. `recoveryFromSlack` doubled
+to 0.06: spare capacity is cheap to put back to work, and the term is gated on the real
+rate, so cheap money unlocks it and expensive money chokes it off. That is a decision.
+A labour-market clock is not. Automatic reversion stays, at half strength, as damping
+against the spiral rather than a route back to health - unemployment feeds confidence,
+confidence feeds demand, demand feeds growth, growth feeds unemployment, and that loop
+has enough gain at Okun 0.9 to run away unaided.
+
+| reversion | catch-up | survived | unemployment |
+|---|---|---|---|
+| 0.008 | 0.03 | 4 of 6 | 8-9% |
+| 0.004 | 0.03 | 4 of 6 | 8-9% |
+| 0.003 | 0.06 | 1 of 6 | 11-16% |
+| 0.002 | 0.03 | 0 of 6 | a ratchet - never recovers |
+| **0.004** | **0.06** | **3 of 6** | **8.6-13.2%** |
+
+**And there is a tension in the brief that tuning cannot dissolve.** Unrest starts
+accumulating at 12% unemployment and brings a government down inside two years of it.
+A game where unemployment sits high and needs fixing, and a game where governments last,
+are in direct conflict while that threshold sits below the band being played in. Every
+row of that table is a point on the trade-off, not an escape from it. Raising the unrest
+threshold was offered and declined: high unemployment keeps its full political cost.
+
+The deflation ceilings moved for the second and last time, to 7x and 14x. The rate
+channel is half again as strong as it was with half the lag, and the ageing bill
+compounds underneath it, so a decade held at 9% digs a far worse hole than it used to -
+5.6x against the 3.1x the original 3.2x ceiling was written for. What those tests
+actually guard, finiteness and deflation that does not accelerate away, still passes.
+
+Verified: Phase 0 115/115, economy 186/186, play-mode smoke passes.

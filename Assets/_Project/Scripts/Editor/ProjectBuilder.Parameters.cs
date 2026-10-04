@@ -26,7 +26,13 @@ namespace Sovereign.EditorTools
                 // with, so a field added later and tuned in code never reaches the game.
                 // That cost an afternoon: three "experiments" changed code the
                 // simulation was not reading.
-                m.recoveryFromSlack = 0.03f;
+                // The ONE way a player buys unemployment back down. Okun freezes unemployment
+                // wherever a shock left it whenever growth sits at potential, so without a
+                // strong catch-up term a depressed country can only decay: six years of
+                // rate cuts left unemployment HIGHER than its peak, and 0 of 6 runs lived.
+                // Doubled, and it is gated on cheap money - idle plant is only cheap to
+                // restart if someone will lend against it, which is the player's call.
+                m.recoveryFromSlack = 0.06f;
                 m.slackRecoveryChokeRate = 5f;
                 m.fiscalMultiplier = 0.8f;
                 m.fiscalAdjustmentSpeed = 0.02f;
@@ -49,7 +55,12 @@ namespace Sovereign.EditorTools
                 // to work at, not a number that fixes itself while they watch. Safe to do
                 // only alongside the softer confidence term below - the first attempt at
                 // this, without it, lost 6 of 6 runs to revolt.
-                m.unemploymentReversionSpeed = 0.008f;
+                // Nearly off. The brief is that the country starts broken and the PLAYER
+                // fixes it, so unemployment is not allowed to drift back to health on
+                // its own: 15.5% now falls about 1 point a year untouched, against 0.9
+                // for every point of growth above potential the government buys. Safe
+                // only because unrest no longer starts its clock at 12% unemployment.
+                m.unemploymentReversionSpeed = 0.004f;
                 m.reversionReferenceGap = 9f;
                 m.trainingNaturalRateEffect = 1.5f;
                 m.naturalRateRange = 2f;

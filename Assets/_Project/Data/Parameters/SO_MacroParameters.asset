@@ -111,12 +111,12 @@ MonoBehaviour:
   exportCurrencySensitivity: 0.25
   tariffTradeSensitivity: 0.2
   importedInflationSensitivity: 0.45
-  unemploymentReversionSpeed: 0.008
+  unemploymentReversionSpeed: 0.004
   reversionReferenceGap: 9
   trainingNaturalRateEffect: 1.5
   naturalRateRange: 2
   naturalRateAdjustmentSpeed: 0.006
-  recoveryFromSlack: 0.03
+  recoveryFromSlack: 0.06
   fiscalMultiplier: 0.8
   fiscalAdjustmentSpeed: 0.02
   growthAdjustmentSpeed: 0.1
