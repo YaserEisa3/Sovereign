@@ -917,10 +917,10 @@ Three sections - growth, unemployment, revenue - each with its headline figure a
 the three things moving it most, signed, coloured and explained:
 
 ```
-REAL GDP GROWTH   +3.62%   trend 3.6%, heading to +4.21%
-   Interest rates -1.4% real          +0.96 pts   What bites today is the rate set 3 quarters ago...
-   Consumer demand, confidence 13     -0.68 pts   Households spending, set by what they are taxed...
-   Infrastructure 19/100              -0.62 pts   Roads, grid and rail scale EVERYTHING else...
+REAL GDP GROWTH   +3.64%   heading to +3.8%, trend is 3.1%
+   Interest rates     +0.96   money is cheap right now
+   Consumer demand    -0.71   people have stopped spending
+   Infrastructure     -0.64   29/100 - too poor to grow through
 ```
 
 **The arithmetic is the explanation.** `targetGrowth` used to be one expression adding
@@ -965,3 +965,28 @@ a driver pushing unemployment DOWN is helping. Green means helping, which is not
 same as positive.
 
 Verified: Phase 0 115/115, economy 180/180, play-mode smoke passes.
+
+### Saying less
+
+The first version of the table was unreadable in the way a textbook is unreadable.
+Names carried their readings - "Spare capacity 12.3% below potential", "Pull toward
+the natural rate 4.5%" - which overflowed a 150px column and hid the sign of the
+number beside it. Notes explained the MECHANISM: "Okun's law: an economy growing
+faster than its trend takes people on, and one growing slower lets them go."
+
+What a player needs is what is happening now.
+
+| | before | after |
+|---|---|---|
+| name | `Growth 3.6% against potential 3.1%` | `The economy` |
+| note | `Okun's law: an economy growing faster...` | `growing fast enough to take people on` |
+| value | `-4.50 pts/yr` | `-4.50`, with "falling 4.8 a year" in the heading |
+
+Notes now flip with the state - "people are spending" against "people have stopped
+spending", "exports are beating imports" against "imports are beating exports" - so
+the line is a reading rather than a definition. Units live in the section heading
+instead of on every row, where "pts/yr" was jargon three times over. The one reading
+kept inside a note is infrastructure's, because that number is the player's to act on:
+"29/100 - too poor to grow through".
+
+Verified: economy 180/180, play-mode smoke passes.

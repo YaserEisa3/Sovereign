@@ -255,12 +255,12 @@
 .driver-section { flex-direction: column; margin-bottom: 3px; flex-shrink: 0; }
 .driver-head { flex-direction: row; align-items: center; height: 17px; }
 .driver-head-name {
-    width: 150px; min-width: 150px; max-width: 150px; flex-shrink: 0;
+    width: 124px; min-width: 124px; max-width: 124px; flex-shrink: 0;
     height: 17px; -unity-text-align: middle-left;
     color: var(--text); font-size: 11px; -unity-font-style: bold;
 }
 .driver-head-value {
-    width: 70px; min-width: 70px; max-width: 70px; flex-shrink: 0;
+    width: 62px; min-width: 62px; max-width: 62px; flex-shrink: 0;
     height: 17px; -unity-text-align: middle-right;
     color: var(--text); font-size: 12px; padding-right: 8px;
 }
@@ -268,13 +268,13 @@
 
 .driver-row { flex-direction: row; align-items: center; height: 15px; }
 .driver-name {
-    width: 150px; min-width: 150px; max-width: 150px; flex-shrink: 0;
+    width: 124px; min-width: 124px; max-width: 124px; flex-shrink: 0;
     height: 15px; -unity-text-align: middle-left;
     color: var(--text-dim); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
     padding-left: 8px;
 }
 .driver-value {
-    width: 70px; min-width: 70px; max-width: 70px; flex-shrink: 0;
+    width: 62px; min-width: 62px; max-width: 62px; flex-shrink: 0;
     height: 15px; -unity-text-align: middle-right;
     font-size: 11px; padding-right: 8px;
 }

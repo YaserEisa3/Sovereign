@@ -83,38 +83,32 @@ namespace Sovereign.Core
                                          + investment * m.investmentShare
                                          + government + netExports * 0.5f;
 
+            // A name of one or two words and a note of half a dozen. The first version
+            // of this put the reading inside the name and a textbook definition beside
+            // it - "Spare capacity 12.3% below potential", "Okun's law: an economy
+            // growing faster than its trend takes people on" - and it read as homework.
+            // What a player needs here is what is happening NOW, not the mechanism.
             board.growthTrend = trend;
-            DriverBoard.Add(board.growth,
-                "Spare capacity " + MathUtil.Abs(state.OutputGapPercent).ToString("0.0") + "% below potential",
-                recovery,
+            DriverBoard.Add(board.growth, "Spare capacity", recovery,
                 openness < 0.99f
-                    ? "Idle plant and workers are cheap to put back to work, but money this dear is holding the recovery back."
-                    : "Idle plant and idle workers are cheap to put back to work, so a country below its capacity grows above trend.");
-            DriverBoard.Add(board.growth,
-                "Interest rates " + transmittedRealRate.ToString("0.0") + "% real",
-                rateChannel,
-                "What bites today is the rate set " + m.monetaryLagQuarters.ToString("0")
-                + " quarters ago, against a neutral rate of " + m.neutralRealRate.ToString("0.0") + "%.");
-            DriverBoard.Add(board.growth,
-                "Consumer demand, confidence " + state.consumerConfidence.ToString("0"),
-                consumption * m.consumptionShare,
-                "Households spending, set by what they are taxed on their earnings and how safe they feel.");
-            DriverBoard.Add(board.growth,
-                "Business investment, index " + state.businessInvestmentIndex.ToString("0"),
-                investment * m.investmentShare,
-                "Firms building capacity, set by corporation tax and the cost of borrowing.");
-            DriverBoard.Add(board.growth,
-                "Government spending",
-                government,
-                "The CHANGE in the budget against what the economy has got used to - a level, however large, stops adding once it settles.");
-            DriverBoard.Add(board.growth,
-                "Trade and the currency",
-                netExports * 0.5f,
-                "Exports against imports, moved by the exchange rate, your tariffs and how fast the world is growing.");
-            DriverBoard.Add(board.growth,
-                "Infrastructure " + state.infrastructureHealth.ToString("0") + "/100",
+                    ? "idle hands, but money too dear to use them"
+                    : "idle workers are cheap to put back to work");
+            DriverBoard.Add(board.growth, "Interest rates", rateChannel,
+                rateChannel >= 0f ? "money is cheap right now" : "money is dear and slowing things down");
+            DriverBoard.Add(board.growth, "Consumer demand", consumption * m.consumptionShare,
+                consumption >= 0f ? "people are spending" : "people have stopped spending");
+            DriverBoard.Add(board.growth, "Business investment", investment * m.investmentShare,
+                investment >= 0f ? "firms are building" : "firms have stopped building");
+            DriverBoard.Add(board.growth, "Your spending", government,
+                government > 0.01f ? "you are spending more than before"
+                : government < -0.01f ? "your cuts are biting"
+                : "the budget has settled - only CHANGES move growth");
+            DriverBoard.Add(board.growth, "Trade", netExports * 0.5f,
+                netExports >= 0f ? "exports are beating imports" : "imports are beating exports");
+            DriverBoard.Add(board.growth, "Infrastructure",
                 (infrastructureMultiplier - 1f) * beforeInfrastructure,
-                "Roads, grid and rail scale EVERYTHING else: below 70 the drag is on every other line in this list at once.");
+                state.infrastructureHealth.ToString("0") + "/100 - "
+                + (state.infrastructureHealth < 70f ? "too poor to grow through" : "carrying its weight"));
 
             float targetGrowth = board.growthTrend;
             for (int i = 0; i < board.growth.Count; i++) targetGrowth += board.growth[i].points;

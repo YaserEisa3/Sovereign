@@ -19,18 +19,21 @@ namespace Sovereign.Presentation
             // the target is on the line beside it.
             Fill(_driverSections[0],
                  state.realGdpGrowth.ToString("+0.00;-0.00") + "%",
-                 "trend " + board.growthTrend.ToString("0.0") + "%, heading to "
-                 + board.growthTarget.ToString("+0.00;-0.00") + "%",
-                 DriverBoard.Top(board.growth, DriversShown), "pts", 0.01f, false);
+                 "heading to " + board.growthTarget.ToString("+0.0;-0.0")
+                 + "%, trend is " + board.growthTrend.ToString("0.0") + "%",
+                 DriverBoard.Top(board.growth, DriversShown), "", 0.01f, false);
 
-            // Unemployment, in points per year at this week's rate: a week's movement is
-            // far too small to read, and a rate is what the player is deciding about.
+            // Unemployment, as a rate per year: a week's movement is far too small to
+            // read, and a rate is what the player is deciding about. The unit lives in
+            // the headline note so it does not have to be repeated down every row -
+            // "pts/yr" on three lines was jargon three times over.
             float net = 0f;
             for (int i = 0; i < board.unemployment.Count; i++) net += board.unemployment[i].points;
             Fill(_driverSections[1],
                  state.unemployment.ToString("0.0") + "%",
-                 "moving " + net.ToString("+0.0;-0.0") + " pts a year at this rate",
-                 DriverBoard.Top(board.unemployment, DriversShown), "pts/yr", 0.01f, true);
+                 Mathf.Abs(net) < 0.05f ? "holding steady"
+                 : (net < 0f ? "falling " : "rising ") + Mathf.Abs(net).ToString("0.0") + " a year at this rate",
+                 DriverBoard.Top(board.unemployment, DriversShown), "", 0.01f, true);
 
             // Revenue, against a year ago. A level cannot be explained by its own parts -
             // the breakdown chart below already shows those - so what is worth saying is
@@ -41,8 +44,8 @@ namespace Sovereign.Presentation
             Fill(_driverSections[2],
                  "$" + state.revenueBillions.ToString("#,0") + "B",
                  yearAgo > 0f
-                     ? (state.revenueBillions - yearAgo).ToString("+#,0;-#,0") + "B on a year ago"
-                     : "a year of history is needed before this can be compared",
+                     ? (state.revenueBillions - yearAgo).ToString("+$#,0;-$#,0") + "B on a year ago"
+                     : "first year - nothing to compare against yet",
                  DriverBoard.Top(revenue, DriversShown), "$B", 0.5f, false);
         }
 
@@ -68,8 +71,9 @@ namespace Sovereign.Presentation
                 if (!has) { amount.text = ""; continue; }
 
                 float points = drivers[r].points;
-                amount.text = (unit == "$B" ? points.ToString("+#,0;-#,0") : points.ToString("+0.00;-0.00"))
-                              + " " + unit;
+                amount.text = unit == "$B"
+                    ? points.ToString("+$#,0;-$#,0") + "B"
+                    : points.ToString("+0.00;-0.00");
                 bool helping = lowerIsBetter ? points < 0f : points > 0f;
                 amount.AddToClassList(Mathf.Abs(points) < flatBelow ? "flat" : helping ? "helping" : "hurting");
             }
@@ -100,10 +104,8 @@ namespace Sovereign.Presentation
                 bool youMovedIt = Mathf.Abs(rateNow - rateThen) > 0.01f;
 
                 string why = youMovedIt
-                    ? "You moved the rate from " + rateThen.ToString("0.0") + "% to " + rateNow.ToString("0.0")
-                      + "%, and the base answered."
-                    : "The rate has not changed at " + rateNow.ToString("0.0") + "%, so this is the base "
-                      + (change > 0f ? "growing under it." : "shrinking under it.");
+                    ? "you set it to " + rateNow.ToString("0.0") + "%, from " + rateThen.ToString("0.0") + "%"
+                    : "same rate - the base " + (change > 0f ? "grew under it" : "shrank under it");
 
                 drivers.Add(new Driver
                 {

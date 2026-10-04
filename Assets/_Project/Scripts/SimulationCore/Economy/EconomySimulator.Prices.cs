@@ -32,18 +32,17 @@ namespace Sovereign.Core
             // a residual nobody can see.
             DriverBoard board = state.drivers;
             board.unemployment.Clear();
-            DriverBoard.Add(board.unemployment,
-                "Growth " + state.realGdpGrowth.ToString("0.0") + "% against potential " + Potential(state).ToString("0.0") + "%",
+            DriverBoard.Add(board.unemployment, "The economy",
                 -growthGap * m.okunCoefficient,
-                "Okun's law: an economy growing faster than its trend takes people on, and one growing slower lets them go.");
-            DriverBoard.Add(board.unemployment,
-                "Pull toward the natural rate " + m.naturalUnemploymentRate.ToString("0.0") + "%",
+                growthGap >= 0f ? "growing fast enough to take people on"
+                                : "growing too slowly to keep people on");
+            DriverBoard.Add(board.unemployment, "Finding work",
                 (state.unemployment - beforeReversion) * WeeksPerYear,
-                "Matching: people and jobs find each other over time, which drags the rate back toward its floor whatever growth does.");
+                "people and jobs keep pairing up by themselves");
             if (MathUtil.Abs(shocks) > 0.0001f)
-                DriverBoard.Add(board.unemployment, "Shocks and events",
+                DriverBoard.Add(board.unemployment, "Shocks",
                     shocks * WeeksPerYear,
-                    "Wars, disasters and crises put people out of work directly, without waiting for growth to do it.");
+                    shocks > 0f ? "a crisis has put people out of work" : "a recovery has put people back to work");
 
             board.unemploymentAfterLastWeek = state.unemployment;
         }
