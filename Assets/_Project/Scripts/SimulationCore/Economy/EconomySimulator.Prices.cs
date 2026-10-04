@@ -16,12 +16,36 @@ namespace Sovereign.Core
             // As a level it peaked near 7% in a six-year depression, which nobody would
             // believe - the 1980-82 episode reached 10.8%.
             float growthGap = state.realGdpGrowth - Potential(state);
+            float previous = state.drivers.unemploymentAfterLastWeek;
+            float shocks = previous < 0f ? 0f : state.unemployment - previous;
             state.unemployment -= growthGap * m.okunCoefficient * Weekly;
 
             // and hysteresis pulls it back toward the natural rate once growth returns.
+            float beforeReversion = state.unemployment;
             state.unemployment = MathUtil.Clamp(
                 MathUtil.Approach(state.unemployment, m.naturalUnemploymentRate, m.unemploymentReversionSpeed), 0.5f, 40f);
 
+            // The same three movements, stated in points per year at this week's rate -
+            // weekly changes are far too small to read, and a rate is what the player is
+            // deciding about. Anything that moved unemployment between last week's tick
+            // and this one was an event or a shock, so it is named rather than hidden in
+            // a residual nobody can see.
+            DriverBoard board = state.drivers;
+            board.unemployment.Clear();
+            DriverBoard.Add(board.unemployment,
+                "Growth " + state.realGdpGrowth.ToString("0.0") + "% against potential " + Potential(state).ToString("0.0") + "%",
+                -growthGap * m.okunCoefficient,
+                "Okun's law: an economy growing faster than its trend takes people on, and one growing slower lets them go.");
+            DriverBoard.Add(board.unemployment,
+                "Pull toward the natural rate " + m.naturalUnemploymentRate.ToString("0.0") + "%",
+                (state.unemployment - beforeReversion) * WeeksPerYear,
+                "Matching: people and jobs find each other over time, which drags the rate back toward its floor whatever growth does.");
+            if (MathUtil.Abs(shocks) > 0.0001f)
+                DriverBoard.Add(board.unemployment, "Shocks and events",
+                    shocks * WeeksPerYear,
+                    "Wars, disasters and crises put people out of work directly, without waiting for growth to do it.");
+
+            board.unemploymentAfterLastWeek = state.unemployment;
         }
 
         /// <summary>GDD 22.5. Quarterly, because wages are negotiated, not continuous.</summary>

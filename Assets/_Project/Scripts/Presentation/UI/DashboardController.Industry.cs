@@ -30,6 +30,7 @@ namespace Sovereign.Presentation
             // Three views share one box, and exactly one of them may be open: with two
             // showing, the column grew and the view toggle ended up underneath a meter.
             _industryView = industry;
+            if (industry) SetDriverView(false);
             if (industry) _meterView = false;
 
             if (_industryContainer != null)

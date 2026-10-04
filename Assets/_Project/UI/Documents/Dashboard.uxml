@@ -76,6 +76,7 @@
 
                 <ui:VisualElement name="chart-panel" class="panel">
                     <ui:VisualElement name="chart-tabs" class="row wrap">
+                        <ui:Button name="drivers-toggle" text="WHAT'S MOVING" class="tab view-toggle" />
                         <ui:Button name="view-toggle" text="ALL METERS" class="tab view-toggle" />
                         <ui:Button name="tab-gdp" text="GDP" class="tab selected" />
                         <ui:Button name="tab-inflation" text="Inflation" class="tab" />
@@ -92,6 +93,7 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="meter-container" class="chart-container meter-container" />
                     <ui:VisualElement name="industry-container" class="chart-container breakdown-list" />
+                    <ui:VisualElement name="driver-container" class="chart-container driver-table" />
                     <ui:Label name="chart-readout" text="10-year series - no simulation running" class="mono caption" />
                 </ui:VisualElement>
 

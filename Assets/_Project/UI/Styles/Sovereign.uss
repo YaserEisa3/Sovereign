@@ -108,7 +108,7 @@
 .approval-list { margin-top: 4px; }
 
 .tab {
-    height: 18px; margin-right: 2px; padding-left: 6px; padding-right: 6px;
+    height: 17px; margin-right: 2px; padding-left: 6px; padding-right: 6px;
     background-color: var(--bg); color: var(--text-dim);
     border-width: 1px; border-color: var(--border); border-radius: 2px; font-size: 10px;
 }
@@ -156,7 +156,7 @@
     padding-top: 6px; margin-top: 6px;
 }
 .close-btn {
-    width: 20px; height: 18px; font-size: 10px;
+    width: 20px; height: 17px; font-size: 10px;
     background-color: var(--bg); color: var(--text-dim);
     border-width: 1px; border-color: var(--border);
 }
@@ -228,7 +228,7 @@
 /* Map zoom controls, sitting under the viewport rather than over it. */
 .map-controls { align-items: center; padding-top: 2px; }
 .map-btn {
-    min-width: 26px; height: 18px; margin-right: 4px; padding: 0;
+    min-width: 26px; height: 17px; margin-right: 4px; padding: 0;
     background-color: var(--panel); color: var(--text-dim);
     border-width: 1px; border-color: var(--border); font-size: 11px;
 }
@@ -244,3 +244,44 @@
 
 /* The revenue breakdown where the bond chart used to be. */
 .breakdown-list { flex-direction: column; margin-bottom: 4px; }
+
+/* What is moving the headline numbers. Replaces the chart in the same box, so it
+   carries the box's border but sets its own height: three sections of three rows
+   do not fit the chart's fixed 200px. Columns are FIXED width, like the breakdown
+   rows - a long driver name would otherwise widen its own column and knock that
+   section's numbers out of line with the others. */
+.driver-table { height: 200px; overflow: hidden; padding-top: 2px; padding-bottom: 2px; flex-direction: column; }
+
+.driver-section { flex-direction: column; margin-bottom: 3px; flex-shrink: 0; }
+.driver-head { flex-direction: row; align-items: center; height: 17px; }
+.driver-head-name {
+    width: 150px; min-width: 150px; max-width: 150px; flex-shrink: 0;
+    height: 17px; -unity-text-align: middle-left;
+    color: var(--text); font-size: 11px; -unity-font-style: bold;
+}
+.driver-head-value {
+    width: 70px; min-width: 70px; max-width: 70px; flex-shrink: 0;
+    height: 17px; -unity-text-align: middle-right;
+    color: var(--text); font-size: 12px; padding-right: 8px;
+}
+.driver-head-note { flex-grow: 1; height: 17px; -unity-text-align: middle-left; color: var(--text-muted); font-size: 10px; }
+
+.driver-row { flex-direction: row; align-items: center; height: 15px; }
+.driver-name {
+    width: 150px; min-width: 150px; max-width: 150px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-left;
+    color: var(--text-dim); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
+    padding-left: 8px;
+}
+.driver-value {
+    width: 70px; min-width: 70px; max-width: 70px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-right;
+    font-size: 11px; padding-right: 8px;
+}
+.driver-value.helping { color: var(--growth); }
+.driver-value.hurting { color: var(--danger); }
+.driver-value.flat { color: var(--text-muted); }
+.driver-note {
+    flex-grow: 1; height: 15px; -unity-text-align: middle-left;
+    color: var(--text-muted); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
+}

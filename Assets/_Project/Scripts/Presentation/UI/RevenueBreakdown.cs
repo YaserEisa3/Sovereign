@@ -73,7 +73,9 @@ namespace Sovereign.Presentation
                                              + "revenue on its own. Open the Fiscal drawer to see them.";
         }
 
-        string NameFor(string key)
+        /// <summary>The display name for a line, so anything else showing the same lines
+        /// names them identically - the driver table shares this map.</summary>
+        public string NameFor(string key)
         {
             string found;
             return _names.TryGetValue(key, out found) ? found : Spaced(key);

@@ -30,6 +30,7 @@ namespace Sovereign.Core
             _treasury.Update(state, policy);
             state.spendingBillions = state.treasury.totalSpending;
             state.revenueBillions = state.treasury.totalRevenue;
+            RecordRevenueHistory(state, policy);
 
             float balance = state.revenueBillions - state.spendingBillions;
             state.budgetBalancePercentGdp = balance / MathUtil.Max(1f, state.nominalGdpBillions) * 100f;

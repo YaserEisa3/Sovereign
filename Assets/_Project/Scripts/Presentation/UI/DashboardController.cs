@@ -72,6 +72,7 @@ namespace Sovereign.Presentation
             BindAlertBell();
             BindSaveLoad();
             BuildMeters();
+            BuildDrivers();
             BuildIndustry();
             BindMapControls();
 

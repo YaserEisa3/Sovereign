@@ -69,13 +69,56 @@ namespace Sovereign.Core
             float openness = MathUtil.Clamp(1f - MathUtil.Max(0f, rateGap) / MathUtil.Max(0.1f, m.slackRecoveryChokeRate), 0f, 1f);
             float recovery = slack * m.recoveryFromSlack * openness;
 
-            float targetGrowth = (Potential(state)
-                                  + recovery
-                                  + rateChannel
-                                  + consumption * m.consumptionShare
-                                  + investment * m.investmentShare
-                                  + government
-                                  + netExports * 0.5f) * infrastructureMultiplier;
+            // Each term is recorded as it is computed and the figure is SUMMED from the
+            // record, rather than added up separately and explained afterwards: an
+            // explanation that is not the arithmetic itself drifts from it eventually.
+            // Trend is held out of the list because it is much the largest term and
+            // barely moves - ranked, it would own a place in the top three forever.
+            DriverBoard board = state.drivers;
+            board.growth.Clear();
+
+            float trend = Potential(state);
+            float beforeInfrastructure = trend + recovery + rateChannel
+                                         + consumption * m.consumptionShare
+                                         + investment * m.investmentShare
+                                         + government + netExports * 0.5f;
+
+            board.growthTrend = trend;
+            DriverBoard.Add(board.growth,
+                "Spare capacity " + MathUtil.Abs(state.OutputGapPercent).ToString("0.0") + "% below potential",
+                recovery,
+                openness < 0.99f
+                    ? "Idle plant and workers are cheap to put back to work, but money this dear is holding the recovery back."
+                    : "Idle plant and idle workers are cheap to put back to work, so a country below its capacity grows above trend.");
+            DriverBoard.Add(board.growth,
+                "Interest rates " + transmittedRealRate.ToString("0.0") + "% real",
+                rateChannel,
+                "What bites today is the rate set " + m.monetaryLagQuarters.ToString("0")
+                + " quarters ago, against a neutral rate of " + m.neutralRealRate.ToString("0.0") + "%.");
+            DriverBoard.Add(board.growth,
+                "Consumer demand, confidence " + state.consumerConfidence.ToString("0"),
+                consumption * m.consumptionShare,
+                "Households spending, set by what they are taxed on their earnings and how safe they feel.");
+            DriverBoard.Add(board.growth,
+                "Business investment, index " + state.businessInvestmentIndex.ToString("0"),
+                investment * m.investmentShare,
+                "Firms building capacity, set by corporation tax and the cost of borrowing.");
+            DriverBoard.Add(board.growth,
+                "Government spending",
+                government,
+                "The CHANGE in the budget against what the economy has got used to - a level, however large, stops adding once it settles.");
+            DriverBoard.Add(board.growth,
+                "Trade and the currency",
+                netExports * 0.5f,
+                "Exports against imports, moved by the exchange rate, your tariffs and how fast the world is growing.");
+            DriverBoard.Add(board.growth,
+                "Infrastructure " + state.infrastructureHealth.ToString("0") + "/100",
+                (infrastructureMultiplier - 1f) * beforeInfrastructure,
+                "Roads, grid and rail scale EVERYTHING else: below 70 the drag is on every other line in this list at once.");
+
+            float targetGrowth = board.growthTrend;
+            for (int i = 0; i < board.growth.Count; i++) targetGrowth += board.growth[i].points;
+            board.growthTarget = targetGrowth;
 
             // Output is sticky. An economy does not turn on a sixpence, and neither
             // should the number the player is watching.

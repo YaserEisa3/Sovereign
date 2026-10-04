@@ -906,3 +906,62 @@ problem is close to solved by sound policy; the hard part is now getting the las
 points of unemployment out of a scarred economy.
 
 Verified: Phase 0 115/115, economy 180/180.
+
+## What is moving the numbers
+
+The dashboard could say what every figure WAS and never once say why. The chart
+answered "what happened"; nothing answered "what did I do". The line chart now sits
+behind a series tab, and the box it used to own opens on a table of drivers.
+
+Three sections - growth, unemployment, revenue - each with its headline figure and
+the three things moving it most, signed, coloured and explained:
+
+```
+REAL GDP GROWTH   +3.62%   trend 3.6%, heading to +4.21%
+   Interest rates -1.4% real          +0.96 pts   What bites today is the rate set 3 quarters ago...
+   Consumer demand, confidence 13     -0.68 pts   Households spending, set by what they are taxed...
+   Infrastructure 19/100              -0.62 pts   Roads, grid and rail scale EVERYTHING else...
+```
+
+**The arithmetic is the explanation.** `targetGrowth` used to be one expression adding
+seven terms. It now records each term as it is computed and SUMS THE RECORD - the same
+discipline as `ApprovalModel.Components`, where the score weighs the driver list rather
+than keeping a second copy of it. An explanation that is not the arithmetic itself
+drifts from it eventually. The proof that nothing moved underneath: the economy suite
+passed 180/180 unchanged.
+
+Trend growth is held out of the ranking and shown beside the headline instead. It is
+much the largest term and barely moves, so ranked it would own a place in the top
+three forever while telling the player nothing they can act on.
+
+**"Heading to" is the other half.** Growth approaches its target by 6% a week, and
+monetary policy transmits three to four quarters late, so a player's decision and its
+visible effect are the better part of a year apart - which reads as a dead control.
+The target responds at once, so it is now on the line beside the reading. The smoke
+test fails if it ever disappears.
+
+**Revenue is decomposed differently, on purpose.** A level cannot be explained by its
+own parts - the breakdown chart below already shows those - so the table reports what
+CHANGED against a year ago, and whether it was the rate or the base that moved:
+"You moved the rate from 24.0% to 28.0%, and the base answered" against "The rate has
+not changed at 21.0%, so this is the base growing under it." Each line's take and rate
+is recorded weekly (`rev:` and `rate:` series), so the section is empty for the first
+year and says so.
+
+Three failures worth keeping, all from the smoke test:
+
+- **A default view that hides another view breaks the tests that used it.** Making the
+  table the default left the chart `display: None`, and the chart-hover stage went on
+  picking at it.
+- **Pressing the tab was not enough.** An element that was `display: None` has no
+  geometry until the panel lays out again, and a thing with no geometry cannot be
+  picked. The stage now presses, yields, and judges on the next tick.
+- **`height: auto` let the table grow over its own tab row**, so the GDP tab could not
+  be clicked. It is pinned to the chart's 200px with the rows sized to fit.
+
+And one caught by reading the test's own output rather than its verdict: colouring a
+driver by the sign of its number put the entire unemployment section backwards, since
+a driver pushing unemployment DOWN is helping. Green means helping, which is not the
+same as positive.
+
+Verified: Phase 0 115/115, economy 180/180, play-mode smoke passes.

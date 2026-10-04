@@ -55,6 +55,11 @@ namespace Sovereign.Core
         /// austerity hurts while it happens and leaves a smaller state behind.</summary>
         public float settledSpendingBillions = -1f;
 
+        /// <summary>Why the headline numbers moved this week. Derived from the same terms
+        /// the numbers are summed from and rebuilt every tick, so it is not saved - a
+        /// loaded game fills it again on its first week.</summary>
+        [System.NonSerialized] public DriverBoard drivers = new DriverBoard();
+
         /// <summary>GDD 4: OnRevolt leads to OnGameOver. Nothing else ends a run yet.</summary>
         public bool IsGameOver { get { return approval.revolt; } }
 
@@ -96,6 +101,15 @@ namespace Sovereign.Core
 
         // --- Series -----------------------------------------------------------
         public readonly Dictionary<string, TimeSeries> series = new Dictionary<string, TimeSeries>();
+
+        /// <summary>A series if it has been recorded, without creating one. The dashboard
+        /// reads per-line revenue history this way: a reader that quietly adds an empty
+        /// series puts UI state into the save file.</summary>
+        public TimeSeries Recorded(string key)
+        {
+            TimeSeries found;
+            return series.TryGetValue(key, out found) ? found : null;
+        }
 
         public TimeSeries Series(string key)
         {

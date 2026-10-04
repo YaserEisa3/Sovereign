@@ -68,6 +68,7 @@ namespace Sovereign.Presentation
             RefreshEvents(state);
             RefreshChart(state);
             RefreshMeters(state);
+            RefreshDrivers(state);
             RefreshGoal(state);
             if (_breakdown != null) _breakdown.Refresh(state);
             if (_spendingBreakdown != null) _spendingBreakdown.Refresh(state);

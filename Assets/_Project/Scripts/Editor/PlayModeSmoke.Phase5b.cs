@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -138,6 +139,17 @@ namespace Sovereign.EditorTools
 
                 case Stage.HoverChart:
                 {
+                    // The driver table is the default view now, so the chart is not on
+                    // screen until a series tab asks for it. Pressing the tab is not
+                    // enough on its own: an element that was display:None has no
+                    // geometry until the panel lays out again, and a thing with no
+                    // geometry cannot be picked. So press, leave the stage standing,
+                    // and judge it on the next tick with a layout pass behind us.
+                    if (dash.Q<VisualElement>("chart-container").style.display == DisplayStyle.None)
+                    {
+                        if (!Press(dash.Q<Button>("tab-gdp"), "the GDP tab, to bring the chart up")) return;
+                        return;
+                    }
                     LineChartComponent chart = dash.Q<LineChartComponent>();
                     if (!Require(chart != null && chart.PointCount > 2, "the dashboard chart has no data to hover")) return;
                     Rect area = chart.worldBound;
@@ -286,6 +298,50 @@ namespace Sovereign.EditorTools
                     if (!Require(industries >= 6, "the Sectors tab shows " + industries + " industries")) return;
                     if (!Require(dash.Q<VisualElement>("chart-container").style.display == DisplayStyle.None,
                                  "the line chart is still drawn under the industry list")) return;
+
+                    // The driver table: what is MOVING each headline number. It replaced
+                    // the chart as the default view, so the chart must give way to it and
+                    // every row must carry real text - an empty table reads as a working
+                    // one, which is how the breakdown geometry checks once passed on
+                    // nothing at all.
+                    if (!Press(dash.Q<Button>("drivers-toggle"), "the WHAT'S MOVING toggle")) return;
+                    VisualElement drivers = dash.Q<VisualElement>("driver-container");
+                    if (!Require(drivers != null && drivers.style.display != DisplayStyle.None,
+                                 "the driver table did not open")) return;
+                    if (!Require(dash.Q<VisualElement>("chart-container").style.display == DisplayStyle.None,
+                                 "the line chart is still drawn under the driver table")) return;
+
+                    List<Label> headValues = drivers.Query<Label>(className: "driver-head-value").ToList();
+                    List<Label> headNotes = drivers.Query<Label>(className: "driver-head-note").ToList();
+                    int headlines = 0;
+                    foreach (Label head in headValues) if (head.text.Length > 1) headlines++;
+                    if (!Require(headlines == 3,
+                                 "the driver table shows " + headlines + " of 3 headline figures")) return;
+
+                    List<Label> names = drivers.Query<Label>(className: "driver-name").ToList();
+                    List<Label> amounts = drivers.Query<Label>(className: "driver-value").ToList();
+                    int filled = 0;
+                    string listed = "";
+                    for (int i = 0; i < names.Count && i < amounts.Count; i++)
+                    {
+                        if (names[i].text.Length < 4 || amounts[i].text.Length < 2) continue;
+                        filled++;
+                        listed += names[i].text + " " + amounts[i].text + "; ";
+                    }
+                    Debug.Log("PlayModeSmoke: driver table reads " + listed);
+                    if (!Require(filled >= 5,
+                                 "the driver table filled " + filled + " rows, so it is explaining almost nothing")) return;
+
+                    // Growth is sticky, so the reading alone never shows a policy working.
+                    // The headline must say where growth is HEADING as well as where it is.
+                    string growthNote = headNotes.Count > 0 ? headNotes[0].text : "";
+                    if (!Require(growthNote.Contains("heading to"),
+                                 "the growth headline does not say where growth is heading: '" + growthNote + "'")) return;
+
+                    // And a series tab must still take you back to the chart.
+                    if (!Press(dash.Q<Button>("tab-gdp"), "the GDP tab")) return;
+                    if (!Require(dash.Q<VisualElement>("chart-container").style.display != DisplayStyle.None,
+                                 "the chart did not come back when a series tab was pressed")) return;
 
                     Next(Stage.VerifyCityscape);
                     return;

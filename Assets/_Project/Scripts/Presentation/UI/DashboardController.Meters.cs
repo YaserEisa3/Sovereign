@@ -84,6 +84,7 @@ namespace Sovereign.Presentation
             _meterView = meters;
             // The meters and the industry list share the chart's box; opening one closes
             // the other, or the panel grows and swallows its own toggle.
+            if (meters) SetDriverView(false);
             if (meters) SetIndustryView(false);
             if (_chartContainer != null) _chartContainer.style.display = meters ? DisplayStyle.None : DisplayStyle.Flex;
             if (_meterContainer != null) _meterContainer.style.display = meters ? DisplayStyle.Flex : DisplayStyle.None;
