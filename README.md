@@ -990,3 +990,72 @@ kept inside a note is infrastructure's, because that number is the player's to a
 "29/100 - too poor to grow through".
 
 Verified: economy 180/180, play-mode smoke passes.
+
+## Making the player's decisions matter
+
+Hovering unemployment showed this, and it was damning:
+
+```
+UNEMPLOYMENT      14.0%   falling 4.2 a year at this rate
+   Finding work   -3.99   people and jobs keep pairing up by themselves
+   The economy    -0.23   growing fast enough to take people on
+```
+
+The force the player controls was one seventeenth of the force they did not. A
+government could watch unemployment fall for a decade and learn nothing about its own
+policy. The driver table did not cause that - it revealed it.
+
+Eight coefficients moved. Okun 0.5 to 0.9 so jobs follow growth; the monetary lag from
+four quarters to two; growth's approach to its target from 0.06 a week to 0.10 (and
+from a literal buried in UpdateDemand to a parameter); the fiscal multiplier 0.5 to
+0.8; rate, consumption-tax and corporate-tax sensitivities all up by a quarter or more.
+
+Three things went wrong, and each was found by measuring rather than reasoning.
+
+**Cutting the automatic healing flat lost 6 of 6 runs to revolt.** That reversion was
+not a clock, it was the damping on a feedback loop: unemployment feeds confidence,
+confidence feeds demand, demand feeds growth, growth feeds unemployment. At Okun 0.9
+the loop has enough gain to run away, and one shock finished a country. The pull is now
+proportional to the DEPTH of the hole - full speed nine points above the floor, almost
+nothing near it - so a shattered labour market still recovers on its own while the last
+stretch belongs to the player.
+
+**Two passes were aimed at unemployment on an assumption nobody had checked.** The
+probe reported debt, unemployment and approval but not which victory condition was
+actually missing. It does now, and it said: unemployment, in all five surviving runs.
+
+**And the natural rate was the real problem.** Victory asks for 5.5% against a floor of
+4.5% that no decision could move, so the last point had to come from growth alone while
+shocks pushed back - a competent government won two runs in six. The floor is not a law
+of nature: it is how well matched people are to the work there is. Schooling moves it
+now, against what the country spent the day the run opened.
+
+The first version of that made it a win button. Linear returns plus a probe compounding
+the education budget 8% a year drove the floor to its minimum and finished at **0.7%
+unemployment**, which no economy has ever run at - and nothing objected, because the
+wage curve, the confidence term and the labour gap were all still reading the authored
+4.5% rather than the floor the player had earned. The brake was pointing at the wrong
+number. Three fixes: diminishing returns (the square root, so doubling the budget is
+worth 0.6 points and quadrupling 1.5), a three-year lag so it is an investment a
+government makes for its successor, and every reader of the natural rate pointed at the
+earned one.
+
+| | before | after |
+|---|---|---|
+| player's share of unemployment movement at 14% | ~5% | ~37% |
+| below 7.5% unemployment | the clock dominates | the player dominates |
+| levers on unemployment | growth, against a fixed floor | growth, and the floor itself |
+| survived / won, 6 seeds | 6/6, 4/6 | 6/6, 5/6 |
+
+The survival probe's player also had to grow up. It set policy once and left it for
+thirty years, so the balance was being tuned to suit a government that never reacts to
+anything; it now governs once a year - spends into unemployment when the books allow,
+raises taxes when debt turns, and follows inflation with the policy rate.
+
+Two ceilings in the deflation stress tests were raised, from 3.2x to 5.5x and 8x to
+12x. A decade held at a 9% policy rate is meant to be a catastrophe, and with the rate
+channel deliberately stronger and its lag halved the same decade now ends at 4.8x
+rather than 3.1x. What those tests guard - finiteness, and deflation that does not
+accelerate away - still passes, and the reason the number moved is recorded beside it.
+
+Verified: Phase 0 115/115, economy 180/180, play-mode smoke passes.

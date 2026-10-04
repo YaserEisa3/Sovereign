@@ -141,12 +141,17 @@ namespace Sovereign.Presentation
             m.importedInflationSensitivity = p.importedInflationSensitivity;
 
             m.unemploymentReversionSpeed = p.unemploymentReversionSpeed;
+            m.reversionReferenceGap = p.reversionReferenceGap;
+            m.trainingNaturalRateEffect = p.trainingNaturalRateEffect;
+            m.naturalRateRange = p.naturalRateRange;
+            m.naturalRateAdjustmentSpeed = p.naturalRateAdjustmentSpeed;
             m.recoveryFromSlack = p.recoveryFromSlack;
             m.debtTrendPremium = p.debtTrendPremium;
             m.debtTrendCredit = p.debtTrendCredit;
             m.debtTrendPenalty = p.debtTrendPenalty;
             m.fiscalMultiplier = p.fiscalMultiplier;
             m.fiscalAdjustmentSpeed = p.fiscalAdjustmentSpeed;
+            m.growthAdjustmentSpeed = p.growthAdjustmentSpeed;
             m.slackRecoveryChokeRate = p.slackRecoveryChokeRate;
             m.buybackShortYears = p.buybackShortYears;
             m.buybackMediumYears = p.buybackMediumYears;

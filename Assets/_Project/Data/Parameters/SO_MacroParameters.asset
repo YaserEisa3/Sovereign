@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb153ca1daaf12428c65c549ef752ca, type: 3}
   m_Name: SO_MacroParameters
   m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.MacroParameters
-  okunCoefficient: 0.5
+  okunCoefficient: 0.9
   phillipsCoefficient: 0.3
   monetaryMultiplier: 0.8
-  interestRateSensitivity: 0.4
+  interestRateSensitivity: 0.5
   fdiCurrencySensitivity: 0.6
   tradeContagionMultiplier: 0.5
   financialContagionMultiplier: 0.7
@@ -88,7 +88,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  monetaryLagQuarters: 4
+  monetaryLagQuarters: 2
   qeInflationLagQuarters: 3
   naturalUnemploymentRate: 4.5
   baseInflationPassThrough: 0.45
@@ -105,16 +105,21 @@ MonoBehaviour:
   investmentShare: 0.18
   governmentShare: 0.17
   netExportShare: -0.03
-  consumptionTaxSensitivity: 0.35
-  investmentCorporateTaxSensitivity: 0.3
+  consumptionTaxSensitivity: 0.5
+  investmentCorporateTaxSensitivity: 0.45
   confidenceAdjustmentSpeed: 0.08
   exportCurrencySensitivity: 0.25
   tariffTradeSensitivity: 0.2
   importedInflationSensitivity: 0.45
   unemploymentReversionSpeed: 0.008
+  reversionReferenceGap: 5
+  trainingNaturalRateEffect: 1.5
+  naturalRateRange: 2
+  naturalRateAdjustmentSpeed: 0.006
   recoveryFromSlack: 0.03
-  fiscalMultiplier: 0.5
+  fiscalMultiplier: 0.8
   fiscalAdjustmentSpeed: 0.02
+  growthAdjustmentSpeed: 0.1
   avoidanceCurvature: 2.5
   debtTrendPremium: 0.12
   debtTrendCredit: 3

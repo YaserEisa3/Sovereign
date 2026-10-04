@@ -72,7 +72,13 @@ namespace Sovereign.EditorTools
                   "deflation: prices fell " + state.inflation.ToString("0.0") + "% a year and kept accelerating");
             // A decade at 9% SHOULD produce a debt crisis - GDD 17.6 treats that as a
             // real fail state, not a bug. What is checked is that it stays bounded.
-            Check(state.DebtToGdp < 3.2f,
+            // Ceiling raised from 3.2 to 5.5 when the rate channel was deliberately
+            // strengthened and its lag halved, so the player could feel a rate decision:
+            // the same decade now ends at 4.8x rather than 3.1x. What this test guards -
+            // finiteness, and deflation that does not accelerate away - still holds, and
+            // both of those are asserted above. The ratio rises because nominal GDP
+            // shrinks while deficits accumulate, which is arithmetic, not a runaway.
+            Check(state.DebtToGdp < 5.5f,
                   "deflation: debt/GDP ran to " + (state.DebtToGdp * 100f).ToString("0")
                   + "% under sustained tight money - past a crisis and into a runaway");
 
@@ -82,7 +88,7 @@ namespace Sovereign.EditorTools
             runner.Policy.centralBankRate = 14f;
             runner.Step(10 * Year);
             CheckFinite(extreme, "deflation extreme");
-            Check(extreme.DebtToGdp < 8f,
+            Check(extreme.DebtToGdp < 12f,
                   "deflation extreme: debt/GDP ran to " + (extreme.DebtToGdp * 100f).ToString("0") + "%");
         }
 

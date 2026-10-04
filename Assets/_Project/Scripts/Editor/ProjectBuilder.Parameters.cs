@@ -28,17 +28,39 @@ namespace Sovereign.EditorTools
                 // simulation was not reading.
                 m.recoveryFromSlack = 0.03f;
                 m.slackRecoveryChokeRate = 5f;
-                m.fiscalMultiplier = 0.5f;
+                m.fiscalMultiplier = 0.8f;
                 m.fiscalAdjustmentSpeed = 0.02f;
                 m.avoidanceCurvature = 2.5f;
                 m.debtTrendPremium = 0.12f;
                 m.debtTrendCredit = 3f;
                 m.debtTrendPenalty = 5f;
 
-                m.okunCoefficient = 0.5f;
+                // BALANCE: the player's decisions, not the clock. Unemployment used to heal
+                // itself at 0.8% of its gap every week - at 14% that is -4.0 a year against
+                // -0.2 from anything the player did, so a government could watch the number
+                // fall for years and learn nothing about its own policy. The free healing is
+                // now proportional to the DEPTH of the hole - full speed at 9 points above
+                // the natural rate, almost nothing near it - and Okun is nearly doubled,
+                // so the last stretch to full employment is the player's to earn.
+                // Flat-rate healing at a third of the old speed was tried first and lost
+                // 6 of 6 runs to revolt: it is what stops a shock becoming a spiral.
+                m.okunCoefficient = 0.9f;
+                m.unemploymentReversionSpeed = 0.008f;
+                m.reversionReferenceGap = 5f;
+                m.trainingNaturalRateEffect = 1.5f;
+                m.naturalRateRange = 2f;
+                m.naturalRateAdjustmentSpeed = 0.006f;
+
+                // ...and the levers that drive growth are stronger and land sooner. A
+                // four-quarter monetary lag plus 6%-a-week stickiness put a decision and
+                // its visible effect a year apart, which reads as a broken control.
+                m.monetaryLagQuarters = 2;
+                m.growthAdjustmentSpeed = 0.10f;
+                m.consumptionTaxSensitivity = 0.5f;
+                m.investmentCorporateTaxSensitivity = 0.45f;
                 m.phillipsCoefficient = 0.3f;
                 m.monetaryMultiplier = 0.8f;
-                m.interestRateSensitivity = 0.4f;
+                m.interestRateSensitivity = 0.5f;
                 m.fdiCurrencySensitivity = 0.6f;
                 m.tradeContagionMultiplier = 0.5f;
                 m.financialContagionMultiplier = 0.7f;

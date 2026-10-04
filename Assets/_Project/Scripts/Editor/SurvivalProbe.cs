@@ -14,7 +14,7 @@ namespace Sovereign.EditorTools
     ///
     /// Menu: Sovereign -> Probe Survival.
     /// </summary>
-    public static class SurvivalProbe
+    public static partial class SurvivalProbe
     {
         [MenuItem("Sovereign/Probe Survival", false, 49)]
         public static void Run()
@@ -58,6 +58,7 @@ namespace Sovereign.EditorTools
                 for (int year = 1; year <= 30; year++)
                 {
                     runner.Step(52);
+                    Govern(runner, state);
                     if (state.prosperity && wonAt < 0) wonAt = year;
                     if (state.IsGameOver) { fellAt = year; break; }
                 }
@@ -72,7 +73,12 @@ namespace Sovereign.EditorTools
                       .Append(state.unemployment.ToString("0.0").PadLeft(8))
                       .Append(state.approval.overall.ToString("0").PadLeft(11))
                       .Append("   ")
-                      .Append(fellAt > 0 ? state.approval.revoltReason : "")
+                      // A run that survives without winning is the interesting case, and
+                      // "0 of 6 won" does not say which condition held it back. Guessing
+                      // at that cost two balance passes aimed at unemployment alone.
+                      .Append(fellAt > 0 ? state.approval.revoltReason
+                                         : wonAt > 0 ? ""
+                                         : "missing: " + runner.Simulator.Victory.Outstanding(state))
                       .Append('\n');
             }
 

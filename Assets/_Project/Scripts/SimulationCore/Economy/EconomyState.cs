@@ -60,6 +60,11 @@ namespace Sovereign.Core
         /// loaded game fills it again on its first week.</summary>
         [System.NonSerialized] public DriverBoard drivers = new DriverBoard();
 
+        /// <summary>The floor under unemployment, which schooling moves over years. Saved,
+        /// because it is a decade of investment rather than something derived from this
+        /// week.</summary>
+        public float naturalRate = -1f;
+
         /// <summary>GDD 4: OnRevolt leads to OnGameOver. Nothing else ends a run yet.</summary>
         public bool IsGameOver { get { return approval.revolt; } }
 

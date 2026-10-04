@@ -103,6 +103,15 @@ namespace Sovereign.Data
         [Header("Stabilisers - what stops a spiral running away")]
         [Tooltip("How fast unemployment is pulled back toward the natural rate, per week. Unemployment INTEGRATES the growth gap, so without this a long recession has no floor.")]
         [Range(0.001f, 0.05f)] public float unemploymentReversionSpeed = 0.005f;
+        [Tooltip("The gap above the natural rate at which self-healing runs at FULL speed. Below it the pull weakens with the gap, so a country deep in unemployment still recovers on its own while the last points above the natural rate have to be earned by growing.")]
+        [Range(1f, 20f)] public float reversionReferenceGap = 9f;
+
+        [Tooltip("Points off the natural rate for doubling what the country spends educating and training people. The floor is not a law of nature - it is how well matched people are to the work there is - and this is the only lever the player has on it.")]
+        [Range(0f, 4f)] public float trainingNaturalRateEffect = 1.5f;
+        [Tooltip("The most the natural rate can be moved either way by schooling, so it can never be driven to zero.")]
+        [Range(0f, 4f)] public float naturalRateRange = 2f;
+        [Tooltip("How fast the natural rate moves toward what the schooling budget earns, per week. 0.006 is about three years - an investment a government makes for its successor.")]
+        [Range(0.0005f, 0.05f)] public float naturalRateAdjustmentSpeed = 0.006f;
 
         [Tooltip("Growth points added per point of output below potential. Spare factories and idle workers are cheap to put back to work, which is why post-war recoveries run hot. 0 makes a hole permanent.")]
         [Range(0f, 0.5f)] public float recoveryFromSlack = 0.03f;
@@ -111,6 +120,9 @@ namespace Sovereign.Data
         [Range(0f, 2f)] public float fiscalMultiplier = 0.8f;
         [Tooltip("How fast the economy gets used to a new size of state, per week. 0.004 is about three years.")]
         [Range(0.0005f, 0.05f)] public float fiscalAdjustmentSpeed = 0.02f;
+
+        [Tooltip("How fast output moves toward where the model says it is heading, per week. 0.06 is about four months to half-close the gap, which reads as a dead control; higher makes a decision show up in the figure sooner.")]
+        [Range(0.01f, 0.4f)] public float growthAdjustmentSpeed = 0.10f;
 
         [Tooltip("How much faster a tax base runs away as the rate climbs above the going rate. 0 is linear - and linear lets a government tax every line to its ceiling and clear the national debt in five years.")]
         [Range(0f, 6f)] public float avoidanceCurvature = 2.5f;

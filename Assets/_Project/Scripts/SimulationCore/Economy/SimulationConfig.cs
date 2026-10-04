@@ -44,9 +44,10 @@ namespace Sovereign.Core
         public float importedInflationSensitivity;
 
         // Stabilisers.
-        public float unemploymentReversionSpeed;
+        public float unemploymentReversionSpeed, reversionReferenceGap;
+        public float trainingNaturalRateEffect, naturalRateRange, naturalRateAdjustmentSpeed;
         public float recoveryFromSlack;
-        public float fiscalMultiplier, fiscalAdjustmentSpeed;
+        public float fiscalMultiplier, fiscalAdjustmentSpeed, growthAdjustmentSpeed;
         public float debtTrendPremium, debtTrendCredit, debtTrendPenalty;
         public float slackRecoveryChokeRate;
         public float buybackShortYears, buybackMediumYears, buybackLongYears;

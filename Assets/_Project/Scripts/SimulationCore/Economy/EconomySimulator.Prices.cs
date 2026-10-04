@@ -20,10 +20,24 @@ namespace Sovereign.Core
             float shocks = previous < 0f ? 0f : state.unemployment - previous;
             state.unemployment -= growthGap * m.okunCoefficient * Weekly;
 
-            // and hysteresis pulls it back toward the natural rate once growth returns.
+            // ...and matching pulls it back toward the natural rate, at a speed that
+            // depends on HOW DEEP the hole is. A country at 15% unemployment really does
+            // put people back to work by itself, and taking that away turned every shock
+            // into a death spiral: unemployment feeds confidence, confidence feeds
+            // demand, demand feeds growth and growth feeds unemployment, and with nothing
+            // damping it the loop ran away in six of six runs.
+            //
+            // But the last points above the natural rate should NOT close for free, or
+            // the player watches a number fall for years and learns nothing about their
+            // own policy. So the pull falls away with the gap: full speed deep in the
+            // hole, almost nothing near the floor, where growth has to do the work.
+            float natural = NaturalRate(state, policy);
             float beforeReversion = state.unemployment;
+            float gap = MathUtil.Abs(state.unemployment - natural);
+            float depth = MathUtil.Clamp(gap / MathUtil.Max(0.1f, m.reversionReferenceGap), 0f, 1f);
             state.unemployment = MathUtil.Clamp(
-                MathUtil.Approach(state.unemployment, m.naturalUnemploymentRate, m.unemploymentReversionSpeed), 0.5f, 40f);
+                MathUtil.Approach(state.unemployment, natural,
+                                  m.unemploymentReversionSpeed * depth), 0.5f, 40f);
 
             // The same three movements, stated in points per year at this week's rate -
             // weekly changes are far too small to read, and a rate is what the player is
@@ -55,7 +69,11 @@ namespace Sovereign.Core
                 ? m.unanchoredInflationPassThrough
                 : m.baseInflationPassThrough;
 
-            float slack = state.unemployment - m.naturalUnemploymentRate;
+            // Against the floor the player has EARNED, not the authored one. Reading the
+            // fixed rate here let a country run at 0.7% unemployment with the wage curve
+            // none the wiser - the brake that should stop it was pointing at the wrong
+            // number.
+            float slack = state.unemployment - SettledNaturalRate(state);
 
             // The wage Phillips curve: expected inflation, plus productivity, plus a SHARE
             // of any inflation surprise, less what slack lets employers hold back. Anchored,
@@ -112,7 +130,7 @@ namespace Sovereign.Core
             // Phillips, asymmetric. A tight labour market raises prices quickly; a slack
             // one lowers them only grudgingly. As a straight line, 20% unemployment
             // demanded minus-5% inflation and the model dived to the clamp.
-            float labourGap = m.naturalUnemploymentRate - state.unemployment;
+            float labourGap = SettledNaturalRate(state) - state.unemployment;
             float phillips = labourGap * m.phillipsCoefficient;
             if (labourGap < 0f) phillips *= m.phillipsSlackDamping;
 

@@ -116,7 +116,8 @@ namespace Sovereign.Core
 
             // Output is sticky. An economy does not turn on a sixpence, and neither
             // should the number the player is watching.
-            state.realGdpGrowth = MathUtil.Clamp(MathUtil.Approach(state.realGdpGrowth, targetGrowth, 0.06f), -14f, 14f);
+            state.realGdpGrowth = MathUtil.Clamp(
+                MathUtil.Approach(state.realGdpGrowth, targetGrowth, m.growthAdjustmentSpeed), -14f, 14f);
 
             state.realGdpIndex *= 1f + state.realGdpGrowth * 0.01f * Weekly;
             state.potentialGdpIndex *= 1f + Potential(state) * 0.01f * Weekly;
@@ -136,7 +137,7 @@ namespace Sovereign.Core
             // arrives - GDD 9.1, the market believes it and the belief matters.
             float confidenceTarget = 50f
                                      + (state.realGdpGrowth - Potential(state)) * 6f
-                                     - (state.unemployment - m.naturalUnemploymentRate) * 3f
+                                     - (state.unemployment - SettledNaturalRate(state)) * 3f
                                      - MathUtil.Max(0f, state.inflation - m.inflationTarget) * 2.5f
                                      + (state.bonds.yields.IsInverted ? -8f : 0f);
 
