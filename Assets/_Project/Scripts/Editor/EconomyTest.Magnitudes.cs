@@ -11,28 +11,35 @@ namespace Sovereign.EditorTools
     /// </summary>
     public static partial class EconomyTest
     {
-        /// <summary>Nothing should drift on its own. A player who touches no control
-        /// should find the economy roughly where they left it.</summary>
+        /// <summary>
+        /// Nothing should drift on its own EXCEPT what a country genuinely cannot hold
+        /// still: its population. Pensions and old-age health grow with the number of
+        /// retired people whatever the budget says, so a government that touches nothing
+        /// for a decade should find the books worse - that is the ageing bill, and it is
+        /// the reason the fiscal problem never finishes. Everything else must stay put.
+        /// </summary>
         static void TestNoFreeDrift(SimulationRunner runner)
         {
             EconomyState state = Fresh(runner).State;
             float startingDebt = state.DebtToGdp;
-            CreditRating startingRating = state.bonds.creditRating;
             runner.Step(10 * Year);
 
-            float debtDrift = MathUtil.Abs(state.DebtToGdp - startingDebt) * 100f;
-            Check(debtDrift < 25f,
+            // Bounded, and in the direction demographics push. 25pp was the ceiling when
+            // nothing drifted at all; the ageing bill moves it about 3pp a year, so a
+            // decade of neglect costs around 30. Much more than this and it is a
+            // railroad - the player could not catch up whatever they did.
+            float debtDrift = (state.DebtToGdp - startingDebt) * 100f;
+            Check(debtDrift < 45f,
                   "drift: debt/GDP moved " + debtDrift.ToString("0") + "pp in ten years with no policy change - "
-                  + "the budget is drifting on its own (now " + (state.DebtToGdp * 100f).ToString("0") + "%)");
+                  + "more than the ageing bill can account for (now " + (state.DebtToGdp * 100f).ToString("0") + "%)");
+            Check(debtDrift > 0f,
+                  "drift: a decade of touching nothing left the debt no worse, so the ageing "
+                  + "bill is not being charged - the fiscal problem finishes and the late game empties out");
 
             float currencyDrift = MathUtil.Abs(state.currency.exchangeRateIndex - 100f);
             Check(currencyDrift < 15f,
                   "drift: the currency moved " + currencyDrift.ToString("0") + " points with no policy change (now "
                   + state.currency.exchangeRateIndex.ToString("0") + ")");
-
-            Check(state.bonds.creditRating <= startingRating,
-                  "drift: the rating fell from " + startingRating + " to " + state.bonds.creditRating
-                  + " while the player did nothing");
 
             Check(MathUtil.Abs(state.inflation - runner.Simulator.Config.startingInflation) < 4f,
                   "drift: inflation wandered to " + state.inflation.ToString("0.0") + "% on its own");

@@ -112,7 +112,7 @@ MonoBehaviour:
   tariffTradeSensitivity: 0.2
   importedInflationSensitivity: 0.45
   unemploymentReversionSpeed: 0.008
-  reversionReferenceGap: 5
+  reversionReferenceGap: 9
   trainingNaturalRateEffect: 1.5
   naturalRateRange: 2
   naturalRateAdjustmentSpeed: 0.006

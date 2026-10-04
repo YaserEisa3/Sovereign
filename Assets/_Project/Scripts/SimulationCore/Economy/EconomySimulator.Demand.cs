@@ -137,7 +137,11 @@ namespace Sovereign.Core
             // arrives - GDD 9.1, the market believes it and the belief matters.
             float confidenceTarget = 50f
                                      + (state.realGdpGrowth - Potential(state)) * 6f
-                                     - (state.unemployment - SettledNaturalRate(state)) * 3f
+                                     // 3f here is what made high unemployment a death spiral rather
+                                     // than a problem: it collapsed confidence, which collapsed
+                                     // demand, which raised unemployment again. People do lose
+                                     // heart when work is scarce - they do not lose it without end.
+                                     - (state.unemployment - SettledNaturalRate(state)) * 2f
                                      - MathUtil.Max(0f, state.inflation - m.inflationTarget) * 2.5f
                                      + (state.bonds.yields.IsInverted ? -8f : 0f);
 

@@ -49,18 +49,27 @@ namespace Sovereign.EditorTools
                 }
             }
 
-            // Debt heading the wrong way: stop, whatever unemployment is doing. A
-            // government that spends through a debt spiral loses the bond market and
-            // then loses everything else.
-            if (debt > 1.1f)
+            // Debt above what winning asks for: lean against it. The old rule only woke
+            // at 110%, while victory needs 60% - so the probe was measuring a government
+            // that stops caring long before the target, and debt parking at 80% looked
+            // like the economy refusing rather than nobody asking.
+            // ...but not while unemployment is still the worse problem and the debt is
+            // not yet dangerous. Cutting taxes for jobs and raising them for debt in the
+            // same year cancels out, which is what parked every run at 8% unemployment.
+            // Growth shrinks debt/GDP through the denominator anyway: fix the jobs first,
+            // then the books.
+            bool jobsFirst = state.unemployment > goal.unemployment && debt < 0.9f;
+            if (debt > goal.debtToGdp && !jobsFirst)
             {
                 foreach (TaxDefinition tax in runner.Database.Taxes)
                 {
                     if (tax.displayName.Contains("Credit")) continue;
                     string key = PolicyBootstrap.KeyFor(tax, "SO_Tax_");
                     float headroom = tax.maximumValue - tax.defaultValue;
-                    float ceiling = tax.defaultValue + headroom * 0.45f;
-                    runner.Policy.taxRates[key] = MathUtil.Min(ceiling, runner.Policy.taxRates[key] + 0.3f);
+                    // Harder the further from the target, so a mild overshoot is a nudge
+                    // and a spiral is a wrench.
+                    float ceiling = tax.defaultValue + headroom * (debt > 1.1f ? 0.5f : 0.3f);
+                    runner.Policy.taxRates[key] = MathUtil.Min(ceiling, runner.Policy.taxRates[key] + (debt > 1.1f ? 0.3f : 0.12f));
                 }
             }
 

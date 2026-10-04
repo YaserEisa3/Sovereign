@@ -26,6 +26,7 @@ MonoBehaviour:
   isAutomatic: 0
   isAutomaticStabiliser: 0
   stabiliserSensitivity: 0
+  scalesWithRetired: 0
   infrastructureCategory: 5
   effects:
   - target: 10

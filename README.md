@@ -1059,3 +1059,55 @@ rather than 3.1x. What those tests guard - finiteness, and deflation that does n
 accelerate away - still passes, and the reason the number moved is recorded beside it.
 
 Verified: Phase 0 115/115, economy 180/180, play-mode smoke passes.
+
+## Forever mode
+
+The scenario had a win, and a win is an ending. Reaching prosperity latched a flag that
+never came off, so a run was over in every way that mattered at year 16 while the clock
+carried on pretending. The brief was a country you govern - debt, unemployment and
+whatever the world throws, balanced against growing the place - and that does not finish.
+
+**Prosperity is a state now, not a trophy.** Every condition at once for two years gets
+you there; slip on any of them and you fall out, and the ticker says which. What a run
+is worth is how long it HELD it, the best streak, and how many times it got back -
+recorded in the state and shown on the standing line.
+
+**Eight milestones replace the single distant bar**, from "debt under 120% of GDP" to
+"debt under 60%", each announced when reached and when lost. Something to aim at between
+"just survived a war" and "fully recovered", which was thirty years of fog.
+
+**The late game had emptied out.** Spending was indexed to prices but not to people, so
+revenue grew with the economy while Medicare and Social Security stayed flat in real
+terms forever; a disciplined government cleared the debt by year 15 and then ran a
++16% surplus with no fiscal decision left to make. Pensions and old-age health now grow
+with the retired population at 0.6 elasticity - partly headcount, partly a promise a
+government can still choose. Debt stays a live problem for thirty years: runs now end
+between 40% and 90% of GDP rather than at zero.
+
+**Unemployment is a band to work in, not a number that fixes itself.** The pull toward
+the natural rate now fades with the SQUARE of the gap, and only above it:
+
+| unemployment | heals by itself | your growth at +1pt |
+|---|---|---|
+| 15% | -3.9/yr | -0.9 |
+| 12% | -2.0/yr | -0.9 |
+| 9% | -0.5/yr | -0.9 |
+| 7% | -0.08/yr | -0.9 |
+
+Deep enough to stop a shock becoming a death spiral, nearly nothing in the 6-10% band
+where the game is actually played. Asymmetric because the first version was not: a
+symmetric fade let a quiet run coast down to 0.7% unemployment and sit there, since
+nothing pulled it back UP to the floor either.
+
+Measured across six seeds of the live world, with a probe that now governs once a year
+rather than setting policy once and leaving it for thirty: 4 of 6 survive, landing at
+8-9% unemployment and 60-90% debt with approval in the mid-eighties. That equilibrium
+used to read as "never won". It is the country you are holding together.
+
+The `drift` test was rewritten rather than relaxed. It said nothing should drift on its
+own, which was true when it was written and is not now: a country cannot hold its
+population still. It checks the drift is bounded at 45pp a decade - more is a railroad -
+and that it is GREATER THAN ZERO, which fails if the ageing bill ever stops being
+charged and the late game quietly empties out again.
+
+Verified: Phase 0 115/115, economy 186/186, play-mode smoke passes.

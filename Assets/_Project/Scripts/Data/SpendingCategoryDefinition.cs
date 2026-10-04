@@ -52,6 +52,9 @@ namespace Sovereign.Data
         [Tooltip("How strongly this line grows as unemployment rises, in $B per point of unemployment.")]
         public float stabiliserSensitivity = 0f;
 
+        [Tooltip("This line is a bill the country owes its retired people, so it grows with their number whatever the player sets. Pensions and old-age health - the cost of an ageing country.")]
+        public bool scalesWithRetired = false;
+
         [Header("Infrastructure")]
         [Tooltip("Which infrastructure category this line repairs, if any. GDD 16 / 22.3: six categories are tracked, one aggregate drives the GDP drag.")]
         public InfrastructureCategory infrastructureCategory = InfrastructureCategory.None;

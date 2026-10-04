@@ -207,8 +207,9 @@ namespace Sovereign.Presentation
     public partial class DashboardController
     {
         /// <summary>
-        /// GDD 20. What winning this scenario would take, and what is still missing.
-        /// A game with a victory condition nobody can see is a game without one.
+        /// GDD 20, forever mode. Where the country STANDS, not how far it is from an
+        /// ending - there isn't one. A rung of the ladder it has yet to climb, how many
+        /// it holds, and when it is prosperous, how long it has managed to stay that way.
         /// </summary>
         void RefreshGoal(EconomyState state)
         {
@@ -218,9 +219,35 @@ namespace Sovereign.Presentation
             VictoryModel victory = runner.Simulator.Victory;
             if (!victory.Enabled) { goal.text = ""; return; }
 
-            goal.text = state.prosperity
-                ? "WON: " + victory.Config.title + " - and nothing stops a country losing it again."
-                : "GOAL - still missing: " + victory.Outstanding(state);
+            int held = MilestoneModel.Count(state);
+            string standing = held + " of " + MilestoneModel.Ladder.Length + " milestones";
+
+            if (state.prosperity)
+            {
+                goal.text = "PROSPEROUS - held " + Years(state.prosperityWeeks) + "   (best "
+                            + Years(state.longestProsperityWeeks) + ", reached "
+                            + state.timesProsperous + (state.timesProsperous == 1 ? " time)" : " times)")
+                            + "   " + standing;
+                return;
+            }
+
+            string next = MilestoneModel.Next(state);
+            string chasing = next.Length > 0 ? "NEXT: " + next : "PROSPERITY: " + victory.Outstanding(state);
+
+            // Once every rung is held, the only thing left to chase is prosperity itself,
+            // and after it has been held once, getting back there.
+            if (state.timesProsperous > 0)
+                chasing += "   (prosperous " + state.timesProsperous
+                           + (state.timesProsperous == 1 ? " time, best " : " times, best ")
+                           + Years(state.longestProsperityWeeks) + ")";
+
+            goal.text = chasing + "   " + standing;
+        }
+
+        static string Years(int weeks)
+        {
+            return weeks >= 52 ? (weeks / 52f).ToString("0.0") + " years"
+                 : weeks + (weeks == 1 ? " week" : " weeks");
         }
     }
 }

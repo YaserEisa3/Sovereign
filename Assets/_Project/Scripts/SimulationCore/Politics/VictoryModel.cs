@@ -38,13 +38,34 @@ namespace Sovereign.Core
         public VictoryConfig Config { get { return _c; } }
         public bool Enabled { get { return _c.years > 0f; } }
 
+        /// <summary>
+        /// Forever mode: prosperity is a STATE, not a trophy. It latched permanently
+        /// once, which made it an ending - reach it and the run was over in every way
+        /// that mattered. A country can fall out of prosperity as easily as it climbed
+        /// in, and holding what you have built is its own job.
+        /// </summary>
         public void TickWeek(EconomyState state)
         {
-            if (!Enabled || state.prosperity || state.IsGameOver) return;
+            if (!Enabled || state.IsGameOver) return;
 
             if (!Holds(state))
             {
                 state.victoryWeeks = 0;
+                if (state.prosperity)
+                {
+                    state.prosperity = false;
+                    state.events.Post(state.week, AlertLevel.Warning, AlertChannel.Ticker,
+                        "The country has slipped out of prosperity. " + Outstanding(state));
+                }
+                return;
+            }
+
+            if (state.prosperity)
+            {
+                // Keep the record of how long it has been held, and the best ever.
+                state.prosperityWeeks++;
+                if (state.prosperityWeeks > state.longestProsperityWeeks)
+                    state.longestProsperityWeeks = state.prosperityWeeks;
                 return;
             }
 
@@ -52,6 +73,8 @@ namespace Sovereign.Core
             if (state.victoryWeeks < (int)(_c.years * 52f)) return;
 
             state.prosperity = true;
+            state.prosperityWeeks = 0;
+            state.timesProsperous++;
             state.events.Post(state.week, AlertLevel.Info, AlertChannel.Ticker,
                 _c.title + " - " + _c.summary);
         }

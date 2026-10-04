@@ -22,6 +22,7 @@ namespace Sovereign.Core
         readonly HeadlineGenerator _headlines;
         readonly AchievementModel _achievements;
         readonly VictoryModel _victory;
+        readonly MilestoneModel _milestones = new MilestoneModel();
 
         public EconomySimulator(SimulationConfig config)
         {
@@ -40,6 +41,7 @@ namespace Sovereign.Core
         public HeadlineGenerator Headlines { get { return _headlines; } }
         public AchievementModel Achievements { get { return _achievements; } }
         public VictoryModel Victory { get { return _victory; } }
+        public MilestoneModel Milestones { get { return _milestones; } }
 
         public TreasuryModel Treasury { get { return _treasury; } }
         public PopulationModel Population { get { return _population; } }
@@ -88,6 +90,10 @@ namespace Sovereign.Core
             // is no population and no budget, and a zero in week one wrecked every chart's
             // scale.
             ApplyOpening(state);
+            // Captured after the opening, because a scenario can change the population.
+            // Pensions and old-age health are measured against this, so what the country
+            // promised its retired on day one is what it goes on paying for.
+            state.baselineRetired = state.population.retired;
             state.Series("realRate").Record(state.RealInterestRate);
             state.RecordWeek();
         }
@@ -179,6 +185,7 @@ namespace Sovereign.Core
             _headlines.TickWeek(state, policy, NewsDesk.Gather(state, _config.geopolitics));
             _achievements.TickWeek(state);
             _victory.TickWeek(state);
+            _milestones.TickWeek(state);
 
             state.RecordWeek();
         }

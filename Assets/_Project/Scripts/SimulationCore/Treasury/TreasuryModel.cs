@@ -85,6 +85,22 @@ namespace Sovereign.Core
 
                 // GDD 8.3: benefit claims rise with unemployment whatever you decide.
                 if (line.isAutomaticStabiliser) amount += line.stabiliserSensitivity * slack;
+
+                // GDD 22.4: pensions and old-age health are a bill the country owes its
+                // retired, not a figure anyone sets - so they grow with the number of them.
+                // Without this, revenue grew with the economy while the biggest spending
+                // lines stayed flat in real terms, and a disciplined government ran a +16%
+                // surplus forever. The debt went to zero and stayed there, and with it went
+                // every fiscal decision worth making after year fifteen.
+                if (line.scalesWithRetired && state.baselineRetired > 0f)
+                {
+                    // Partial, not one for one: some of a pension bill is headcount and
+                    // some is the promise itself, which a government can still choose.
+                    // At full elasticity the budget drifted 37 points of GDP in a decade
+                    // with nobody touching anything, which is a railroad, not a decision.
+                    float growth = state.population.retired / state.baselineRetired - 1f;
+                    amount *= 1f + growth * 0.6f;
+                }
                 amount *= priceIndex;
 
                 t.spendingByLine[line.key] = amount;

@@ -64,8 +64,11 @@ namespace Sovereign.EditorTools
                   s.poorApproval = 1.8f; s.middleApproval = 0.4f; s.leftApproval = 1.5f; s.rightApproval = -0.6f;
                   s.isAutomaticStabiliser = true; s.stabiliserSensitivity = 14f; }),
 
+                // The two demographic bills: what the country owes its retired, which grows
+                // with their number whatever the player budgets.
                 Spend("Medicare", "Medicare", SpendingGroup.Social, 1000f, 0, 20, s =>
                 { s.effects.Add(Fx(ImpactTarget.PopulationDeathRate, -0.15f));
+                  s.scalesWithRetired = true;
                   s.poorApproval = 1.0f; s.middleApproval = 1.2f; s.leftApproval = 1.0f; s.rightApproval = -0.3f; }),
 
                 Spend("PublicHealth", "Public Health", SpendingGroup.Social, 95f, 0, 30, s =>
@@ -75,6 +78,7 @@ namespace Sovereign.EditorTools
 
                 Spend("SocialSecurityRetirement", "Social Security Retirement", SpendingGroup.Social, 1350f, 0, 40, s =>
                 { s.effects.Add(Fx(ImpactTarget.ApprovalOverall, 0.4f));
+                  s.scalesWithRetired = true;
                   s.poorApproval = 1.4f; s.middleApproval = 1.0f; s.leftApproval = 0.8f; s.rightApproval = -0.2f; }),
 
                 Spend("SocialSecurityDisability", "Social Security Disability", SpendingGroup.Social, 145f, 0, 50, s =>

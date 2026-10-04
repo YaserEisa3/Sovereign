@@ -65,6 +65,11 @@ namespace Sovereign.Core
         /// week.</summary>
         public float naturalRate = -1f;
 
+        /// <summary>How many people were retired the day the run opened. Pensions and
+        /// old-age health are measured against it, so an ageing country pays more for the
+        /// same promise.</summary>
+        public float baselineRetired = -1f;
+
         /// <summary>GDD 4: OnRevolt leads to OnGameOver. Nothing else ends a run yet.</summary>
         public bool IsGameOver { get { return approval.revolt; } }
 
@@ -73,6 +78,16 @@ namespace Sovereign.Core
         /// full stop.</summary>
         public bool prosperity;
         public int victoryWeeks;
+
+        /// <summary>Forever mode: prosperity can be reached, lost and reached again, so
+        /// what a run is worth is how long it HELD it, and how often.</summary>
+        public int prosperityWeeks;
+        public int longestProsperityWeeks;
+        public int timesProsperous;
+
+        /// <summary>Which rungs of the milestone ladder the country stands on, as a
+        /// bitmask. They can be lost as well as won.</summary>
+        public int milestonesReached;
         public readonly BondMarketState bonds = new BondMarketState();
         public readonly CurrencyState currency = new CurrencyState();
         public readonly MonetaryState monetary = new MonetaryState();

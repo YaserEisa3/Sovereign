@@ -45,8 +45,12 @@ namespace Sovereign.EditorTools
                 // Flat-rate healing at a third of the old speed was tried first and lost
                 // 6 of 6 runs to revolt: it is what stops a shock becoming a spiral.
                 m.okunCoefficient = 0.9f;
+                // Halved again: the player asked for unemployment to be a problem they have
+                // to work at, not a number that fixes itself while they watch. Safe to do
+                // only alongside the softer confidence term below - the first attempt at
+                // this, without it, lost 6 of 6 runs to revolt.
                 m.unemploymentReversionSpeed = 0.008f;
-                m.reversionReferenceGap = 5f;
+                m.reversionReferenceGap = 9f;
                 m.trainingNaturalRateEffect = 1.5f;
                 m.naturalRateRange = 2f;
                 m.naturalRateAdjustmentSpeed = 0.006f;

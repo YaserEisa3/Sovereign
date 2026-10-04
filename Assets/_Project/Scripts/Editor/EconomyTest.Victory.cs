@@ -50,6 +50,40 @@ namespace Sovereign.EditorTools
             // And the conditions have to HOLD - winning is not a moment you touch once.
             Check(runner.Simulator.Victory.Config.years >= 1f,
                   "prosperity: the victory can be claimed in under a year of good conditions");
+
+            // FOREVER MODE: prosperity is a state, not a trophy. Reach it, let the
+            // country go, and it must be lost again - a latching win is an ending, and
+            // this scenario does not have one.
+            EconomyState held = Rebuild(runner, aftermath);
+            int reachedAt = -1;
+            for (int year = 1; year <= 40 && reachedAt < 0; year++)
+            {
+                runner.Step(Year);
+                if (held.prosperity) reachedAt = year;
+            }
+            if (Check(reachedAt > 0, "forever: never reached prosperity to test losing it"))
+            {
+                int milestones = MilestoneModel.Count(held);
+                Check(milestones >= 6,
+                      "forever: a prosperous country holds only " + milestones + " of "
+                      + MilestoneModel.Ladder.Length + " milestones");
+
+                // Stop maintaining the country and it falls apart: infrastructure decays
+                // 3.5 points a year with nothing holding it up, and prosperity needs 75.
+                foreach (string line in SpendKeys.Infrastructure)
+                    runner.Policy.spendingBillions[line] = 0f;
+                runner.Step(12 * Year);
+
+                Check(!held.prosperity,
+                      "forever: twelve years of letting the country rot and it is still prosperous");
+                Check(held.longestProsperityWeeks > 0,
+                      "forever: the country was prosperous but no streak was recorded");
+                Check(held.timesProsperous >= 1,
+                      "forever: reaching prosperity was not counted");
+                Check(MilestoneModel.Count(held) < milestones,
+                      "forever: milestones cannot be lost - they held at " + MilestoneModel.Count(held)
+                      + " through twelve years of neglect");
+            }
         }
 
         static EconomyState Rebuild(SimulationRunner runner, ScenarioDefinition aftermath)

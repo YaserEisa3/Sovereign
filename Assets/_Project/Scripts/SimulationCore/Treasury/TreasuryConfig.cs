@@ -28,6 +28,8 @@ namespace Sovereign.Core
         public bool isAutomaticStabiliser;
         /// <summary>$B per point of unemployment above the natural rate - GDD 8.3.</summary>
         public float stabiliserSensitivity;
+        /// <summary>Grows with the retired population - a bill, not a budget line.</summary>
+        public bool scalesWithRetired;
         public int lagQuarters;
     }
 

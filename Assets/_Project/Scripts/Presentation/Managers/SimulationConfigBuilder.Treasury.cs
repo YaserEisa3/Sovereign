@@ -48,6 +48,7 @@ namespace Sovereign.Presentation
                     isAutomatic = s.isAutomatic,
                     isAutomaticStabiliser = s.isAutomaticStabiliser,
                     stabiliserSensitivity = s.stabiliserSensitivity,
+                    scalesWithRetired = s.scalesWithRetired,
                     lagQuarters = s.lagQuarters
                 };
             }

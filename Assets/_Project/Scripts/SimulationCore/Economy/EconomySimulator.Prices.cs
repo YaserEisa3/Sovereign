@@ -33,8 +33,20 @@ namespace Sovereign.Core
             // hole, almost nothing near the floor, where growth has to do the work.
             float natural = NaturalRate(state, policy);
             float beforeReversion = state.unemployment;
-            float gap = MathUtil.Abs(state.unemployment - natural);
-            float depth = MathUtil.Clamp(gap / MathUtil.Max(0.1f, m.reversionReferenceGap), 0f, 1f);
+            float gap = state.unemployment - natural;
+            // SQUARED, not linear. A country at 15% unemployment has to recover fast
+            // enough that a shock does not become a revolt - unrest accumulates for years
+            // above the 12% threshold and then the government falls. But in the band the
+            // player actually governs in, 6-10%, this has to be nearly nothing or the
+            // number fixes itself while they watch. Squaring gives both: full speed deep
+            // in the hole, a twentieth of it at 7%.
+            // ASYMMETRIC. Above the floor the pull fades, because closing the last points
+            // is the player's job. BELOW it there is no fading at all: an economy cannot
+            // run under full employment for long without wages and shortages dragging it
+            // back, and a symmetric fade let a quiet run coast down to 0.5% unemployment
+            // and sit there, which is not a thing that happens.
+            float reach = MathUtil.Clamp(MathUtil.Abs(gap) / MathUtil.Max(0.1f, m.reversionReferenceGap), 0f, 1f);
+            float depth = gap > 0f ? reach * reach : 1f;
             state.unemployment = MathUtil.Clamp(
                 MathUtil.Approach(state.unemployment, natural,
                                   m.unemploymentReversionSpeed * depth), 0.5f, 40f);

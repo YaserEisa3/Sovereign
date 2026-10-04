@@ -25,6 +25,7 @@ MonoBehaviour:
   isAutomatic: 0
   isAutomaticStabiliser: 0
   stabiliserSensitivity: 0
+  scalesWithRetired: 0
   infrastructureCategory: 0
   effects: []
   poorApproval: 1.2
