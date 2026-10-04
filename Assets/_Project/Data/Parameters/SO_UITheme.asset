@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d0510488d09df4fb4360c2cc5e578b, type: 3}
+  m_Name: SO_UITheme
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.UITheme
+  background: {r: 0.039215688, g: 0.05490196, b: 0.078431375, a: 1}
+  panelBackground: {r: 0.06666667, g: 0.08627451, b: 0.12156863, a: 1}
+  panelBorder: {r: 0.11764706, g: 0.15294118, b: 0.20784314, a: 1}
+  gridLine: {r: 0.101960786, g: 0.13333334, b: 0.18039216, a: 1}
+  primaryText: {r: 0.9098039, g: 0.9098039, b: 0.9098039, a: 1}
+  secondaryText: {r: 0.54509807, g: 0.5921569, b: 0.65882355, a: 1}
+  mutedText: {r: 0.33333334, g: 0.3764706, b: 0.4392157, a: 1}
+  growth: {r: 0, g: 0.8156863, b: 0.5176471, a: 1}
+  warning: {r: 0.9607843, g: 0.6509804, b: 0.13725491, a: 1}
+  danger: {r: 1, g: 0.26666668, b: 0.26666668, a: 1}
+  neutralData: {r: 0.47843137, g: 0.6117647, b: 0.77254903, a: 1}
+  mapOcean: {r: 0.03137255, g: 0.047058824, b: 0.07058824, a: 1}
+  homeNation: {r: 0.47843137, g: 0.6117647, b: 0.77254903, a: 1}
+  allyNation: {r: 0, g: 0.8156863, b: 0.5176471, a: 1}
+  neutralNation: {r: 0.33333334, g: 0.3764706, b: 0.4392157, a: 1}
+  hostileNation: {r: 1, g: 0.26666668, b: 0.26666668, a: 1}
+  tradeRoute: {r: 0.17254902, g: 0.24313726, b: 0.32156864, a: 1}
+  monoFont: {fileID: 0}
+  bodyFont: {fileID: 0}
+  spacingTight: 4
+  spacingBase: 8
+  spacingLoose: 16
+  panelRadius: 2
+  fontSizeKpi: 28
+  fontSizeHeading: 14
+  fontSizeBody: 12
+  fontSizeCaption: 10

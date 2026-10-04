@@ -1,0 +1,156 @@
+/* Styling for the repeated row templates (GDD 3.7). Same palette as Sovereign.uss. */
+:root {
+    --bg: rgb(10, 14, 20);
+    --panel: rgb(17, 22, 31);
+    --border: rgb(30, 39, 53);
+    --text: rgb(232, 232, 232);
+    --text-dim: rgb(139, 151, 168);
+    --text-muted: rgb(85, 96, 112);
+    --growth: rgb(0, 208, 132);
+    --warning: rgb(245, 166, 35);
+    --danger: rgb(255, 68, 68);
+    --data: rgb(122, 156, 197);
+}
+
+.row { flex-direction: row; align-items: center; }
+.spacer { flex-grow: 1; }
+.grow { flex-grow: 1; }
+.mono { letter-spacing: 0.5px; }
+.strong { -unity-font-style: bold; }
+.caption { font-size: 10px; color: var(--text-muted); }
+.flag { -unity-font-style: bold; color: var(--danger); }
+
+.kpi-card {
+    /* min-height, not height: the delta line used to bleed out of a fixed 66px
+       box and get painted over by the next panel. */
+    /* Eleven cards: narrow enough for a wide window, and the row wraps on a small one. */
+    width: 90px; min-height: 74px; padding: 5px; margin-right: 3px; margin-bottom: 6px;
+    flex-shrink: 0;
+    background-color: var(--panel);
+    border-width: 1px; border-color: var(--border); border-radius: 2px;
+}
+.kpi-label { font-size: 9px; letter-spacing: 1px; color: var(--text-muted); }
+.kpi-value { font-size: 18px; color: var(--text); -unity-font-style: bold; }
+.kpi-delta { font-size: 10px; color: var(--growth); }
+.kpi-threshold-bar { height: 2px; background-color: var(--border); margin-top: 4px; }
+
+.policy-row {
+    flex-direction: row; align-items: center; height: 24px;
+    border-bottom-width: 1px; border-bottom-color: var(--border);
+}
+.policy-row:hover { background-color: var(--panel); }
+.policy-name { color: var(--text-dim); min-width: 180px; }
+.policy-value { min-width: 70px; -unity-text-align: middle-right; color: var(--text); }
+.policy-impact { min-width: 240px; -unity-text-align: middle-right; font-size: 10px; color: var(--text-muted); }
+.queued-flag { font-size: 9px; color: var(--warning); margin-right: 6px; }
+.stepper-btn {
+    width: 18px; height: 16px; font-size: 11px;
+    background-color: var(--bg); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border); border-radius: 2px;
+}
+.stepper-btn:hover { color: var(--text); border-color: var(--data); }
+
+.approval-bar { flex-direction: row; align-items: center; height: 18px; }
+.approval-name { min-width: 110px; color: var(--text-dim); font-size: 11px; }
+.approval-track { flex-grow: 1; height: 8px; background-color: var(--border); }
+.approval-fill { height: 8px; width: 50%; background-color: var(--growth); }
+.approval-value { min-width: 46px; -unity-text-align: middle-right; }
+.approval-trend { min-width: 34px; -unity-text-align: middle-right; font-size: 10px; }
+
+.ticker-item { flex-direction: row; align-items: center; margin-right: 32px; }
+.ticker-marker { color: var(--data); font-size: 9px; margin-right: 6px; }
+.ticker-text { color: var(--text-dim); font-size: 11px; }
+
+.event-row {
+    flex-direction: row; align-items: center; min-height: 30px; padding: 3px;
+    border-bottom-width: 1px; border-bottom-color: var(--border);
+}
+.severity-strip { width: 3px; height: 22px; background-color: var(--warning); margin-right: 8px; }
+.event-title { color: var(--text); font-size: 11px; white-space: normal; }
+.event-stage { min-width: 72px; font-size: 10px; color: var(--warning); -unity-text-align: middle-right; }
+.event-time { min-width: 60px; font-size: 10px; color: var(--text-muted); -unity-text-align: middle-right; }
+
+.nation-row {
+    flex-direction: row; align-items: center; height: 22px;
+    border-bottom-width: 1px; border-bottom-color: var(--border);
+}
+.nation-colour { width: 8px; height: 8px; margin-right: 8px; background-color: var(--data); }
+.nation-name { min-width: 130px; color: var(--text); font-size: 11px; }
+
+.sector-row {
+    flex-direction: row; align-items: center; height: 22px;
+    border-bottom-width: 1px; border-bottom-color: var(--border);
+}
+.sector-colour { width: 8px; height: 8px; margin-right: 8px; background-color: var(--data); }
+.sector-name { min-width: 140px; color: var(--text-dim); font-size: 11px; }
+.health-track { width: 90px; height: 6px; background-color: var(--border); margin-right: 10px; }
+.health-fill { height: 6px; width: 70%; background-color: var(--growth); }
+
+.age-band-row { flex-direction: row; align-items: center; height: 22px; }
+.band-name { min-width: 130px; color: var(--text-dim); font-size: 11px; }
+.band-track { flex-grow: 1; height: 10px; background-color: var(--border); }
+.band-fill { height: 10px; width: 40%; background-color: var(--data); }
+
+.maturity-row { flex-direction: row; align-items: center; height: 20px; }
+.maturity-bucket { min-width: 110px; color: var(--text-dim); font-size: 11px; }
+.maturity-track { flex-grow: 1; height: 8px; background-color: var(--border); }
+.maturity-fill { height: 8px; width: 30%; background-color: var(--warning); }
+
+/* DiplomacyRow.uxml - one nation's standing and your three diplomatic switches. */
+.diplomacy-row {
+    flex-direction: row; align-items: center; min-height: 30px;
+    border-bottom-width: 1px; border-bottom-color: var(--border);
+}
+.diplomacy-name-block { min-width: 150px; }
+.diplomacy-relationship { min-width: 44px; -unity-text-align: middle-right; margin-right: 8px; }
+.diplomacy-toggle {
+    height: 18px; margin-right: 3px; padding-left: 6px; padding-right: 6px; font-size: 10px;
+    background-color: var(--bg); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border); border-radius: 2px;
+}
+.diplomacy-toggle.on { color: var(--bg); background-color: var(--data); }
+.diplomacy-toggle.queued { border-color: var(--warning); }
+.diplomacy-toggle.hostile.on { background-color: var(--danger); }
+.diplomacy-aid { min-width: 40px; -unity-text-align: middle-center; }
+
+/* One indicator as a vertical meter. Twelve of them side by side read like a
+   mixing desk: the shape of the whole country in one look. */
+.meter-column { flex-direction: column; align-items: center; flex-grow: 1; flex-basis: 0; min-width: 0; }
+.meter-value { color: var(--text); font-size: 10px; -unity-text-align: middle-center; height: 13px; }
+.meter-track {
+    flex-grow: 1; width: 18px; background-color: var(--border);
+    justify-content: flex-end; margin-top: 2px; margin-bottom: 3px;
+}
+.meter-fill { width: 18px; height: 50%; background-color: var(--data); }
+.meter-target { position: absolute; left: -3px; width: 24px; height: 1px; background-color: var(--text-muted); bottom: 50%; }
+.meter-name { color: var(--text-dim); font-size: 9px; -unity-text-align: middle-center; white-space: nowrap; overflow: hidden; }
+.meter-note { color: var(--text-muted); font-size: 9px; -unity-text-align: middle-center; height: 11px; }
+
+.meter-fill.good { background-color: var(--growth); }
+.meter-fill.warn { background-color: var(--warning); }
+.meter-fill.bad { background-color: var(--danger); }
+
+/* Where the money comes from: one bar per revenue line, longest first. */
+.breakdown-row { flex-direction: row; align-items: center; height: 21px; }
+/* Fixed, not min: a long name like "Social Security Retirement" used to widen its
+   own column and push that row's bar out of line with the others. */
+/* The label needs its own full line height. Clipping it to the row left every
+   name sliced through the middle. */
+.breakdown-name {
+    width: 150px; min-width: 150px; max-width: 150px; flex-shrink: 0;
+    height: 21px; -unity-text-align: middle-left;
+    color: var(--text-dim); font-size: 11px; white-space: nowrap; text-overflow: ellipsis;
+}
+.breakdown-track { flex-grow: 1; height: 9px; background-color: var(--border); }
+.breakdown-fill { height: 9px; width: 10%; background-color: var(--growth); }
+.breakdown-value {
+    width: 64px; min-width: 64px; flex-shrink: 0; height: 21px;
+    -unity-text-align: middle-right; color: var(--text); font-size: 11px;
+}
+.breakdown-share {
+    width: 44px; min-width: 44px; flex-shrink: 0; height: 21px;
+    -unity-text-align: middle-right; color: var(--text-muted); font-size: 10px;
+}
+
+/* Spending bars read as money going out, not coming in. */
+.breakdown-fill.spending { background-color: var(--warning); }

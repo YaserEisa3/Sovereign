@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="approval-bar" class="approval-bar">
+        <ui:Label name="approval-name" text="Group" class="approval-name" />
+        <ui:VisualElement name="approval-track" class="approval-track">
+            <ui:VisualElement name="approval-fill" class="approval-fill" />
+        </ui:VisualElement>
+        <ui:Label name="approval-value" text="--%" class="approval-value mono" />
+        <ui:Label name="approval-trend" text="" class="approval-trend mono" />
+    </ui:VisualElement>
+</ui:UXML>

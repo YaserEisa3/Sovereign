@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f597dabf4bda1404c8859458b9b2918d, type: 3}
+  m_Name: SO_ApprovalWeights
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.ApprovalWeights
+  poorShare: 0.3
+  middleShare: 0.5
+  wealthyShare: 0.2
+  poorUnemployment: 0.3
+  poorInflation: 0.25
+  poorWelfare: 0.2
+  poorHealthcare: 0.15
+  poorMinimumWage: 0.1
+  middleRealWages: 0.25
+  middleEmployment: 0.2
+  middleHousingCosts: 0.15
+  middleIncomeTax: 0.15
+  middleEducation: 0.1
+  middleConfidence: 0.15
+  wealthyCorporateTax: 0.2
+  wealthyCapitalGains: 0.15
+  wealthyGrowth: 0.2
+  wealthyDebtFiscal: 0.2
+  wealthyRegulation: 0.15
+  wealthyStability: 0.1
+  leftGini: 0.25
+  leftGreenPolicy: 0.15
+  leftSocialSpending: 0.25
+  leftCorporateTax: 0.2
+  leftHealthcare: 0.15
+  centreGrowth: 0.3
+  centreInflation: 0.25
+  centreUnemployment: 0.2
+  centreBudgetBalance: 0.25
+  rightDebtLevel: 0.3
+  rightTaxRates: 0.25
+  rightDeregulation: 0.2
+  rightDefence: 0.15
+  rightGrowth: 0.1
+  immigrationRightApproval: -4
+  immigrationLeftApproval: 2.5
+  startingPoor: 61
+  startingMiddle: 74
+  startingWealthy: 52
+  startingLeft: 58
+  startingCentre: 72
+  startingRight: 49
+  adjustmentSpeed: 0.04
+  unrestApprovalThreshold: 40
+  unrestApprovalWeeks: 4
+  rapidDeclinePointsPerMonth: 5
+  unrestInflationThreshold: 15
+  unrestUnemploymentThreshold: 12
+  unrestBuildPerPointBelow: 0.12
+  unrestPerCrisis: 1
+  unrestDecayPerWeek: 0.5
+  revoltOverallApproval: 20
+  revoltOverallWeeks: 26
+  revoltSingleClassUnrest: 90
+  revoltSingleClassWeeks: 9
+  hyperinflationMonthlyThreshold: 50

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ee06d09a1676d45a8d5c72e3a25840, type: 3}
+  m_Name: SO_Spend_InfraWater
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SpendingCategoryDefinition
+  displayName: Water
+  description: One of the six infrastructure lines. Together they hold the infrastructure
+    gauge up; below 70 it drags on everything the economy produces, and repairs cost
+    more the longer they wait.
+  group: 2
+  sortOrder: 340
+  defaultBillionsPerYear: 20
+  minimumBillions: 0
+  maximumBillions: 200
+  stepBillions: 5
+  lagQuarters: 8
+  isAutomatic: 0
+  isAutomaticStabiliser: 0
+  stabiliserSensitivity: 0
+  infrastructureCategory: 5
+  effects:
+  - target: 10
+    strengthPer100B: 1.1
+    sectorSpecific: 0
+    sector: 0
+  - target: 14
+    strengthPer100B: 0.6
+    sectorSpecific: 1
+    sector: 4
+  poorApproval: 0.4
+  middleApproval: 0
+  wealthyApproval: 0
+  leftApproval: 0
+  centreApproval: 0
+  rightApproval: 0

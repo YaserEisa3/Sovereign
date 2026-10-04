@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_BondDumpingAttack
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Foreign Bond Dumping
+  description: A creditor nation stops buying, then starts selling. Yields spike,
+    the currency comes under pressure and the market panics. Relations you let rot
+    are now a balance sheet problem.
+  earlySignalHeadline: Foreign participation at this quarter's auction was unusually
+    thin
+  imminentAdvisorLine: A major holder is reducing its position. If this becomes open
+    selling, we lose control of the long end.
+  category: 3
+  warningWeeksBeforeStrike: 2
+  earlySignalWeeks: 1
+  minDurationWeeks: 13
+  maxDurationWeeks: 52
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.05
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions:
+  - metric: 6
+    comparison: 0
+    threshold: 0.3
+  - metric: 0
+    comparison: 0
+    threshold: 1.3
+  impacts:
+  - target: 7
+    weeklyMagnitude: 0.35
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 5
+    weeklyMagnitude: -0.8
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 15
+    weeklyMagnitude: -6
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 3
+    weeklyMagnitude: -0.3
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

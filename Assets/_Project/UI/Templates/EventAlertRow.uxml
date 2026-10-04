@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="event-alert-row" class="event-row">
+        <ui:VisualElement name="event-severity-strip" class="severity-strip" />
+        <ui:VisualElement class="grow">
+            <ui:Label name="event-title" text="Event" class="event-title" />
+            <ui:Label name="event-detail" text="" class="caption" />
+        </ui:VisualElement>
+        <ui:Label name="event-stage" text="ACTIVE" class="event-stage mono" />
+        <ui:Label name="event-time" text="--" class="event-time mono" />
+    </ui:VisualElement>
+</ui:UXML>

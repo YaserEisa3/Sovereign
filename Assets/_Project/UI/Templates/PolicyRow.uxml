@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="policy-row" class="policy-row">
+        <ui:Label name="policy-name" text="Policy line" class="policy-name" />
+        <ui:VisualElement class="spacer" />
+        <ui:Label name="policy-queued" text="" class="queued-flag mono" />
+        <ui:Button name="policy-decrease" text="-" class="stepper-btn" />
+        <ui:Label name="policy-value" text="--" class="policy-value mono" />
+        <ui:Button name="policy-increase" text="+" class="stepper-btn" />
+        <ui:Label name="policy-impact" text="" class="policy-impact mono" />
+    </ui:VisualElement>
+</ui:UXML>

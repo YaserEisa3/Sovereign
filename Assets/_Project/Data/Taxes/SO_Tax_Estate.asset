@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2247e2aba14046ae68f7362321155, type: 3}
+  m_Name: SO_Tax_Estate
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.TaxDefinition
+  displayName: Estate Tax
+  description: A tax on wealth passed on at death. Almost nobody pays it, the wealthy
+    plan around it, and it collects barely half of what it looks like on paper.
+  sortOrder: 100
+  unit: 0
+  minimumValue: 0
+  maximumValue: 60
+  defaultValue: 40
+  stepSize: 1
+  revenueBase: 7
+  baseShare: 1
+  collectionEfficiency: 0.55
+  baseElasticity: 0.45
+  isCredit: 0
+  poorIncidence: 0
+  middleIncidence: 0.05
+  wealthyIncidence: 0.95
+  growthDrag: 0.03
+  inflationPassThrough: 0
+  capitalFlightRisk: 0
+  sectorSpecific: 0
+  primarySector: 1

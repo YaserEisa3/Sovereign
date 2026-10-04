@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_OilPriceShock
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Oil Supply Shock
+  description: Petro-Gulf cuts supply. Energy costs spike and import inflation follows.
+    There is nothing monetary policy can do about a supply shock except make the
+    recession worse.
+  earlySignalHeadline: Petro-Gulf signals production quota review
+  imminentAdvisorLine: A supply cut is coming. Raising rates into this will not lower
+    the oil price, only employment.
+  category: 7
+  warningWeeksBeforeStrike: 2
+  earlySignalWeeks: 1
+  minDurationWeeks: 13
+  maxDurationWeeks: 52
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.14
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 8
+    weeklyMagnitude: 1.4
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 1
+    weeklyMagnitude: 0.08
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 14
+    weeklyMagnitude: -0.4
+    sectorSpecific: 1
+    sector: 5
+    mitigable: 0
+  - target: 14
+    weeklyMagnitude: 0.5
+    sectorSpecific: 1
+    sector: 3
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

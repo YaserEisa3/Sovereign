@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_CurrencyAttack
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Speculative Currency Attack
+  description: The market has decided to find out whether you can defend your currency.
+    A credible defence costs fewer reserves than a doubted one, and once reserves
+    run low, defence stops being possible at all.
+  earlySignalHeadline: Short positions against the currency build sharply
+  imminentAdvisorLine: They are testing the floor. Half a defence costs more than
+    no defence.
+  category: 3
+  warningWeeksBeforeStrike: 2
+  earlySignalWeeks: 1
+  minDurationWeeks: 4
+  maxDurationWeeks: 26
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.08
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions:
+  - metric: 10
+    comparison: 1
+    threshold: 92
+  - metric: 9
+    comparison: 1
+    threshold: 300
+  impacts:
+  - target: 5
+    weeklyMagnitude: -1
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.6
+  - target: 15
+    weeklyMagnitude: -10
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.5
+  - target: 6
+    weeklyMagnitude: 0.15
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

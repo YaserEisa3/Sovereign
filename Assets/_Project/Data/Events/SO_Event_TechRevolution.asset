@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_TechRevolution
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Technology Breakthrough
+  description: A genuine productivity jump. Growth without inflation for a while,
+    concentrated in the sectors that were already winning - so watch the Gini.
+  earlySignalHeadline: 
+  imminentAdvisorLine: 
+  category: 6
+  warningWeeksBeforeStrike: 0
+  earlySignalWeeks: 0
+  minDurationWeeks: 52
+  maxDurationWeeks: 208
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.08
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 0
+    weeklyMagnitude: 0.05
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 14
+    weeklyMagnitude: 0.8
+    sectorSpecific: 1
+    sector: 0
+    mitigable: 0
+  - target: 18
+    weeklyMagnitude: 0.0002
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 2
+    weeklyMagnitude: 0.02
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

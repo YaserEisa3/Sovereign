@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c77295949f9646ba4faf926af5a60, type: 3}
+  m_Name: SO_AchievementParameters
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.AchievementParameters
+  entries:
+  - apiName: SOFT_LANDING
+    title: Soft Landing
+    description: Bring inflation above 5% back to target without unemployment ever
+      passing 6.5%.
+  - apiName: DEBT_HAWK
+    title: Debt Hawk
+    description: Cut debt-to-GDP by 20 points within a single four-year term.
+  - apiName: VOLCKER_MOMENT
+    title: Volcker Moment
+    description: Raise rates to 10% with inflation above 8%, tame it below 3%, and
+      keep your government.
+  - apiName: CRISIS_MANAGER
+    title: Crisis Manager
+    description: Meet five crises with at least 40% of the damage prepared for.
+  - apiName: RESERVE_CURRENCY_DEFENDER
+    title: Reserve Currency Defender
+    description: Keep the currency within 10% of par for ten straight years.
+  - apiName: TRADE_WAR_VETERAN
+    title: Trade War Veteran
+    description: Get a nation to lift tariffs of 20% or more it placed on you.
+  - apiName: PEOPLES_CHAMPION
+    title: The People's Champion
+    description: Hold overall approval above 70% for two straight years.
+  - apiName: UNANCHORED
+    title: Unanchored
+    description: Let inflation expectations come loose. Everyone remembers where
+      they were.
+  softLandingFromInflation: 5
+  softLandingToInflation: 2.5
+  softLandingMaxUnemployment: 6.5
+  debtHawkReductionPoints: 20
+  debtHawkWindowWeeks: 208
+  volckerRate: 10
+  volckerInflation: 8
+  volckerTamedInflation: 3
+  crisisManagerCount: 5
+  crisisManagerMitigation: 0.4
+  reserveCurrencyBand: 10
+  reserveCurrencyWeeks: 520
+  tradeWarTariff: 20
+  peoplesChampionApproval: 70
+  peoplesChampionWeeks: 104

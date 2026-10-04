@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2247e2aba14046ae68f7362321155, type: 3}
+  m_Name: SO_Tax_ImportTariff
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.TaxDefinition
+  displayName: Import Tariff
+  description: A tax on everything you import, across the board. Protects manufacturing,
+    raises consumer prices, and invites retaliation above 20%.
+  sortOrder: 120
+  unit: 0
+  minimumValue: 0
+  maximumValue: 50
+  defaultValue: 3
+  stepSize: 1
+  revenueBase: 6
+  baseShare: 1
+  collectionEfficiency: 0.85
+  baseElasticity: 0.5
+  isCredit: 0
+  poorIncidence: 0.4
+  middleIncidence: 0.4
+  wealthyIncidence: 0.2
+  growthDrag: 0.2
+  inflationPassThrough: 0.8
+  capitalFlightRisk: 0
+  sectorSpecific: 1
+  primarySector: 2

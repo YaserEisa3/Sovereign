@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2247e2aba14046ae68f7362321155, type: 3}
+  m_Name: SO_Tax_Payroll
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.TaxDefinition
+  displayName: Payroll Tax
+  description: A tax on wages, charged as a share of every pay packet. A cost of
+    employing people, and the funding line social programmes lean on - which is why
+    it raises the most.
+  sortOrder: 70
+  unit: 0
+  minimumValue: 0
+  maximumValue: 25
+  defaultValue: 15.3
+  stepSize: 0.1
+  revenueBase: 3
+  baseShare: 1
+  collectionEfficiency: 0.95
+  baseElasticity: 0.1
+  isCredit: 0
+  poorIncidence: 0.35
+  middleIncidence: 0.55
+  wealthyIncidence: 0.1
+  growthDrag: 0.15
+  inflationPassThrough: 0
+  capitalFlightRisk: 0
+  sectorSpecific: 0
+  primarySector: 1

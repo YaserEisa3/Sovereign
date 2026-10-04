@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_InvasionThreat
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: War Against You
+  description: Late game only, and only after relations have been allowed to rot.
+    Sustain defence spending for two to four years, or accept economic occupation.
+  earlySignalHeadline: Foreign military exercises staged unusually close to your
+    border
+  imminentAdvisorLine: This is no longer posturing. Your defence budget over the
+    next four quarters decides the casualty rate.
+  category: 0
+  warningWeeksBeforeStrike: 16
+  earlySignalWeeks: 10
+  minDurationWeeks: 104
+  maxDurationWeeks: 208
+  escalationRisk: 0.35
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.04
+  earliestYear: 8
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 4
+    weeklyMagnitude: -0.4
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 3
+    weeklyMagnitude: -0.5
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 14
+    weeklyMagnitude: 0.35
+    sectorSpecific: 1
+    sector: 2
+    mitigable: 0
+  overlayLayerName: WarZoneLayer
+  markerPrefab: {fileID: 8701367669811164619, guid: 784dbff47d9f3d549822b1d4e5a0165e, type: 3}

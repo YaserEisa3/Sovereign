@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="breakdown-row" class="breakdown-row">
+        <ui:Label name="breakdown-name" text="Line" class="breakdown-name" />
+        <ui:VisualElement name="breakdown-track" class="breakdown-track">
+            <ui:VisualElement name="breakdown-fill" class="breakdown-fill" />
+        </ui:VisualElement>
+        <ui:Label name="breakdown-value" text="--" class="breakdown-value mono" />
+        <ui:Label name="breakdown-share" text="" class="breakdown-share mono" />
+    </ui:VisualElement>
+</ui:UXML>

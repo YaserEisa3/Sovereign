@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ee06d09a1676d45a8d5c72e3a25840, type: 3}
+  m_Name: SO_Spend_DisasterReliefFund
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SpendingCategoryDefinition
+  displayName: Disaster Relief Fund
+  description: 'A balance rather than a flow: it absorbs disaster damage and depletes.
+    Underfunded, the shortfall lands on your infrastructure instead.'
+  group: 0
+  sortOrder: 90
+  defaultBillionsPerYear: 30
+  minimumBillions: 0
+  maximumBillions: 200
+  stepBillions: 5
+  lagQuarters: 0
+  isAutomatic: 0
+  isAutomaticStabiliser: 0
+  stabiliserSensitivity: 0
+  infrastructureCategory: 0
+  effects:
+  - target: 10
+    strengthPer100B: 0.3
+    sectorSpecific: 0
+    sector: 0
+  poorApproval: 0
+  middleApproval: 0.4
+  wealthyApproval: 0
+  leftApproval: 0
+  centreApproval: 0.6
+  rightApproval: 0

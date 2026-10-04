@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_DiplomaticIncident
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Diplomatic Incident
+  description: An espionage accusation, an airspace violation, a summit walkout.
+    Small on its own, and the first stage of a trade war if you answer it badly.
+  earlySignalHeadline: 
+  imminentAdvisorLine: 
+  category: 8
+  warningWeeksBeforeStrike: 0
+  earlySignalWeeks: 0
+  minDurationWeeks: 4
+  maxDurationWeeks: 26
+  escalationRisk: 0.3
+  escalatesTo: {fileID: 11400000, guid: 10b1301e7beae5a46b8ae61c880983e5, type: 2}
+  baseAnnualProbability: 0.25
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 9
+    weeklyMagnitude: -0.08
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

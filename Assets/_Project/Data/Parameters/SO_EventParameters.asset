@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e27cb8592c7274aadf4749cb2ee583, type: 3}
+  m_Name: SO_EventParameters
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventParameters
+  severityMin: 0.7
+  severityMax: 1.3
+  mitigationCap: 0.9
+  disasterFundHalfEffect: 60
+  pandemicPublicHealthWeight: 0.3
+  pandemicHealthWeight: 0.2
+  warDefenceWeight: 0.45
+  financialCapitalFloor: 6
+  financialCapitalRange: 10
+  pandemicScarThreshold: 0.4
+  pandemicScarSize: 0.15
+  enemyStrengthMultiple: 1.1
+  occupationGapThreshold: 0.5
+  warReportEveryWeeks: 4
+  defaultDebtThreshold: 2.2
+  defaultAuctionCover: 0.6
+  defaultFailedAuctions: 2
+  oilReversion: 0.02
+  tradeReversion: 0.03
+  tradeNetExportWeight: 0.03
+  headlineIntervalWeeks: 3
+  headlineTopicRest: 4
+  safeHavenCredibility: 60
+  safeHavenWeeklyCurrency: 0.05
+  bondDumpingHoldingLoss: 0.002
+  refugeeWorkingAgeWeekly: 0.02

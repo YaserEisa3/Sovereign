@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb153ca1daaf12428c65c549ef752ca, type: 3}
+  m_Name: SO_MacroParameters
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.MacroParameters
+  okunCoefficient: 0.5
+  phillipsCoefficient: 0.3
+  monetaryMultiplier: 0.8
+  interestRateSensitivity: 0.4
+  fdiCurrencySensitivity: 0.6
+  tradeContagionMultiplier: 0.5
+  financialContagionMultiplier: 0.7
+  debtRiskPremiumCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.1
+      inSlope: 0.4
+      outSlope: 0.4
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: 1.8333333
+      outSlope: 1.8333333
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.2
+      value: 1.2
+      inSlope: 5.4
+      outSlope: 5.4
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.5
+      value: 3.2
+      inSlope: 8.833335
+      outSlope: 8.833335
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.8
+      value: 6.5
+      inSlope: 12.571428
+      outSlope: 12.571428
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.2
+      value: 12
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  monetaryLagQuarters: 4
+  qeInflationLagQuarters: 3
+  naturalUnemploymentRate: 4.5
+  baseInflationPassThrough: 0.45
+  unanchoredInflationPassThrough: 0.95
+  expectationsUnanchorThreshold: 6
+  expectationsUnanchorYears: 2
+  wageStickiness: 0.25
+  maxQuarterlyWageDriftPercent: 2
+  startingCredibility: 75
+  credibilityLossPerQeAtHighInflation: 4
+  credibilityGainPerYearOnTarget: 3
+  inflationTarget: 2
+  consumptionShare: 0.68
+  investmentShare: 0.18
+  governmentShare: 0.17
+  netExportShare: -0.03
+  consumptionTaxSensitivity: 0.35
+  investmentCorporateTaxSensitivity: 0.3
+  confidenceAdjustmentSpeed: 0.08
+  exportCurrencySensitivity: 0.25
+  tariffTradeSensitivity: 0.2
+  importedInflationSensitivity: 0.45
+  unemploymentReversionSpeed: 0.008
+  recoveryFromSlack: 0.03
+  fiscalMultiplier: 0.5
+  fiscalAdjustmentSpeed: 0.02
+  avoidanceCurvature: 2.5
+  debtTrendPremium: 0.12
+  debtTrendCredit: 3
+  debtTrendPenalty: 5
+  slackRecoveryChokeRate: 5
+  buybackShortYears: 0.5
+  buybackMediumYears: 3.5
+  buybackLongYears: 12
+  buybackExecutionPremiumPer100B: 0.015
+  buybackMinPrice: 0.35
+  buybackMaxPrice: 1.3
+  buybackForeignSellerShare: 0.5
+  buybackMaxShareOfStock: 0.2
+  currencyMeanReversion: 0.05
+  downwardWageRigidity: 0.25
+  expectationsFloor: -1
+  phillipsSlackDamping: 0.35
+  neutralRealRate: 1
+  termPremium: 0.8
+  qeYieldEffectPer100B: 0.06
+  auctionDemandSensitivity: 0.5
+  comfortableAuctionCover: 1.4
+  currencyRateDifferentialWeight: 0.6
+  currencyCurrentAccountWeight: 0.4
+  currencyInflationWeight: 0.5
+  currencyQeWeight: 0.3
+  interventionEffectPer100B: 1.2
+  taxableIncomeShare: 0.5
+  corporateProfitShare: 0.1
+  capitalGainsShare: 0.03
+  payrollShare: 0.5
+  consumerSpendingShare: 0.68
+  importShare: 0.14
+  estateShare: 0.004
+  financialTurnoverMultiple: 3
+  carbonEmissionsGigatonnes: 5
+  premiumAAA: 0
+  premiumAA: 0.3
+  premiumA: 0.7
+  premiumBBB: 1.5
+  premiumBB: 3.5
+  premiumB: 6
+  premiumCCC: 10

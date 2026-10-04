@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ee06d09a1676d45a8d5c72e3a25840, type: 3}
+  m_Name: SO_Spend_Intelligence
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SpendingCategoryDefinition
+  displayName: Intelligence
+  description: Agencies and analysis. Quietly improves your warning time on other
+    countries' moves.
+  group: 1
+  sortOrder: 260
+  defaultBillionsPerYear: 90
+  minimumBillions: 0
+  maximumBillions: 270
+  stepBillions: 5
+  lagQuarters: 2
+  isAutomatic: 0
+  isAutomaticStabiliser: 0
+  stabiliserSensitivity: 0
+  infrastructureCategory: 0
+  effects: []
+  poorApproval: 0
+  middleApproval: 0
+  wealthyApproval: 0
+  leftApproval: -0.3
+  centreApproval: 0
+  rightApproval: 0.5

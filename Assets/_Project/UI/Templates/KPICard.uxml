@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="kpi-card" class="kpi-card">
+        <ui:Label name="kpi-label" text="INDICATOR" class="kpi-label" />
+        <ui:Label name="kpi-value" text="--" class="kpi-value mono" />
+        <ui:VisualElement class="row">
+            <ui:Label name="kpi-delta" text="" class="kpi-delta mono" />
+            <ui:Label name="kpi-sparkline-note" text="" class="caption" />
+        </ui:VisualElement>
+        <ui:VisualElement name="kpi-threshold-bar" class="kpi-threshold-bar" />
+    </ui:VisualElement>
+</ui:UXML>

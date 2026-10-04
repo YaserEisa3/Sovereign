@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0187be1d63cf82c4e8f4e33767b8e693, type: 3}
+  m_Name: SO_WarParameters
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.WarParameters
+  casualtyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 15
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.5
+      value: 60
+      inSlope: 180
+      outSlope: 180
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0
+      value: 240
+      inSlope: 640
+      outSlope: 640
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 700
+      inSlope: 1360
+      outSlope: 1360
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1600
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 137
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  equipmentDegradationPercentPerWeek: 0.4
+  infrastructureDamagePerWeek: 0.15
+  veteranConversionRate: 0.12
+  wartimeMinimumDefenceBillions: 900
+  defenceManufacturingBoost: 12
+  businessInvestmentChill: 8
+  rallyApprovalBonus: 5
+  weeklyApprovalDrain: 0.3
+  lateWarApprovalDrain: 0.8
+  lateWarThresholdWeeks: 78
+  victoryApprovalBonus: 12
+  defeatApprovalPenalty: -25
+  reconstructionCostPerPoint: 18

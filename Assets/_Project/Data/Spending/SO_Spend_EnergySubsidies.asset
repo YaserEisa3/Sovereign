@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ee06d09a1676d45a8d5c72e3a25840, type: 3}
+  m_Name: SO_Spend_EnergySubsidies
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SpendingCategoryDefinition
+  displayName: Energy Subsidies
+  description: Support for energy producers or bills. It softens an oil shock at
+    the till, and costs you every month it runs.
+  group: 3
+  sortOrder: 430
+  defaultBillionsPerYear: 18
+  minimumBillions: 0
+  maximumBillions: 200
+  stepBillions: 5
+  lagQuarters: 2
+  isAutomatic: 0
+  isAutomaticStabiliser: 0
+  stabiliserSensitivity: 0
+  infrastructureCategory: 0
+  effects:
+  - target: 14
+    strengthPer100B: 1.8
+    sectorSpecific: 1
+    sector: 3
+  - target: 1
+    strengthPer100B: -0.06
+    sectorSpecific: 0
+    sector: 0
+  poorApproval: 0
+  middleApproval: 0
+  wealthyApproval: 0
+  leftApproval: -0.4
+  centreApproval: 0
+  rightApproval: 0.3

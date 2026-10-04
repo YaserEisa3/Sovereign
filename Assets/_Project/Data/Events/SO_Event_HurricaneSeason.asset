@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_HurricaneSeason
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Hurricane Season
+  description: Coastal damage, agriculture and energy disruption. Two to four weeks
+    of warning is enough to top up the relief fund - if you have the fiscal room.
+  earlySignalHeadline: Meteorological service forecasts an above-average storm season
+  imminentAdvisorLine: Landfall expected within the fortnight. The relief fund balance
+    today is the damage reduction you get.
+  category: 2
+  warningWeeksBeforeStrike: 3
+  earlySignalWeeks: 2
+  minDurationWeeks: 4
+  maxDurationWeeks: 13
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.35
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 10
+    weeklyMagnitude: -0.5
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.8
+  - target: 14
+    weeklyMagnitude: -0.7
+    sectorSpecific: 1
+    sector: 4
+    mitigable: 0.6
+  - target: 14
+    weeklyMagnitude: -0.5
+    sectorSpecific: 1
+    sector: 3
+    mitigable: 0.6
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 1140469497108080490, guid: 7ccd48b0112d80a4fafc37b7221ce612, type: 3}

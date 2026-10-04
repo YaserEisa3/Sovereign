@@ -1,0 +1,45 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-population" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="POPULATION" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+
+        <ui:ScrollView name="population-scroll" class="drawer-body">
+            <ui:Label text="AGE PYRAMID" class="section-heading" />
+            <ui:VisualElement name="age-band-list" class="policy-list" />
+            <ui:Label name="dependency-ratio" text="Dependency ratio --" class="mono strong" />
+
+            <ui:Label text="GROWTH" class="section-heading" />
+            <ui:VisualElement name="population-chart-container" class="chart-container" />
+            <ui:VisualElement class="row">
+                <ui:Label name="births-readout" text="Births --" class="mono" />
+                <ui:Label name="deaths-readout" text="Deaths --" class="mono" />
+                <ui:Label name="migration-readout" text="Net migration --" class="mono" />
+                <ui:Label name="net-change-readout" text="Net --" class="mono strong" />
+            </ui:VisualElement>
+
+            <ui:Label text="EMPLOYMENT AND THE TAXABLE INCOME POOL" class="section-heading" />
+            <ui:VisualElement name="sector-employment-list" class="policy-list" />
+            <ui:VisualElement class="row">
+                <ui:Label name="labour-force-readout" text="Labour force --" class="mono" />
+                <ui:Label name="participation-readout" text="Participation --%" class="mono" />
+                <ui:Label name="taxable-pool-readout" text="Taxable income pool $--B" class="mono strong" />
+            </ui:VisualElement>
+
+            <ui:Label text="VETERANS" class="section-heading" />
+            <ui:Label name="veteran-count" text="-- million veterans" class="mono strong" />
+            <ui:Label name="veteran-cost" text="Veterans benefits $--B/yr" class="mono caption" />
+
+            <ui:Label text="INCOME DISTRIBUTION" class="section-heading" />
+            <ui:VisualElement name="income-class-list" class="policy-list" />
+            <ui:Label name="gini-readout" text="Gini --" class="mono strong" />
+
+            <ui:Label text="POLICY" class="section-heading" />
+            <ui:VisualElement name="population-policy-list" class="policy-list" />
+            <ui:Label name="immigration-cost-note" text="" class="mono caption" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

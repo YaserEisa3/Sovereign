@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2247e2aba14046ae68f7362321155, type: 3}
+  m_Name: SO_Tax_ValueAdded
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.TaxDefinition
+  displayName: VAT / Sales Tax
+  description: 'VAT, or sales tax: a tax on consumer spending, collected at each
+    stage on the value a business adds and paid at the till. The biggest base you
+    have, and regressive by construction - it takes the largest share from the people
+    with the smallest margin.'
+  sortOrder: 80
+  unit: 0
+  minimumValue: 0
+  maximumValue: 25
+  defaultValue: 7
+  stepSize: 0.5
+  revenueBase: 4
+  baseShare: 1
+  collectionEfficiency: 0.92
+  baseElasticity: 0.2
+  isCredit: 0
+  poorIncidence: 0.45
+  middleIncidence: 0.42
+  wealthyIncidence: 0.13
+  growthDrag: 0.12
+  inflationPassThrough: 0.75
+  capitalFlightRisk: 0
+  sectorSpecific: 0
+  primarySector: 1

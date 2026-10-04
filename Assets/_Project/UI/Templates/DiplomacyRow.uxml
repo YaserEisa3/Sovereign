@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="diplomacy-row" class="diplomacy-row">
+        <ui:VisualElement name="nation-colour" class="nation-colour" />
+        <ui:VisualElement class="diplomacy-name-block">
+            <ui:Label name="nation-name" text="Nation" class="nation-name" />
+            <ui:Label name="nation-status" text="" class="caption" />
+        </ui:VisualElement>
+        <ui:Label name="nation-relationship" text="--" class="diplomacy-relationship mono" />
+        <ui:Button name="toggle-agreement" text="Agreement" class="diplomacy-toggle" />
+        <ui:Button name="toggle-sanction" text="Sanction" class="diplomacy-toggle" />
+        <ui:Button name="toggle-swap" text="Swap line" class="diplomacy-toggle" />
+        <ui:Label text="aid" class="caption" />
+        <ui:Button name="aid-decrease" text="-" class="stepper-btn" />
+        <ui:Label name="aid-value" text="--" class="diplomacy-aid mono" />
+        <ui:Button name="aid-increase" text="+" class="stepper-btn" />
+    </ui:VisualElement>
+</ui:UXML>

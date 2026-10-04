@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_DomesticUnrest
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Domestic Unrest
+  description: Strikes and demonstrations. It does not arrive out of nowhere - it
+    arrives after months of an approval number you were already watching.
+  earlySignalHeadline: Union federations coordinate strike ballots across three sectors
+  imminentAdvisorLine: Approval has been under forty for a month. This is what that
+    looks like on the street.
+  category: 4
+  warningWeeksBeforeStrike: 4
+  earlySignalWeeks: 3
+  minDurationWeeks: 8
+  maxDurationWeeks: 52
+  escalationRisk: 0.25
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.16
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions:
+  - metric: 11
+    comparison: 1
+    threshold: 45
+  impacts:
+  - target: 0
+    weeklyMagnitude: -0.04
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 3
+    weeklyMagnitude: -0.4
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 17
+    weeklyMagnitude: -0.2
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: UnrestLayer
+  markerPrefab: {fileID: 4588392042158019080, guid: 346a769dcd581494a94dca7977f0b8f6, type: 3}

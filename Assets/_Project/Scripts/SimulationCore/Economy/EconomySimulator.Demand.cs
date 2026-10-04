@@ -1,0 +1,118 @@
+namespace Sovereign.Core
+{
+    /// <summary>
+    /// GDP as C + I + G + NX, written as deviations from trend rather than levels:
+    /// the model asks "what is pushing growth away from potential?", which keeps it
+    /// stable and makes every term readable.
+    /// </summary>
+    public partial class EconomySimulator
+    {
+        void UpdateDemand(EconomyState state, PolicyState policy)
+        {
+            MacroConfig m = _config.macro;
+
+            // Monetary policy works with a lag (GDD 12): what bites today is the real
+            // rate set three or four quarters ago, not the one on the dashboard.
+            int lagWeeks = (int)(m.monetaryLagQuarters * 13f);
+            float transmittedRealRate = state.Series("realRate").Ago(lagWeeks);
+            float rateGap = transmittedRealRate - m.neutralRealRate;
+
+            float consumptionTaxBurden =
+                policy.Tax(TaxKeys.IncomeMiddle) * 0.45f +
+                policy.Tax(TaxKeys.IncomeLower) * 0.25f +
+                policy.Tax(TaxKeys.ValueAdded) * 0.20f +
+                policy.Tax(TaxKeys.Payroll) * 0.10f;
+            // The rate channel, at the strength MacroParameters documents: growth points
+            // per point of real rate away from neutral. It is applied ONCE, whole.
+            // Splitting it across consumption and investment and then weighting each by
+            // its GDP share halved it, and an eight-point rate shock produced a boom-time
+            // 0.2% growth rate instead of a recession.
+            float rateChannel = -rateGap * m.interestRateSensitivity;
+
+            float consumptionDrag = (consumptionTaxBurden - 20f) * 0.1f * m.consumptionTaxSensitivity;
+            float consumption = -consumptionDrag + (state.consumerConfidence - 50f) * 0.03f;
+
+            float investmentDrag = (policy.Tax(TaxKeys.CorporateIncome) - 21f) * 0.1f * m.investmentCorporateTaxSensitivity;
+            float investment = -investmentDrag + (state.businessInvestmentIndex - 50f) * 0.04f;
+
+            // The fiscal impulse is the change in what the government has DECIDED to spend,
+            // against what the economy has got used to. Measured as a share of GDP it
+            // drifted on its own - a growing economy shrinks the state's share every week
+            // without anyone deciding anything, and that became a permanent phantom cut.
+            float budget = policy.TotalSpendingBillions;
+            if (state.settledSpendingBillions < 0f) state.settledSpendingBillions = budget;
+
+            float share = state.settledSpendingBillions / MathUtil.Max(1f, state.nominalGdpBillions);
+            float change = budget / MathUtil.Max(1f, state.settledSpendingBillions) - 1f;
+            float government = change * share * 100f * m.fiscalMultiplier;
+            state.settledSpendingBillions = MathUtil.Approach(state.settledSpendingBillions, budget,
+                                                              m.fiscalAdjustmentSpeed);
+
+            float depreciation = (100f - state.currency.exchangeRateIndex) * 0.01f;
+            float tariffDrag = policy.Tax(TaxKeys.ImportTariff) * 0.1f * m.tariffTradeSensitivity;
+            float netExports = depreciation * m.exportCurrencySensitivity * 10f
+                               - tariffDrag
+                               + (_config.worldGrowthRate - 2f) * 0.3f
+                               + (state.tradeVolumeIndex - 100f) * _config.events.tuning.tradeNetExportWeight
+                               + policy.exportSubsidyBillions * 0.01f * _config.geopolitics.tuning.exportSubsidyBoostPer100B;
+
+            // GDD 16: below 70 the infrastructure drag is measurable across everything.
+            float infrastructureMultiplier = _config.infrastructure.productivityDrag.Evaluate(state.infrastructureHealth);
+
+            // Spare capacity is cheap to use: an economy below its own potential grows
+            // faster than trend until it has caught up. Without this a war's hole never
+            // closed - unemployment recovered while output stayed 14% below capacity.
+            // ...but only while money allows it. A central bank holding rates far above
+            // neutral is deliberately stopping the recovery, and catch-up growth must
+            // not quietly undo a recession the player chose to cause.
+            float slack = MathUtil.Max(0f, -state.OutputGapPercent);
+            float openness = MathUtil.Clamp(1f - MathUtil.Max(0f, rateGap) / MathUtil.Max(0.1f, m.slackRecoveryChokeRate), 0f, 1f);
+            float recovery = slack * m.recoveryFromSlack * openness;
+
+            float targetGrowth = (Potential(state)
+                                  + recovery
+                                  + rateChannel
+                                  + consumption * m.consumptionShare
+                                  + investment * m.investmentShare
+                                  + government
+                                  + netExports * 0.5f) * infrastructureMultiplier;
+
+            // Output is sticky. An economy does not turn on a sixpence, and neither
+            // should the number the player is watching.
+            state.realGdpGrowth = MathUtil.Clamp(MathUtil.Approach(state.realGdpGrowth, targetGrowth, 0.06f), -14f, 14f);
+
+            state.realGdpIndex *= 1f + state.realGdpGrowth * 0.01f * Weekly;
+            state.potentialGdpIndex *= 1f + Potential(state) * 0.01f * Weekly;
+
+            state.nominalGdpGrowth = state.realGdpGrowth + state.inflation;
+            state.nominalGdpBillions *= 1f + state.nominalGdpGrowth * 0.01f * Weekly;
+
+            UpdateConfidence(state, policy, rateGap);
+            state.Series("realRate").Record(state.RealInterestRate);
+        }
+
+        void UpdateConfidence(EconomyState state, PolicyState policy, float rateGap)
+        {
+            MacroConfig m = _config.macro;
+
+            // An inverted curve frightens people whether or not the recession ever
+            // arrives - GDD 9.1, the market believes it and the belief matters.
+            float confidenceTarget = 50f
+                                     + (state.realGdpGrowth - Potential(state)) * 6f
+                                     - (state.unemployment - m.naturalUnemploymentRate) * 3f
+                                     - MathUtil.Max(0f, state.inflation - m.inflationTarget) * 2.5f
+                                     + (state.bonds.yields.IsInverted ? -8f : 0f);
+
+            state.consumerConfidence = MathUtil.Clamp(
+                MathUtil.Approach(state.consumerConfidence, confidenceTarget, m.confidenceAdjustmentSpeed), 0f, 100f);
+
+            float investmentTarget = 50f
+                                     + (state.realGdpGrowth - Potential(state)) * 5f
+                                     - rateGap * 4f
+                                     - (policy.Tax(TaxKeys.CorporateIncome) - 21f) * 0.4f;
+
+            state.businessInvestmentIndex = MathUtil.Clamp(
+                MathUtil.Approach(state.businessInvestmentIndex, investmentTarget, m.confidenceAdjustmentSpeed * 0.8f), 0f, 100f);
+        }
+    }
+}

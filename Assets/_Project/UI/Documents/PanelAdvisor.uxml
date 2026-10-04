@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-advisor" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="CHIEF ECONOMIC ADVISOR" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Button name="advisor-full" text="Full guidance" class="tab" />
+            <ui:Button name="advisor-data" text="Data only" class="tab" />
+            <ui:Button name="advisor-silent" text="Silent" class="tab" />
+        </ui:VisualElement>
+        <ui:ScrollView name="advisor-scroll" class="drawer-body">
+            <ui:VisualElement name="advisor-message-list" class="policy-list" />
+        </ui:ScrollView>
+        <ui:Label name="advisor-latest" text="" class="mono caption" />
+    </ui:VisualElement>
+</ui:UXML>

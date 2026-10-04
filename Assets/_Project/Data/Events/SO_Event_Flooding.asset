@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_Flooding
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Major Flooding
+  description: Infrastructure damage, displacement and lost harvest. Water and roads
+    take the worst of it.
+  earlySignalHeadline: River levels rising; flood defences under review
+  imminentAdvisorLine: Evacuation orders are being drafted. Water and road infrastructure
+    will take the damage.
+  category: 2
+  warningWeeksBeforeStrike: 2
+  earlySignalWeeks: 1
+  minDurationWeeks: 4
+  maxDurationWeeks: 17
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.22
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 10
+    weeklyMagnitude: -0.6
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.75
+  - target: 14
+    weeklyMagnitude: -0.6
+    sectorSpecific: 1
+    sector: 4
+    mitigable: 0.5
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 7554210662234204529, guid: 25def07f3b2e64e4cae48a0dce0612cb, type: 3}

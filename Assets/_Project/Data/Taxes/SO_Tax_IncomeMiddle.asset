@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2247e2aba14046ae68f7362321155, type: 3}
+  m_Name: SO_Tax_IncomeMiddle
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.TaxDefinition
+  displayName: Middle Income Rate
+  description: 'The rate on ordinary salaries. Hits consumption directly: the middle
+    class spends what it keeps, so raising this slows the shops as well as filling
+    the treasury.'
+  sortOrder: 40
+  unit: 0
+  minimumValue: 5
+  maximumValue: 50
+  defaultValue: 24
+  stepSize: 1
+  revenueBase: 0
+  baseShare: 0.35
+  collectionEfficiency: 0.85
+  baseElasticity: 0.12
+  isCredit: 0
+  poorIncidence: 0.1
+  middleIncidence: 0.85
+  wealthyIncidence: 0.05
+  growthDrag: 0.14
+  inflationPassThrough: 0
+  capitalFlightRisk: 0
+  sectorSpecific: 0
+  primarySector: 1

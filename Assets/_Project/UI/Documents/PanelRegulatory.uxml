@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-regulatory" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="REGULATORY" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+        <ui:ScrollView name="regulatory-scroll" class="drawer-body">
+            <ui:Label text="FINANCIAL" class="section-heading" />
+            <ui:VisualElement name="financial-regulation-list" class="policy-list" />
+            <ui:Label name="banking-risk-readout" text="Banking system stress --" class="mono" />
+            <ui:Label text="ENVIRONMENT AND ENERGY" class="section-heading" />
+            <ui:VisualElement name="environment-regulation-list" class="policy-list" />
+            <ui:Label text="LABOUR" class="section-heading" />
+            <ui:VisualElement name="labour-regulation-list" class="policy-list" />
+            <ui:Label text="CREDITS AND SUBSIDIES" class="section-heading" />
+            <ui:VisualElement name="subsidy-list" class="policy-list" />
+            <ui:Label name="regulation-burden-readout" text="Average regulation burden --" class="mono caption" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

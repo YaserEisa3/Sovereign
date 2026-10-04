@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_Pandemic
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Novel Pathogen
+  description: 'Four stages: outbreak, spread, active pandemic, resolution. Your
+    public health spending AT THE MOMENT it arrives sets the severity. Underfund
+    it and the productivity scar is permanent.'
+  earlySignalHeadline: Novel pathogen reported in a foreign region; WHO monitoring
+  imminentAdvisorLine: Community transmission confirmed abroad. Whatever your health
+    system is now is what it will be when this lands.
+  category: 1
+  warningWeeksBeforeStrike: 6
+  earlySignalWeeks: 4
+  minDurationWeeks: 52
+  maxDurationWeeks: 156
+  escalationRisk: 0.25
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.05
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 13
+    weeklyMagnitude: -3
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.7
+  - target: 11
+    weeklyMagnitude: 1.2
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.8
+  - target: 14
+    weeklyMagnitude: -0.8
+    sectorSpecific: 1
+    sector: 5
+    mitigable: 0.4
+  - target: 3
+    weeklyMagnitude: -0.6
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.3
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

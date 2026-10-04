@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70c6f8ec73f3c64d939e30f1329e1f8, type: 3}
+  m_Name: SO_MeterParameters
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.MeterParameters
+  entries:
+  - series: gdpGrowth
+    label: Growth
+    explanation: How fast the economy is growing, per year, after inflation. Below
+      zero is a recession; much above potential and you are overheating and will
+      pay for it in prices.
+    unit: '%'
+    min: -8
+    max: 8
+    target: 2.5
+    tolerance: 1.5
+    higherIsBetter: 1
+    judgeByDistance: 0
+    decimals: 1
+  - series: inflation
+    label: Inflation
+    explanation: How fast prices are rising, per year. The target is 2%. Above it
+      wages lose ground and the central bank is expected to act; below zero, people
+      stop spending and wait for things to get cheaper.
+    unit: '%'
+    min: -4
+    max: 20
+    target: 2
+    tolerance: 1.5
+    higherIsBetter: 0
+    judgeByDistance: 1
+    decimals: 1
+  - series: unemployment
+    label: Unemp
+    explanation: Share of people who want work and cannot find it. Around 4.5% is
+      full employment. High unemployment costs you benefits, tax revenue and, quickly,
+      approval.
+    unit: '%'
+    min: 0
+    max: 25
+    target: 4.5
+    tolerance: 2
+    higherIsBetter: 0
+    judgeByDistance: 0
+    decimals: 1
+  - series: debtToGdp
+    label: Debt
+    explanation: Everything you owe, as a share of one year's output. It is not a
+      cliff, but the higher it climbs the more the bond market charges you, and the
+      more of your budget goes to interest.
+    unit: '%'
+    min: 0
+    max: 250
+    target: 90
+    tolerance: 30
+    higherIsBetter: 0
+    judgeByDistance: 0
+    decimals: 0
+  - series: budgetBalance
+    label: Budget
+    explanation: Revenue minus spending this year, as a share of GDP. Negative is
+      a deficit, which you borrow to cover. Deficits are normal in a slump and dangerous
+      in a boom.
+    unit: '%'
+    min: -20
+    max: 6
+    target: 0
+    tolerance: 3
+    higherIsBetter: 1
+    judgeByDistance: 0
+    decimals: 1
+  - series: longYield
+    label: 30y
+    explanation: What the market charges to lend to you for thirty years. It prices
+      your debt, your inflation and whether anyone believes your plan. Every new
+      bond you issue costs about this.
+    unit: '%'
+    min: 0
+    max: 20
+    target: 4
+    tolerance: 2
+    higherIsBetter: 0
+    judgeByDistance: 0
+    decimals: 2
+  - series: currency
+    label: Currency
+    explanation: What your money is worth abroad, where 100 is where you started.
+      Weak helps exporters and makes imports dear; strong does the reverse and hurts
+      your factories.
+    unit: 
+    min: 40
+    max: 160
+    target: 100
+    tolerance: 10
+    higherIsBetter: 0
+    judgeByDistance: 1
+    decimals: 1
+  - series: currentAccount
+    label: Trade
+    explanation: Exports minus imports, as a share of GDP. A surplus means the world
+      is paying you; a deficit means you are being funded by someone, and they can
+      stop.
+    unit: '%'
+    min: -12
+    max: 12
+    target: 0
+    tolerance: 3
+    higherIsBetter: 1
+    judgeByDistance: 0
+    decimals: 1
+  - series: approvalOverall
+    label: Approval
+    explanation: What the country thinks of you. Below 30% for long enough and the
+      government falls - which ends the run, whatever the economy is doing.
+    unit: '%'
+    min: 0
+    max: 100
+    target: 50
+    tolerance: 15
+    higherIsBetter: 1
+    judgeByDistance: 0
+    decimals: 0
+  - series: unrest
+    label: Unrest
+    explanation: How close the streets are to trouble, driven by hardship rather
+      than opinion. Unrest builds slowly under a squeeze and takes far longer to
+      settle than approval does.
+    unit: 
+    min: 0
+    max: 100
+    target: 15
+    tolerance: 15
+    higherIsBetter: 0
+    judgeByDistance: 0
+    decimals: 0
+  - series: infrastructure
+    label: Infra
+    explanation: The condition of roads, grid, rail and water, out of 100. Below
+      70 it quietly drags on everything the economy produces, and repairs cost more
+      the longer you leave them.
+    unit: 
+    min: 0
+    max: 100
+    target: 75
+    tolerance: 15
+    higherIsBetter: 1
+    judgeByDistance: 0
+    decimals: 0
+  - series: realWage
+    label: Wages
+    explanation: What a typical wage actually buys, against where it started. This
+      is the number people feel. It can fall while the economy grows, and that is
+      when approval collapses.
+    unit: 
+    min: 60
+    max: 160
+    target: 100
+    tolerance: 10
+    higherIsBetter: 1
+    judgeByDistance: 0
+    decimals: 1

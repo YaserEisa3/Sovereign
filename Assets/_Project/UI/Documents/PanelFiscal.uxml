@@ -1,0 +1,58 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-fiscal" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="FISCAL POLICY" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Label name="queue-notice" text="Changes apply at the next quarter boundary" class="caption" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="row">
+            <ui:Button name="tab-revenue" text="Revenue" class="tab" />
+            <ui:Button name="tab-spending" text="Spending" class="tab" />
+        </ui:VisualElement>
+
+        <ui:ScrollView name="fiscal-scroll" class="drawer-body">
+            <ui:VisualElement name="revenue-section">
+                <ui:Label text="WHERE THE MONEY COMES FROM" class="section-heading" />
+                <ui:VisualElement name="revenue-breakdown" class="policy-list" />
+                <ui:Label name="breakdown-note" text="" class="mono caption" />
+
+                <ui:Label text="REVENUE" class="section-heading" />
+                <ui:VisualElement name="revenue-list" class="policy-list" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="spending-section">
+                <ui:Label text="WHERE THE MONEY GOES" class="section-heading" />
+                <ui:VisualElement name="spending-breakdown" class="policy-list" />
+                <ui:Label name="spending-note" text="" class="mono caption" />
+
+                <ui:Label text="SPENDING" class="section-heading" />
+                <ui:Label text="Social" class="group-heading" />
+                <ui:VisualElement name="spending-list-social" class="policy-list" />
+                <ui:Label text="Military" class="group-heading" />
+                <ui:VisualElement name="spending-list-military" class="policy-list" />
+                <ui:Label text="Infrastructure" class="group-heading" />
+                <ui:VisualElement name="spending-list-infrastructure" class="policy-list" />
+                <ui:Label text="Other" class="group-heading" />
+                <ui:VisualElement name="spending-list-other" class="policy-list" />
+                <ui:Label text="Automatic" class="group-heading" />
+                <ui:VisualElement name="spending-list-automatic" class="policy-list" />
+            </ui:VisualElement>
+        </ui:ScrollView>
+
+        <ui:VisualElement name="fiscal-tooltip" class="meter-tooltip" picking-mode="Ignore">
+            <ui:Label name="fiscal-tooltip-title" text="" class="tooltip-title" />
+            <ui:Label name="fiscal-tooltip-body" text="" class="tooltip-body" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="fiscal-footer" class="drawer-footer">
+            <ui:Label name="total-revenue" text="Revenue $--B" class="mono" />
+            <ui:Label name="total-spending" text="Spending $--B" class="mono" />
+            <ui:Label name="budget-balance" text="Balance $--B" class="mono strong" />
+            <ui:Label name="balance-share-gdp" text="-- % of GDP" class="mono" />
+            <ui:Label name="queued-count" text="0 queued changes" class="mono caption" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

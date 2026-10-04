@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbe71b5d21b0348bcb2e9c44365ed7, type: 3}
+  m_Name: SO_Nation_SinoPacific
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.NationDefinition
+  displayName: Sino-Pacific
+  archetype: 2
+  briefing: Export manufacturing giant and your largest creditor. Holds the biggest
+    single block of your debt - and knows it.
+  nationColor: {r: 0.8392157, g: 0.29411766, b: 0.29411766, a: 1}
+  isPlayerNation: 0
+  startingRelationship: 5
+  bondHoldingPercent: 0.09
+  tradeVolumePercent: 0.3
+  financialLinkage: 0.2
+  trendGrowthRate: 4.5
+  recessionProneness: 0.12
+  tariffRetaliationThreshold: 20
+  quietBondReductionRelationship: -40
+  activeBondDumpingRelationship: -70
+  sanctionsRelationship: -55
+  signatureMoveIntervalYears: 4
+  aggression: 0.8

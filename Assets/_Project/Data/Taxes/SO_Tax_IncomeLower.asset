@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2247e2aba14046ae68f7362321155, type: 3}
+  m_Name: SO_Tax_IncomeLower
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.TaxDefinition
+  displayName: Lower Income Rate
+  description: The rate on the lowest band of earnings. It raises little and costs
+    a lot of goodwill, because the people paying it have no margin.
+  sortOrder: 50
+  unit: 0
+  minimumValue: 0
+  maximumValue: 30
+  defaultValue: 12
+  stepSize: 1
+  revenueBase: 0
+  baseShare: 0.2
+  collectionEfficiency: 0.85
+  baseElasticity: 0.08
+  isCredit: 0
+  poorIncidence: 0.8
+  middleIncidence: 0.2
+  wealthyIncidence: 0
+  growthDrag: 0.16
+  inflationPassThrough: 0
+  capitalFlightRisk: 0
+  sectorSpecific: 0
+  primarySector: 1

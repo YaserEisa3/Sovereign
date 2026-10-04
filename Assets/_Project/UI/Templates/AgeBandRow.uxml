@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="age-band-row" class="age-band-row">
+        <ui:Label name="band-name" text="Band" class="band-name" />
+        <ui:VisualElement name="band-track" class="band-track">
+            <ui:VisualElement name="band-fill" class="band-fill" />
+        </ui:VisualElement>
+        <ui:Label name="band-count" text="-- m" class="mono" />
+        <ui:Label name="band-share" text="--%" class="mono" />
+        <ui:Label name="band-change" text="" class="mono" />
+    </ui:VisualElement>
+</ui:UXML>

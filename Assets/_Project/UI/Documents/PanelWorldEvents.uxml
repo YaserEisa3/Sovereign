@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-world-events" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="WORLD EVENTS" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+        <ui:ScrollView name="events-scroll" class="drawer-body">
+            <ui:Label text="ACTIVE" class="section-heading" />
+            <ui:VisualElement name="active-event-list" class="policy-list" />
+            <ui:Label text="EARLY WARNINGS" class="section-heading warning-text" />
+            <ui:VisualElement name="warning-event-list" class="policy-list" />
+            <ui:Label text="WAR" class="section-heading" />
+            <ui:VisualElement name="war-panel" class="panel">
+                <ui:Label name="war-status" text="No active conflict" class="mono strong" />
+                <ui:Label name="war-kia" text="KIA --" class="mono" />
+                <ui:Label name="war-equipment" text="Equipment stock --%" class="mono" />
+                <ui:Label name="war-infrastructure" text="Infrastructure --%" class="mono" />
+                <ui:Label name="war-veterans" text="Veterans --" class="mono" />
+                <ui:Label name="war-cost" text="Cumulative cost $--B" class="mono" />
+            </ui:VisualElement>
+            <ui:Label text="DIPLOMATIC STATUS" class="section-heading" />
+            <ui:VisualElement name="nation-status-list" class="policy-list" />
+            <ui:Label text="HISTORY" class="section-heading" />
+            <ui:VisualElement name="event-history-list" class="policy-list" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373570157c3a5d548b878e43607f8e67, type: 3}
+  m_Name: SO_Sector_ServicesRetail
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SectorDefinition
+  displayName: Services and Retail
+  sectorId: 5
+  chartColor: {r: 0.47843137, g: 0.6117647, b: 0.77254903, a: 1}
+  gdpShare: 0.4
+  employmentShare: 0.4
+  baseAverageWage: 42000
+  exportShare: 0.08
+  currencyExposure: -0.4
+  foreignCompetitionExposure: 0.2
+  corporateTaxSensitivity: 0.25
+  capitalGainsTaxSensitivity: 0.1
+  interestRateSensitivity: 0.35
+  regulationSensitivity: 0.25
+  subsidySensitivity: 0.1
+  consumerConfidenceSensitivity: 0.8
+  tariffSensitivity: 0.25
+  carbonTaxSensitivity: 0.1
+  governmentSpendingSensitivity: 0
+  wageStickiness: 0.15
+  unemploymentWageSensitivity: 0.9
+  immigrationWageSuppression: 0.8

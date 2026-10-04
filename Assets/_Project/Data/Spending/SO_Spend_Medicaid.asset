@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ee06d09a1676d45a8d5c72e3a25840, type: 3}
+  m_Name: SO_Spend_Medicaid
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SpendingCategoryDefinition
+  displayName: Medicaid
+  description: Health cover for the poorest households. The Poor score you on it
+    directly, and it is one of the two lines that decide how badly a pandemic hurts.
+  group: 0
+  sortOrder: 10
+  defaultBillionsPerYear: 620
+  minimumBillions: 0
+  maximumBillions: 1860
+  stepBillions: 25
+  lagQuarters: 0
+  isAutomatic: 0
+  isAutomaticStabiliser: 1
+  stabiliserSensitivity: 14
+  infrastructureCategory: 0
+  effects:
+  - target: 11
+    strengthPer100B: -0.12
+    sectorSpecific: 0
+    sector: 0
+  poorApproval: 1.8
+  middleApproval: 0.4
+  wealthyApproval: 0
+  leftApproval: 1.5
+  centreApproval: 0
+  rightApproval: -0.6

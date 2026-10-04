@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_EmergingSouthDefault
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Sovereign Default Abroad
+  description: Emerging South asks to restructure. Refuse and it defaults - your
+    exposed banks take the loss either way, and the contagion arrives financially
+    instead of diplomatically.
+  earlySignalHeadline: Emerging South requests debt restructuring talks
+  imminentAdvisorLine: They cannot roll their maturities. Our banks hold the paper
+    whatever we decide.
+  category: 5
+  warningWeeksBeforeStrike: 8
+  earlySignalWeeks: 5
+  minDurationWeeks: 26
+  maxDurationWeeks: 78
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.1
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 14
+    weeklyMagnitude: -0.7
+    sectorSpecific: 1
+    sector: 1
+    mitigable: 0
+  - target: 4
+    weeklyMagnitude: -0.2
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

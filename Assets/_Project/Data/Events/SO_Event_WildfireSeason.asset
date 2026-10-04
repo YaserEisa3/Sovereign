@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_WildfireSeason
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Wildfire Season
+  description: Energy and agriculture disruption, and an insurance bill the finance
+    sector has to absorb. A cluster of these under lax banking regulation is how
+    a disaster becomes a financial crisis.
+  earlySignalHeadline: Fire risk index reaches extreme across three regions
+  imminentAdvisorLine: Conditions are critical. Insurers are already re-pricing;
+    watch the finance sector, not just the relief fund.
+  category: 2
+  warningWeeksBeforeStrike: 3
+  earlySignalWeeks: 2
+  minDurationWeeks: 8
+  maxDurationWeeks: 17
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.28
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 14
+    weeklyMagnitude: -0.5
+    sectorSpecific: 1
+    sector: 3
+    mitigable: 0.6
+  - target: 14
+    weeklyMagnitude: -0.4
+    sectorSpecific: 1
+    sector: 1
+    mitigable: 0.4
+  - target: 10
+    weeklyMagnitude: -0.3
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.7
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 205396512018845097, guid: 67826e399a9347240b5cd1614cfb63c6, type: 3}

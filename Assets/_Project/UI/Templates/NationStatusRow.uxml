@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="nation-status-row" class="nation-row">
+        <ui:VisualElement name="nation-colour" class="nation-colour" />
+        <ui:Label name="nation-name" text="Nation" class="nation-name" />
+        <ui:Label name="nation-archetype" text="" class="caption" />
+        <ui:VisualElement class="spacer" />
+        <ui:Label name="nation-relationship" text="--" class="mono" />
+        <ui:Label name="nation-bond-holding" text="--% of debt" class="mono" />
+        <ui:Label name="nation-trade" text="--% of trade" class="mono" />
+        <ui:Label name="nation-flag" text="" class="mono flag" />
+    </ui:VisualElement>
+</ui:UXML>

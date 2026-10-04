@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ee06d09a1676d45a8d5c72e3a25840, type: 3}
+  m_Name: SO_Spend_PublicHealth
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SpendingCategoryDefinition
+  displayName: Public Health
+  description: 'Clinics, surveillance, vaccination. The pandemic mitigant: its level
+    AT THE MOMENT a pathogen arrives is what decides the damage, and raising it afterwards
+    is too late.'
+  group: 0
+  sortOrder: 30
+  defaultBillionsPerYear: 95
+  minimumBillions: 0
+  maximumBillions: 285
+  stepBillions: 5
+  lagQuarters: 0
+  isAutomatic: 0
+  isAutomaticStabiliser: 0
+  stabiliserSensitivity: 0
+  infrastructureCategory: 0
+  effects:
+  - target: 11
+    strengthPer100B: -0.2
+    sectorSpecific: 0
+    sector: 0
+  - target: 12
+    strengthPer100B: 0.06
+    sectorSpecific: 0
+    sector: 0
+  poorApproval: 0.8
+  middleApproval: 0.6
+  wealthyApproval: 0
+  leftApproval: 1.2
+  centreApproval: 0
+  rightApproval: 0

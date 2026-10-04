@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="maturity-row" class="maturity-row">
+        <ui:Label name="maturity-bucket" text="Bucket" class="maturity-bucket" />
+        <ui:VisualElement name="maturity-track" class="maturity-track">
+            <ui:VisualElement name="maturity-fill" class="maturity-fill" />
+        </ui:VisualElement>
+        <ui:Label name="maturity-amount" text="$--B" class="mono" />
+        <ui:Label name="maturity-share" text="--%" class="mono" />
+        <ui:Label name="maturity-yield" text="--%" class="mono" />
+        <ui:Label name="maturity-rollover-flag" text="" class="mono flag" />
+    </ui:VisualElement>
+</ui:UXML>

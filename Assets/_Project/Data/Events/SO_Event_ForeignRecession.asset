@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_ForeignRecession
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Foreign Recession
+  description: 'A major partner contracts. Five channels reach you: trade, financial,
+    commodity, confidence and currency. Whether it helps or hurts depends on your
+    position, and that ambiguity is the point.'
+  earlySignalHeadline: Leading indicators turn negative in a major trading partner
+  imminentAdvisorLine: A partner economy is contracting. Export orders thin first,
+    bank losses second.
+  category: 5
+  warningWeeksBeforeStrike: 6
+  earlySignalWeeks: 4
+  minDurationWeeks: 26
+  maxDurationWeeks: 104
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.22
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 9
+    weeklyMagnitude: -0.4
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 14
+    weeklyMagnitude: -0.5
+    sectorSpecific: 1
+    sector: 2
+    mitigable: 0
+  - target: 4
+    weeklyMagnitude: -0.2
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 8
+    weeklyMagnitude: -0.4
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

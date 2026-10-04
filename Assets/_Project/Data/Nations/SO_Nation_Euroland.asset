@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbe71b5d21b0348bcb2e9c44365ed7, type: 3}
+  m_Name: SO_Nation_Euroland
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.NationDefinition
+  displayName: Euroland
+  archetype: 1
+  briefing: Large, diversified, slow-growing. Exports regulatory standards and expects
+    you to adopt them.
+  nationColor: {r: 0.36078432, g: 0.5411765, b: 0.8392157, a: 1}
+  isPlayerNation: 0
+  startingRelationship: 55
+  bondHoldingPercent: 0.06
+  tradeVolumePercent: 0.24
+  financialLinkage: 0.35
+  trendGrowthRate: 1.2
+  recessionProneness: 0.2
+  tariffRetaliationThreshold: 15
+  quietBondReductionRelationship: -40
+  activeBondDumpingRelationship: -70
+  sanctionsRelationship: -55
+  signatureMoveIntervalYears: 0
+  aggression: 0.25

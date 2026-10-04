@@ -1,0 +1,246 @@
+/* GDD 18 - Bloomberg terminal meets classified war room.
+   These variables mirror the UITheme ScriptableObject. USS owns the styling;
+   UITheme owns the same values for the map and the charts, which cannot read USS.
+   If you change a colour, change it in both places. */
+:root {
+    --bg: rgb(10, 14, 20);
+    --panel: rgb(17, 22, 31);
+    --border: rgb(30, 39, 53);
+    --grid: rgb(26, 34, 46);
+    --text: rgb(232, 232, 232);
+    --text-dim: rgb(139, 151, 168);
+    --text-muted: rgb(85, 96, 112);
+    --growth: rgb(0, 208, 132);
+    --warning: rgb(245, 166, 35);
+    --danger: rgb(255, 68, 68);
+    --data: rgb(122, 156, 197);
+    --space: 8px;
+}
+
+.root {
+    /* No background here on purpose: the map camera renders BEHIND this panel,
+       and .map-viewport is the transparent hole it shows through. Every other
+       region paints its own opaque background instead. */
+    flex-grow: 1;
+    color: var(--text);
+    font-size: 12px;
+}
+
+.mono { -unity-font-style: normal; letter-spacing: 0.5px; }
+.strong { -unity-font-style: bold; color: var(--text); }
+.caption { font-size: 10px; color: var(--text-muted); }
+.label { color: var(--text-dim); }
+.row { flex-direction: row; align-items: center; }
+.wrap { flex-wrap: wrap; }
+.grow { flex-grow: 1; }
+.spacer { flex-grow: 1; }
+.warning-text { color: var(--warning); }
+.flag { color: var(--danger); -unity-font-style: bold; }
+
+.header {
+    flex-direction: row;
+    align-items: center;
+    height: 34px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: var(--panel);
+    border-bottom-width: 1px;
+    border-bottom-color: var(--border);
+}
+.title { -unity-font-style: bold; letter-spacing: 3px; color: var(--text); margin-right: 16px; }
+.date { color: var(--data); margin-right: 16px; }
+
+.speed-btn {
+    min-width: 34px; height: 20px; margin-right: 2px;
+    background-color: var(--bg); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border); border-radius: 2px;
+    font-size: 10px;
+}
+.speed-btn:hover { color: var(--text); border-color: var(--data); }
+
+.alert-bell {
+    flex-direction: row; align-items: center; height: 20px;
+    background-color: var(--bg); color: var(--warning);
+    border-width: 1px; border-color: var(--border); border-radius: 2px; font-size: 10px;
+}
+.alert-count { color: var(--danger); margin-left: 4px; -unity-font-style: bold; }
+
+.body { flex-direction: row; flex-grow: 1; }
+.map-column {
+    /* NO background. A transparent .map-viewport cannot punch through an opaque
+       parent - it would just show the parent. The whole column is transparent and
+       the map camera's own clear colour fills it, so the heading and the status
+       caption read as labels sitting on top of the map. */
+    width: 44%; min-width: 300px; padding: 8px;
+    border-right-width: 1px; border-right-color: var(--border);
+}
+.map-viewport {
+    /* Transparent: this is the window onto the world map camera, whose Viewport
+       Rect is fitted to this box. Give it a colour and the map disappears. */
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1px; border-color: var(--border);
+}
+.data-column {
+    /* min-width 0 lets this column shrink instead of pushing the whole dashboard
+       wider than the screen when the KPI row is full. */
+    flex-grow: 1; min-width: 0; padding: 8px; background-color: var(--bg);
+}
+
+.panel {
+    background-color: var(--panel);
+    border-width: 1px; border-color: var(--border); border-radius: 2px;
+    padding: 8px; margin-bottom: 8px;
+}
+.panel-heading {
+    font-size: 10px; letter-spacing: 2px; color: var(--text-dim);
+    -unity-font-style: bold; margin-bottom: 6px;
+}
+.section-heading {
+    font-size: 10px; letter-spacing: 2px; color: var(--data);
+    -unity-font-style: bold; margin-top: 12px; margin-bottom: 4px;
+}
+.group-heading { font-size: 10px; color: var(--text-muted); margin-top: 8px; margin-bottom: 2px; }
+
+.kpi-row { flex-direction: row; flex-wrap: wrap; margin-bottom: 8px; }
+.chart-container { height: 200px; background-color: var(--bg); border-width: 1px; border-color: var(--border); }
+.yield-curve-container { height: 120px; background-color: var(--bg); border-width: 1px; border-color: var(--border); }
+.approval-list { margin-top: 4px; }
+
+.tab {
+    height: 18px; margin-right: 2px; padding-left: 6px; padding-right: 6px;
+    background-color: var(--bg); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border); border-radius: 2px; font-size: 10px;
+}
+.tab:hover { color: var(--text); }
+.tab.selected { color: var(--bg); background-color: var(--data); }
+
+.drawer-bar {
+    flex-direction: row; padding: 4px 8px;
+    background-color: var(--panel); border-top-width: 1px; border-top-color: var(--border);
+}
+.drawer-btn {
+    height: 22px; margin-right: 4px; padding-left: 10px; padding-right: 10px;
+    background-color: var(--bg); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border); border-radius: 2px; font-size: 11px;
+}
+.drawer-btn:hover { color: var(--text); border-color: var(--data); }
+
+.news-ticker {
+    flex-direction: row; align-items: center; height: 22px;
+    background-color: rgb(8, 12, 18); border-top-width: 1px; border-top-color: var(--border);
+    overflow: hidden;
+}
+.ticker-label { font-size: 9px; letter-spacing: 2px; color: var(--data); padding-left: 8px; padding-right: 8px; }
+.ticker-track { flex-direction: row; flex-grow: 1; }
+
+/* A drawer slides over the DATA column only. It must never cover the header or the
+   drawer bar - with flex-grow: 1 it filled the whole screen, sat on top of the tab
+   bar, and swallowed every click meant for the tabs, so an open drawer could not
+   be closed by clicking its own tab. The header is 34px; the bar and ticker 54px. */
+.drawer {
+    position: absolute;
+    top: 34px;
+    bottom: 54px;
+    right: 0;
+    width: 56%;
+    background-color: var(--bg);
+    border-left-width: 1px; border-color: var(--border);
+    padding: 8px;
+}
+.drawer-header { flex-direction: row; align-items: center; margin-bottom: 4px; }
+.drawer-body { flex-grow: 1; }
+.drawer-footer {
+    flex-direction: row; justify-content: space-between;
+    border-top-width: 1px; border-top-color: var(--border);
+    padding-top: 6px; margin-top: 6px;
+}
+.close-btn {
+    width: 20px; height: 18px; font-size: 10px;
+    background-color: var(--bg); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border);
+}
+.danger-btn {
+    height: 22px; margin-top: 6px;
+    background-color: var(--bg); color: var(--danger);
+    border-width: 1px; border-color: var(--danger); border-radius: 2px; font-size: 10px;
+}
+.policy-list { margin-top: 2px; }
+.toggle { margin-top: 4px; font-size: 11px; color: var(--text-dim); }
+
+.popup-root { flex-grow: 1; align-items: center; justify-content: center; }
+.popup-card {
+    width: 520px; padding: 16px;
+    background-color: var(--panel);
+    border-width: 1px; border-color: var(--warning); border-radius: 2px;
+}
+.popup-title { font-size: 16px; -unity-font-style: bold; color: var(--text); margin-top: 4px; margin-bottom: 6px; }
+.popup-body { white-space: normal; color: var(--text-dim); margin-bottom: 10px; }
+
+/* --- Phase 0 placeholder chrome -------------------------------------------
+   These rules dress the authored placeholders in Dashboard.uxml. The .fill-NN
+   widths stand in for the bar widths a controller will set in Phase 4. */
+
+.alert-bell { padding-left: 8px; padding-right: 8px; }
+.alert-word { color: var(--warning); font-size: 10px; letter-spacing: 1px; }
+
+.empty-note {
+    flex-grow: 1;
+    color: var(--text-muted);
+    font-size: 10px;
+    -unity-text-align: middle-center;
+}
+
+.curve-row { flex-direction: row; justify-content: space-around; padding-top: 10px; }
+.curve-point { color: var(--data); font-size: 12px; }
+
+.approval-fill.faction { background-color: var(--data); }
+
+.fill-49 { width: 49%; background-color: var(--warning); }
+.fill-52 { width: 52%; background-color: var(--warning); }
+.fill-58 { width: 58%; }
+.fill-61 { width: 61%; }
+.fill-72 { width: 72%; }
+.fill-74 { width: 74%; }
+
+/* Chart axes: the value scale down the left, game dates along the bottom. */
+.chart-axis-label {
+    color: var(--text-muted);
+    font-size: 10px;
+    -unity-font-style: normal;
+}
+
+.chart-value-label {
+    -unity-text-align: middle-right;
+}
+
+.chart-date-label {
+    -unity-text-align: middle-left;
+}
+
+/* The meter view sits in the same box as the chart; one of the two is shown. */
+.meter-container {
+    height: 200px; flex-direction: row; align-items: stretch; justify-content: space-between;
+    padding: 6px 8px;
+}
+.view-toggle { margin-right: 10px; border-color: var(--data); }
+
+/* Map zoom controls, sitting under the viewport rather than over it. */
+.map-controls { align-items: center; padding-top: 2px; }
+.map-btn {
+    min-width: 26px; height: 18px; margin-right: 4px; padding: 0;
+    background-color: var(--panel); color: var(--text-dim);
+    border-width: 1px; border-color: var(--border); font-size: 11px;
+}
+.map-btn:hover { color: var(--text); border-color: var(--data); }
+
+/* What a meter means, shown where the pointer is. */
+.meter-tooltip {
+    position: absolute; display: none; max-width: 330px; padding: 7px 9px;
+    background-color: var(--panel); border-width: 1px; border-color: var(--data);
+}
+.tooltip-title { color: var(--text); font-size: 11px; -unity-font-style: bold; margin-bottom: 3px; }
+.tooltip-body { color: var(--text-dim); font-size: 11px; white-space: normal; }
+
+/* The revenue breakdown where the bond chart used to be. */
+.breakdown-list { flex-direction: column; margin-bottom: 4px; }

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_HyperinflationSpiral
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Hyperinflation Spiral
+  description: Excessive QE, a monetised deficit and a credibility collapse. Self-reinforcing,
+    and near-certain game over if it is not caught early.
+  earlySignalHeadline: 
+  imminentAdvisorLine: 
+  category: 3
+  warningWeeksBeforeStrike: 0
+  earlySignalWeeks: 0
+  minDurationWeeks: 52
+  maxDurationWeeks: 208
+  escalationRisk: 0.5
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.02
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions:
+  - metric: 8
+    comparison: 2
+    threshold: 1
+  - metric: 1
+    comparison: 0
+    threshold: 15
+  impacts:
+  - target: 1
+    weeklyMagnitude: 0.6
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 5
+    weeklyMagnitude: -1.2
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 3
+    weeklyMagnitude: -1
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 7
+    weeklyMagnitude: 0.25
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

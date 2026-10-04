@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_Earthquake
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Major Earthquake
+  description: No warning. Infrastructure destruction, a reconstruction bill, and
+    regional output lost for months.
+  earlySignalHeadline: 
+  imminentAdvisorLine: 
+  category: 2
+  warningWeeksBeforeStrike: 0
+  earlySignalWeeks: 0
+  minDurationWeeks: 8
+  maxDurationWeeks: 26
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.06
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 10
+    weeklyMagnitude: -0.9
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.7
+  - target: 0
+    weeklyMagnitude: -0.05
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.4
+  - target: 11
+    weeklyMagnitude: 0.08
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0.6
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 7600272780964507088, guid: 09072c8f6ea0c6e44b1e8d4e97ee3fb8, type: 3}

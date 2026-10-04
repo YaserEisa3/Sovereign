@@ -1,0 +1,229 @@
+# Sovereign headline templates. One per line: TOPIC|headline.
+# Tokens are filled with live numbers: {growth} {inflation} {core} {unemployment} {rate} {short} {long}
+# {debt} {deficit} {approval} {currency} {reserves} {oil} {confidence} {infra} {pop} {workers} {pool}
+# {dependency} {veterans} {gini} {fdi} {trade} {kia} {immigration} {unrest} {rating} {quarter} {year}
+# {nation} {sector} {nationTariff} {rel}. Topics are listed in HeadlineTopics.cs.
+
+GrowthBoom|Economy grows {growth}% as factories run flat out
+GrowthBoom|{quarter} output surges {growth}% - economists warn of overheating
+GrowthBoom|Boom times: growth hits {growth}%, the fastest in years
+GrowthBoom|Order books full across industry as growth tops {growth}%
+GrowthBoom|Treasury revenues swell on {growth}% growth
+GrowthBoom|"Too hot to last?" - analysts eye {growth}% growth warily
+GrowthSteady|Steady as she goes: economy grows {growth}% in {quarter}
+GrowthSteady|Growth holds near trend at {growth}%
+GrowthSteady|Quiet quarter for the economy - {growth}% growth, no surprises
+GrowthSteady|Business surveys point to steady {growth}% expansion
+GrowthSteady|Economists shrug at a solid, unspectacular {growth}%
+GrowthSteady|Middle of the road: {growth}% growth pleases no one and alarms no one
+GrowthSlow|Growth slows to {growth}% as momentum fades
+GrowthSlow|Economy stalls at {growth}% - recession fears murmur
+GrowthSlow|Retailers report a thin {quarter}; growth just {growth}%
+GrowthSlow|"Stagnation" returns to the vocabulary at {growth}% growth
+GrowthSlow|Weak {growth}% print raises pressure for stimulus
+GrowthSlow|Firms delay hiring as growth crawls at {growth}%
+Recession|Economy shrinks {growth}% - recession confirmed
+Recession|Output falls {growth}% as the downturn deepens
+Recession|Recession grips the country; unemployment at {unemployment}%
+Recession|Factories idle, shops shuttered: GDP down {growth}%
+Recession|Treasury receipts collapse as the economy contracts {growth}%
+Recession|"How long?" - the question on every lip as output falls {growth}%
+Recession|Soup kitchens report record queues as the slump drags on
+InflationHot|Prices up {inflation}% on the year - households feel the squeeze
+InflationHot|Inflation at {inflation}%: the weekly shop keeps getting dearer
+InflationHot|Unions demand {inflation}% pay rises to keep pace with prices
+InflationHot|Central bank under pressure as inflation hits {inflation}%
+InflationHot|Savers lose ground: {inflation}% inflation outpaces interest
+InflationHot|Core inflation sticky at {core}% - "this is not transitory"
+InflationTarget|Inflation settles at {inflation}%, close to target
+InflationTarget|Price growth tame at {inflation}% - a quiet win for the central bank
+InflationTarget|Shoppers notice little: prices up just {inflation}%
+InflationTarget|Central bank credibility holds with inflation at {inflation}%
+InflationTarget|Inflation on target at {inflation}% - markets relax
+InflationTarget|Wage talks calm as inflation stays near {inflation}%
+Deflation|Prices fall {inflation}% - deflation fears grow
+Deflation|Shoppers wait for lower prices, and firms wait with them
+Deflation|Deflation warning: prices barely moving at {inflation}%
+Deflation|Debtors squeezed as falling prices swell real debts
+Deflation|Economists fear a deflationary trap as inflation hits {inflation}%
+Deflation|"Cut rates harder," say critics as prices slide
+JobsStrong|Unemployment falls to {unemployment}% - employers scramble for staff
+JobsStrong|Help wanted: jobless rate at {unemployment}%, lowest in years
+JobsStrong|{workers} million in work as unemployment drops to {unemployment}%
+JobsStrong|Tight labour market pushes wages up; unemployment {unemployment}%
+JobsStrong|Firms poach staff as joblessness sinks to {unemployment}%
+JobsStrong|Payroll records broken with {workers} million employed
+JobsWeak|Unemployment climbs to {unemployment}% as layoffs spread
+JobsWeak|Job centres overwhelmed; jobless rate hits {unemployment}%
+JobsWeak|Graduates face the toughest market in years at {unemployment}% unemployment
+JobsWeak|Layoffs mount - unemployment now {unemployment}%
+JobsWeak|Benefit claims surge with joblessness at {unemployment}%
+JobsWeak|"No vacancies": unemployment reaches {unemployment}%
+RatesHigh|Policy rate at {rate}% - mortgage holders brace
+RatesHigh|Borrowing costs bite as the central bank holds at {rate}%
+RatesHigh|Business investment chills under {rate}% rates
+RatesHigh|Homebuyers priced out as rates stay at {rate}%
+RatesHigh|"Higher for longer": central bank keeps {rate}% policy rate
+RatesHigh|Savers finally rewarded as rates top {rate}%
+RatesLow|Rates at {rate}% - cheap money floods the markets
+RatesLow|Housing market heats up on {rate}% borrowing costs
+RatesLow|Savers despair as the policy rate sits at {rate}%
+RatesLow|Easy money: central bank holds rates at {rate}%
+RatesLow|Critics warn {rate}% rates are inflating asset bubbles
+RatesLow|Corporate borrowing surges on near-zero {rate}% rates
+CurveInverted|Yield curve inverts - short rates {short}% above long {long}%
+CurveInverted|Bond market flashes recession signal as the curve inverts
+CurveInverted|Economists split: does the inverted curve still predict recession?
+CurveInverted|Two-year yields top thirty-year yields - "a warning worth heeding"
+CurveInverted|Inverted curve rattles business confidence
+CurveInverted|Traders price in rate cuts as the yield curve turns upside down
+YieldsSpiking|Long bond yields jump to {long}% as investors demand more
+YieldsSpiking|Borrowing costs soar: 30-year yield hits {long}%
+YieldsSpiking|Bond vigilantes return - yields at {long}%
+YieldsSpiking|Treasury faces {long}% on new long debt
+YieldsSpiking|Debt service bill balloons with yields at {long}%
+YieldsSpiking|Pension funds rejoice, Treasury despairs at {long}% yields
+DebtWorry|National debt reaches {debt}% of GDP
+DebtWorry|Debt at {debt}% of output - "the arithmetic is turning"
+DebtWorry|Deficit of {deficit}% keeps the debt pile growing
+DebtWorry|Think tanks warn {debt}% debt leaves no room for the next crisis
+DebtWorry|Interest bill now rivals defence spending as debt tops {debt}%
+DebtWorry|Fiscal hawks demand a plan as debt hits {debt}%
+RatingJunk|Sovereign rating sits at {rating} - junk territory
+RatingJunk|Funds forced to sell after {rating} rating breaches mandates
+RatingJunk|At {rating}, every auction is a test of nerve
+RatingJunk|Rating agencies hold {rating}; "path back is long"
+RatingJunk|Borrowing costs reflect the {rating} rating
+RatingJunk|Investors demand a premium for {rating}-rated debt
+CurrencyStrong|Currency surges to {currency} - exporters howl
+CurrencyStrong|Strong currency makes imports cheap and factories uncompetitive
+CurrencyStrong|Holidaymakers cheer, manufacturers despair at {currency}
+CurrencyStrong|Safe-haven flows push the currency to {currency}
+CurrencyStrong|Export orders slide as the currency climbs to {currency}
+CurrencyStrong|"Too strong for our own good" - industry on the {currency} index
+CurrencyWeak|Currency slides to {currency} - import prices climb
+CurrencyWeak|Weak currency lures foreign factories as index hits {currency}
+CurrencyWeak|Petrol pump prices rise with the currency at {currency}
+CurrencyWeak|Exporters rejoice at a {currency} currency
+CurrencyWeak|Reserves at {reserves}B as the currency weakens
+CurrencyWeak|"Imported inflation" warning as currency falls to {currency}
+OilHigh|Oil prices spike to {oil} on the index
+OilHigh|Drivers hit as oil climbs to {oil}
+OilHigh|Airlines add fuel surcharges with oil at {oil}
+OilHigh|Energy firms post record profits on {oil} oil
+OilHigh|Oil shock ripples through prices; index at {oil}
+OilHigh|Haulage firms warn {oil} oil will be passed on
+OilLow|Oil slumps to {oil} - relief at the pump
+OilLow|Cheap oil at {oil} eases the cost of living
+OilLow|Energy sector cuts jobs as oil sinks to {oil}
+OilLow|Low oil prices give consumers a quiet raise
+OilLow|Petro-states squeezed as the index falls to {oil}
+OilLow|Inflation cools on cheap energy
+ConfidenceHigh|Consumer confidence at {confidence} - shoppers out in force
+ConfidenceHigh|Feel-good factor returns; confidence index {confidence}
+ConfidenceHigh|Car dealers report bumper {quarter} on high confidence
+ConfidenceHigh|Households upbeat: confidence reading {confidence}
+ConfidenceHigh|Retailers raise forecasts as confidence hits {confidence}
+ConfidenceHigh|"People feel richer" - confidence survey at {confidence}
+ConfidenceLow|Consumer confidence sinks to {confidence}
+ConfidenceLow|Households tighten belts; confidence at {confidence}
+ConfidenceLow|Big-ticket purchases shelved as confidence falls to {confidence}
+ConfidenceLow|Gloom deepens: confidence index {confidence}
+ConfidenceLow|Retailers slash prices to lure nervous shoppers
+ConfidenceLow|"Waiting for the other shoe to drop" - confidence at {confidence}
+InfrastructureCrumbling|Infrastructure health falls to {infra}% - potholes and power cuts
+InfrastructureCrumbling|Bridge closures spread as infrastructure hits {infra}%
+InfrastructureCrumbling|Commuters fume at crumbling transit; network at {infra}%
+InfrastructureCrumbling|Engineers warn {infra}% infrastructure is now dragging growth
+InfrastructureCrumbling|Water main failures mount with infrastructure at {infra}%
+InfrastructureCrumbling|"Pay now or pay more later" - infrastructure at {infra}%
+ApprovalHigh|Government approval at {approval}% - a honeymoon that will not last
+ApprovalHigh|Polls show {approval}% backing for the government
+ApprovalHigh|Opposition struggles as approval holds at {approval}%
+ApprovalHigh|Popular government enjoys {approval}% approval
+ApprovalHigh|Voters reward the economy: approval {approval}%
+ApprovalHigh|Pundits ask what could go wrong at {approval}% approval
+ApprovalLow|Approval slumps to {approval}%
+ApprovalLow|Government support at {approval}% - backbenchers restless
+ApprovalLow|Polls grim: just {approval}% approve
+ApprovalLow|"Out of touch" - approval sinks to {approval}%
+ApprovalLow|Opposition surges as government approval hits {approval}%
+ApprovalLow|Cabinet reshuffle rumours as approval falls to {approval}%
+UnrestRising|Protests spread; unrest index at {unrest}
+UnrestRising|Strike ballots multiply as unrest climbs to {unrest}
+UnrestRising|Police on alert as demonstrations grow
+UnrestRising|"The streets are restless" - unrest at {unrest}
+UnrestRising|Unions threaten general strike as anger mounts
+UnrestRising|Riot police deployed in three cities
+PopulationAging|Dependency ratio reaches {dependency} as the population ages
+PopulationAging|Pension bill grows with every retirement
+PopulationAging|Fewer workers per retiree: ratio now {dependency}
+PopulationAging|Care homes full as the population greys
+PopulationAging|Demographers warn: {dependency} dependants per worker and rising
+PopulationAging|Population {pop} million and getting older
+ImmigrationDebate|Immigration at {immigration} million a year sparks debate
+ImmigrationDebate|Farms and services welcome {immigration}M arrivals; unions less so
+ImmigrationDebate|Conservatives demand cuts to {immigration}M annual inflow
+ImmigrationDebate|Workforce grows on immigration of {immigration} million
+ImmigrationDebate|Housing pressure blamed on {immigration}M arrivals
+ImmigrationDebate|Economists credit immigration for growth; voters divided
+TradeTension|{nation} keeps {nationTariff}% tariffs on your exports
+TradeTension|Exporters count the cost of {nation}'s {nationTariff}% tariff
+TradeTension|Trade talks with {nation} stall; tariffs at {nationTariff}%
+TradeTension|Ports quieter as {nation} tariffs bite
+TradeTension|Farmers lose {nation} market to {nationTariff}% duties
+TradeTension|"Nobody wins a trade war" - {nation} tariffs stay at {nationTariff}%
+CreditorWalks|{nation} absent from another bond auction
+CreditorWalks|Treasury looks for new buyers as {nation} stops bidding
+CreditorWalks|Yields drift up without {nation}'s demand
+CreditorWalks|Analysts: {nation} is using your debt as leverage
+CreditorWalks|Auction cover thins with {nation} on the sidelines
+CreditorWalks|"Who buys our bonds now?" - {nation} steps back
+AllyWarm|Relations with {nation} at their warmest in a decade ({rel})
+AllyWarm|{nation} hails "a partnership of equals"
+AllyWarm|Trade delegation returns from {nation} with new orders
+AllyWarm|{nation} and your government pledge closer ties
+AllyWarm|Joint exercises with {nation} signal a firm alliance
+AllyWarm|Investors note deepening links with {nation}
+RivalCold|Relations with {nation} sink to {rel}
+RivalCold|{nation} recalls its ambassador for consultations
+RivalCold|Diplomats warn of a deepening freeze with {nation}
+RivalCold|{nation} state media attacks your economic policy
+RivalCold|Business travel to {nation} dries up as relations sour
+RivalCold|Defence analysts watch {nation} closely
+SectorBoom|{sector} booms as orders pour in
+SectorBoom|Hiring spree in {sector}
+SectorBoom|{sector} shares at record highs
+SectorBoom|Investment floods into {sector}
+SectorBoom|{sector} leads the economy this quarter
+SectorBoom|Wages rise fastest in {sector}
+SectorSlump|{sector} in trouble as orders dry up
+SectorSlump|Layoffs hit {sector}
+SectorSlump|{sector} lobby pleads for government help
+SectorSlump|Plant closures announced across {sector}
+SectorSlump|{sector} profits collapse
+SectorSlump|"Worst year in memory" for {sector}
+AtWar|War casualties reach {kia} as fighting continues
+AtWar|Defence spending surges as the war drags on
+AtWar|Families of the fallen demand answers - {kia} killed
+AtWar|Munitions factories run around the clock
+AtWar|War bond drive launched as the conflict continues
+AtWar|Veterans' groups warn of the long bill to come
+FdiBoom|Foreign firms pour {fdi}B a year into new factories
+FdiBoom|Weak currency draws a wave of foreign investment
+FdiBoom|New plant announced as FDI reaches {fdi}B
+FdiBoom|Overseas manufacturers relocate production here
+FdiBoom|Foreign investment surges; critics fear dependence
+FdiBoom|FDI at {fdi}B lifts manufacturing towns
+MarketCalm|Markets drift in a quiet {quarter}
+MarketCalm|Stocks flat as investors await data
+MarketCalm|Currency steady at {currency}; bonds unchanged
+MarketCalm|Quiet week in the markets - traders take a breather
+MarketCalm|Taxable income pool reaches {pool} trillion
+MarketCalm|Population passes {pop} million
+MarketCalm|Budget deficit runs at {deficit}% of GDP
+MarketCalm|Policy rate held at {rate}% - no change expected
+MarketCalm|{veterans} million veterans honoured at annual ceremony
+MarketCalm|Inequality steady - Gini at {gini}
+MarketCalm|Trade volumes steady at {trade} on the index
+MarketCalm|Central bank minutes reveal a divided committee

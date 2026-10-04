@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_BankingCrisis
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Banking Crisis
+  description: Low capital requirements, high household debt and an asset price collapse.
+    Credit crunch, then investment collapse. Bail them out (hated, fast) or let them
+    fail (popular, depression risk).
+  earlySignalHeadline: Interbank lending rates widen sharply overnight
+  imminentAdvisorLine: Two mid-size lenders are struggling to fund themselves. Capital
+    requirements you set years ago decide how this ends.
+  category: 3
+  warningWeeksBeforeStrike: 3
+  earlySignalWeeks: 2
+  minDurationWeeks: 26
+  maxDurationWeeks: 104
+  escalationRisk: 0.3
+  escalatesTo: {fileID: 11400000, guid: a502d6b8eae4888419c8eb27ddf0066b, type: 2}
+  baseAnnualProbability: 0.07
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions:
+  - metric: 7
+    comparison: 3
+    threshold: 10
+  impacts:
+  - target: 14
+    weeklyMagnitude: -1.2
+    sectorSpecific: 1
+    sector: 1
+    mitigable: 0.5
+  - target: 4
+    weeklyMagnitude: -0.7
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 0
+    weeklyMagnitude: -0.08
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 2
+    weeklyMagnitude: 0.05
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: DisasterLayer
+  markerPrefab: {fileID: 4909757879653459726, guid: dda7e8877a72b414ab4c361c6c967f09, type: 3}

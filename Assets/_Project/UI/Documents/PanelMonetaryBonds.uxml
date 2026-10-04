@@ -1,0 +1,49 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-monetary-bonds" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="MONETARY AND BONDS" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+
+        <ui:ScrollView name="monetary-scroll" class="drawer-body">
+            <ui:Label text="CENTRAL BANK" class="section-heading" />
+            <ui:VisualElement name="monetary-list" class="policy-list" />
+            <ui:VisualElement class="row">
+                <ui:Label text="Forward guidance" class="label" />
+                <ui:Button name="guidance-dovish" text="Dovish" class="tab" />
+                <ui:Button name="guidance-neutral" text="Neutral" class="tab" />
+                <ui:Button name="guidance-hawkish" text="Hawkish" class="tab" />
+            </ui:VisualElement>
+            <ui:Button name="emergency-cut" text="EMERGENCY RATE CUT (once per year)" class="danger-btn" />
+            <ui:Label name="credibility-readout" text="Market confidence --" class="mono" />
+
+            <ui:Label text="YIELD CURVE" class="section-heading" />
+            <ui:VisualElement name="yield-curve-container" class="yield-curve-container" />
+            <ui:Label name="inversion-flag" text="" class="mono flag" />
+
+            <ui:Label text="ISSUANCE" class="section-heading" />
+            <ui:VisualElement name="issuance-list" class="policy-list" />
+            <ui:VisualElement class="row">
+                <ui:Label text="Maturity preference" class="label" />
+                <ui:Button name="maturity-short" text="Short heavy" class="tab" />
+                <ui:Button name="maturity-balanced" text="Balanced" class="tab" />
+                <ui:Button name="maturity-long" text="Long heavy" class="tab" />
+            </ui:VisualElement>
+            <ui:Toggle name="foreign-currency-toggle" label="Issue in foreign currency" class="toggle" />
+            <ui:Label name="currency-mismatch-warning" text="" class="mono warning-text" />
+
+            <ui:Label text="BUYBACK" class="section-heading" />
+            <ui:VisualElement name="buyback-list" class="policy-list" />
+            <ui:Button name="buyback-execute" text="BUY BACK AT THE QUARTER" class="danger-btn" />
+            <ui:Label name="buyback-readout" text="" class="mono caption" />
+
+            <ui:Label text="DEBT PROFILE" class="section-heading" />
+            <ui:VisualElement name="maturity-list" class="policy-list" />
+            <ui:Label text="FOREIGN HOLDERS" class="section-heading" />
+            <ui:VisualElement name="foreign-holder-list" class="policy-list" />
+            <ui:Label name="next-auction" text="Next auction: --" class="mono caption" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

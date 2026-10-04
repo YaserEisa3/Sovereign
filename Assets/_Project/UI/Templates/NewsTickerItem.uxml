@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="ticker-item" class="ticker-item">
+        <ui:Label name="ticker-marker" text="&#9654;" class="ticker-marker" />
+        <ui:Label name="ticker-text" text="Headline" class="ticker-text" />
+    </ui:VisualElement>
+</ui:UXML>

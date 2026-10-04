@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_RegionalWar
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Regional Conflict
+  description: Two nations abroad have gone to war. Not your war - yet. Oil moves,
+    shipping reroutes, and refugees start moving.
+  earlySignalHeadline: Intelligence reports suggest military buildup on a contested
+    border
+  imminentAdvisorLine: Probability of regional conflict is now high. Review defence
+    spending and energy exposure before it starts, not after.
+  category: 0
+  warningWeeksBeforeStrike: 8
+  earlySignalWeeks: 5
+  minDurationWeeks: 26
+  maxDurationWeeks: 130
+  escalationRisk: 0.12
+  escalatesTo: {fileID: 11400000, guid: 660bf04a2bb7b154a8ae8c1b68e8516c, type: 2}
+  baseAnnualProbability: 0.18
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 8
+    weeklyMagnitude: 0.9
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 9
+    weeklyMagnitude: -0.25
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 4
+    weeklyMagnitude: -0.15
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: WarZoneLayer
+  markerPrefab: {fileID: 8701367669811164619, guid: 784dbff47d9f3d549822b1d4e5a0165e, type: 3}

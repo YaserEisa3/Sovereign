@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="sector-row" class="sector-row">
+        <ui:VisualElement name="sector-colour" class="sector-colour" />
+        <ui:Label name="sector-name" text="Sector" class="sector-name" />
+        <ui:VisualElement name="sector-health-track" class="health-track">
+            <ui:VisualElement name="sector-health-fill" class="health-fill" />
+        </ui:VisualElement>
+        <ui:Label name="sector-headcount" text="--" class="mono" />
+        <ui:Label name="sector-wage" text="$--" class="mono" />
+        <ui:Label name="sector-wage-bill" text="$--B" class="mono strong" />
+        <ui:Label name="sector-trend" text="" class="mono" />
+    </ui:VisualElement>
+</ui:UXML>

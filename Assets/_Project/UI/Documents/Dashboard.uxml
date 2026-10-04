@@ -1,0 +1,202 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <Style src="../Styles/Templates.uss" />
+    <!-- Phase 0. The KPI cards, approval bars and ticker items below are authored
+         placeholders carrying the example values from GDD 18, so the shell reads as
+         a dashboard. Phase 4 clears these containers and fills them from the
+         matching .uxml templates instead. -->
+    <ui:VisualElement name="dashboard-root" class="root">
+
+        <ui:VisualElement name="header" class="header">
+            <ui:Label name="game-title" text="SOVEREIGN" class="title" />
+            <ui:Label name="date-label" text="Q1 2027" class="mono date" />
+            <ui:VisualElement name="speed-controls" class="row">
+                <ui:Button name="speed-pause" text="II" class="speed-btn" />
+                <ui:Button name="speed-1x" text="1x" class="speed-btn" />
+                <ui:Button name="speed-2x" text="2x" class="speed-btn" />
+                <ui:Button name="speed-4x" text="4x" class="speed-btn" />
+            </ui:VisualElement>
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="save-game" text="SAVE" class="speed-btn" />
+            <ui:Button name="load-game" text="LOAD" class="speed-btn" />
+            <ui:Button name="alert-bell" class="alert-bell">
+                <ui:Label text="ALERTS" class="alert-word" />
+                <ui:Label name="alert-count" text="0" class="alert-count" />
+            </ui:Button>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="body" class="body">
+
+            <ui:VisualElement name="map-column" class="map-column">
+                <ui:Label text="WORLD MAP" class="panel-heading" />
+                <ui:VisualElement name="map-viewport" class="map-viewport" />
+                <ui:VisualElement name="map-controls" class="row map-controls">
+                    <ui:Button name="map-zoom-in" text="+" class="map-btn" />
+                    <ui:Button name="map-zoom-out" text="&#8722;" class="map-btn" />
+                    <ui:Button name="map-reset" text="WORLD" class="map-btn" />
+                    <ui:Label name="map-status" text="6 trade partners - 0 active conflicts" class="caption" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="data-column" class="data-column">
+
+                <ui:Label name="goal-line" text="" class="mono caption" />
+                <ui:VisualElement name="kpi-row" class="kpi-row">
+                    <ui:VisualElement class="kpi-card">
+                        <ui:Label text="REAL GDP" class="kpi-label" />
+                        <ui:Label text="+2.1%" class="kpi-value mono" />
+                        <ui:Label text="+0.2 qoq" class="kpi-delta mono" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kpi-card">
+                        <ui:Label text="CPI" class="kpi-label" />
+                        <ui:Label text="3.4%" class="kpi-value mono" />
+                        <ui:Label text="core 2.9%" class="kpi-delta mono warning-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kpi-card">
+                        <ui:Label text="UNEMPLOYMENT" class="kpi-label" />
+                        <ui:Label text="4.8%" class="kpi-value mono" />
+                        <ui:Label text="part. 63%" class="kpi-delta mono" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kpi-card">
+                        <ui:Label text="DEBT / GDP" class="kpi-label" />
+                        <ui:Label text="112%" class="kpi-value mono" />
+                        <ui:Label text="deficit 4.1%" class="kpi-delta mono warning-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kpi-card">
+                        <ui:Label text="CURRENCY" class="kpi-label" />
+                        <ui:Label text="100.0" class="kpi-value mono" />
+                        <ui:Label text="reserves $410B" class="kpi-delta mono" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="kpi-card">
+                        <ui:Label text="INFRASTRUCTURE" class="kpi-label" />
+                        <ui:Label text="82%" class="kpi-value mono" />
+                        <ui:Label text="drag below 70" class="kpi-delta mono" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement name="chart-panel" class="panel">
+                    <ui:VisualElement name="chart-tabs" class="row wrap">
+                        <ui:Button name="view-toggle" text="ALL METERS" class="tab view-toggle" />
+                        <ui:Button name="tab-gdp" text="GDP" class="tab selected" />
+                        <ui:Button name="tab-inflation" text="Inflation" class="tab" />
+                        <ui:Button name="tab-unemployment" text="Unemp" class="tab" />
+                        <ui:Button name="tab-debt" text="Debt" class="tab" />
+                        <ui:Button name="tab-trade" text="Trade" class="tab" />
+                        <ui:Button name="tab-fx" text="FX" class="tab" />
+                        <ui:Button name="tab-approval" text="Approval" class="tab" />
+                        <ui:Button name="tab-sectors" text="Sectors" class="tab" />
+                        <ui:Button name="tab-population" text="Population" class="tab" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="chart-container" class="chart-container">
+                        <ui:Label name="chart-empty-note" text="LineChartComponent draws here in Phase 4" class="empty-note" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="meter-container" class="chart-container meter-container" />
+                    <ui:VisualElement name="industry-container" class="chart-container breakdown-list" />
+                    <ui:Label name="chart-readout" text="10-year series - no simulation running" class="mono caption" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="revenue-panel" class="panel">
+                    <ui:Label text="WHERE THE MONEY COMES FROM" class="panel-heading" />
+                    <ui:VisualElement name="revenue-breakdown" class="breakdown-list" />
+                    <ui:Label name="breakdown-note" text="" class="mono caption" />
+
+                    <ui:Label text="WHERE IT GOES" class="panel-heading" />
+                    <ui:VisualElement name="spending-breakdown" class="breakdown-list" />
+                    <ui:Label name="spending-note" text="" class="mono caption" />
+                    <ui:VisualElement class="row">
+                        <ui:Label name="inversion-flag" text="" class="mono flag" />
+                        <ui:Label name="foreign-holdings" text="Foreign holdings 28%" class="mono" />
+                        <ui:Label name="credit-rating" text="Rating AA" class="mono" />
+                        <ui:Label name="market-confidence" text="Market confidence 75" class="mono" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement name="approval-panel" class="panel">
+                    <ui:Label text="APPROVAL" class="panel-heading" />
+                    <ui:VisualElement name="class-approval-list" class="approval-list">
+                        <ui:VisualElement class="approval-bar">
+                            <ui:Label text="Poor (30%)" class="approval-name" />
+                            <ui:VisualElement class="approval-track">
+                                <ui:VisualElement class="approval-fill fill-61" />
+                            </ui:VisualElement>
+                            <ui:Label text="61%" class="approval-value mono" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="approval-bar">
+                            <ui:Label text="Middle (50%)" class="approval-name" />
+                            <ui:VisualElement class="approval-track">
+                                <ui:VisualElement class="approval-fill fill-74" />
+                            </ui:VisualElement>
+                            <ui:Label text="74%" class="approval-value mono" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="approval-bar">
+                            <ui:Label text="Wealthy (20%)" class="approval-name" />
+                            <ui:VisualElement class="approval-track">
+                                <ui:VisualElement class="approval-fill fill-52" />
+                            </ui:VisualElement>
+                            <ui:Label text="52%" class="approval-value mono" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="faction-approval-list" class="approval-list">
+                        <ui:VisualElement class="approval-bar">
+                            <ui:Label text="Progressive Left" class="approval-name" />
+                            <ui:VisualElement class="approval-track">
+                                <ui:VisualElement class="approval-fill faction fill-58" />
+                            </ui:VisualElement>
+                            <ui:Label text="58%" class="approval-value mono" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="approval-bar">
+                            <ui:Label text="Centrist" class="approval-name" />
+                            <ui:VisualElement class="approval-track">
+                                <ui:VisualElement class="approval-fill faction fill-72" />
+                            </ui:VisualElement>
+                            <ui:Label text="72%" class="approval-value mono" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="approval-bar">
+                            <ui:Label text="Conservative Right" class="approval-name" />
+                            <ui:VisualElement class="approval-track">
+                                <ui:VisualElement class="approval-fill faction fill-49" />
+                            </ui:VisualElement>
+                            <ui:Label text="49%" class="approval-value mono" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:Label name="overall-approval" text="Overall 66%" class="mono strong" />
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="drawer-bar" class="drawer-bar">
+            <ui:Button name="open-fiscal" text="Fiscal" class="drawer-btn" />
+            <ui:Button name="open-monetary" text="Monetary and Bonds" class="drawer-btn" />
+            <ui:Button name="open-trade" text="Trade and Currency" class="drawer-btn" />
+            <ui:Button name="open-regulatory" text="Regulatory" class="drawer-btn" />
+            <ui:Button name="open-population" text="Population" class="drawer-btn" />
+            <ui:Button name="open-events" text="World Events" class="drawer-btn" />
+            <ui:Button name="open-advisor" text="Advisor" class="drawer-btn" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="meter-tooltip" class="meter-tooltip" picking-mode="Ignore">
+            <ui:Label name="tooltip-title" text="" class="tooltip-title" />
+            <ui:Label name="tooltip-body" text="" class="tooltip-body" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="news-ticker" class="news-ticker">
+            <ui:Label text="NEWS" class="ticker-label" />
+            <ui:VisualElement name="ticker-track" class="ticker-track">
+                <ui:VisualElement class="ticker-item">
+                    <ui:Label text="&#9654;" class="ticker-marker" />
+                    <ui:Label text="Treasury schedules $180B auction for next quarter" class="ticker-text" />
+                </ui:VisualElement>
+                <ui:VisualElement class="ticker-item">
+                    <ui:Label text="&#9654;" class="ticker-marker" />
+                    <ui:Label text="Sino-Pacific holds 9% of outstanding sovereign debt" class="ticker-text" />
+                </ui:VisualElement>
+                <ui:VisualElement class="ticker-item">
+                    <ui:Label text="&#9654;" class="ticker-marker" />
+                    <ui:Label text="Infrastructure health at 82% - degrading 3.5 points a year unfunded" class="ticker-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

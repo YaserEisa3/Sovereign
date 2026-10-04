@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf2bae510f194746813e94b1fcff022, type: 3}
+  m_Name: SO_Event_RefugeeInflow
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.EventDefinition
+  title: Refugee Inflow
+  description: Conflict abroad sends people across your border. Labour force up,
+    social spending up, and the Conservative faction unhappy about both.
+  earlySignalHeadline: Displacement rises sharply along a conflict border
+  imminentAdvisorLine: Arrivals are accelerating. Housing and food assistance will
+    absorb this whether or not you fund them.
+  category: 4
+  warningWeeksBeforeStrike: 4
+  earlySignalWeeks: 2
+  minDurationWeeks: 26
+  maxDurationWeeks: 104
+  escalationRisk: 0
+  escalatesTo: {fileID: 0}
+  baseAnnualProbability: 0.14
+  earliestYear: 0
+  uniqueWhileActive: 1
+  conditions: []
+  impacts:
+  - target: 13
+    weeklyMagnitude: 0.5
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  - target: 17
+    weeklyMagnitude: -0.08
+    sectorSpecific: 0
+    sector: 0
+    mitigable: 0
+  overlayLayerName: UnrestLayer
+  markerPrefab: {fileID: 2864133672730848759, guid: be97884bcb90fe84d8812c4c356f739e, type: 3}

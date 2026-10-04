@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96d75e283d02c5458495da78c04ab07, type: 3}
+  m_Name: SO_Scenario_Peacetime
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.ScenarioDefinition
+  displayName: Steady State
+  summary: 'The GDD 18 dashboard position: a large, indebted, peaceful economy. The
+    economy tests measure the model against this opening.'
+  conditions:
+    nominalGdpBillions: 27000
+    potentialGrowthRate: 2.1
+    worldGrowthRate: 2.4
+    unemployment: 4.8
+    inflation: 3.4
+    centralBankRate: 4
+    debtToGdp: 1.12
+    averageCoupon: 3.1
+    foreignHoldingShare: 0.28
+    maturingWithinOneYear: 0.22
+    maturingOneToFive: 0.43
+    fxReservesBillions: 410
+    randomSeed: 0
+    openingRevenueShareOfGdp: 0.18
+    spendingScale: 1
+    outputGapPercent: 0
+    productivityScar: 0
+    infrastructureHealth: -1
+    hostileNation: 
+    hostileRelationship: -60
+    hostileSanctions: 0
+    victoryYears: 0
+    victoryTitle: THE COUNTRY IS WHOLE AGAIN
+    victorySummary: 
+    victoryDebtToGdp: 0.6
+    victoryUnemployment: 5.5
+    victoryInfrastructure: 75
+    victoryRealWage: 110
+    victoryApproval: 50
+    briefing: []

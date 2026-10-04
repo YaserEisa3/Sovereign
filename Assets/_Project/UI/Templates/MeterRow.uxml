@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Templates.uss" />
+    <ui:VisualElement name="meter-row" class="meter-column">
+        <ui:Label name="meter-value" text="--" class="meter-value mono" />
+        <ui:VisualElement name="meter-track" class="meter-track">
+            <ui:VisualElement name="meter-fill" class="meter-fill" />
+            <ui:VisualElement name="meter-target" class="meter-target" />
+        </ui:VisualElement>
+        <ui:Label name="meter-name" text="Indicator" class="meter-name" />
+        <ui:Label name="meter-note" text="" class="meter-note mono" />
+    </ui:VisualElement>
+</ui:UXML>

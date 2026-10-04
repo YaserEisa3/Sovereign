@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373570157c3a5d548b878e43607f8e67, type: 3}
+  m_Name: SO_Sector_Technology
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.SectorDefinition
+  displayName: Technology
+  sectorId: 0
+  chartColor: {r: 0.30980393, g: 0.7647059, b: 0.96862745, a: 1}
+  gdpShare: 0.18
+  employmentShare: 0.08
+  baseAverageWage: 115000
+  exportShare: 0.35
+  currencyExposure: 0
+  foreignCompetitionExposure: 0.3
+  corporateTaxSensitivity: 0.45
+  capitalGainsTaxSensitivity: 0.55
+  interestRateSensitivity: 0.55
+  regulationSensitivity: 0.35
+  subsidySensitivity: 0.3
+  consumerConfidenceSensitivity: 0.2
+  tariffSensitivity: 0.25
+  carbonTaxSensitivity: 0.05
+  governmentSpendingSensitivity: 0
+  wageStickiness: 0.35
+  unemploymentWageSensitivity: 0.3
+  immigrationWageSuppression: 0.25

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96d75e283d02c5458495da78c04ab07, type: 3}
+  m_Name: SO_Scenario_Aftermath
+  m_EditorClassIdentifier: Assembly-CSharp::Sovereign.Data.ScenarioDefinition
+  displayName: The Aftermath
+  summary: The war ended four months ago. A third of the industrial base is rubble,
+    the currency is barely trusted, and the reconstruction loan - the largest any
+    government has ever signed - has just cleared. You have one chance to spend it
+    well.
+  conditions:
+    nominalGdpBillions: 18400
+    potentialGrowthRate: 3.6
+    worldGrowthRate: 2.4
+    unemployment: 15.5
+    inflation: 9.4
+    centralBankRate: 8
+    debtToGdp: 1.35
+    averageCoupon: 4.2
+    foreignHoldingShare: 0.54
+    maturingWithinOneYear: 0.08
+    maturingOneToFive: 0.27
+    fxReservesBillions: 95
+    randomSeed: 0
+    openingRevenueShareOfGdp: 0.17
+    spendingScale: 0.54
+    outputGapPercent: -14
+    productivityScar: 0.5
+    infrastructureHealth: 29
+    hostileNation: Northern Alliance
+    hostileRelationship: -68
+    hostileSanctions: 1
+    victoryYears: 2
+    victoryTitle: THE COUNTRY IS WHOLE AGAIN
+    victorySummary: Debt under 60% of GDP, infrastructure rebuilt, people in work
+      and wages worth more than before the war - and it has held.
+    victoryDebtToGdp: 0.6
+    victoryUnemployment: 5.5
+    victoryInfrastructure: 75
+    victoryRealWage: 110
+    victoryApproval: 50
+    briefing:
+    - THE WAR IS OVER. Reconstruction begins under a government nobody elected in
+      peacetime.
+    - 'The reconstruction loan has cleared: debt now stands at 135% of a shrunken
+      GDP, most of it owed abroad.'
+    - Assessors put infrastructure at 29 out of 100. Roads, grid and rail need spending
+      before anything else can grow.
+    - The Northern Alliance has not lifted its sanctions and is not buying your bonds.
+    - 'ADVICE: infrastructure is the cheapest growth you can buy, and money at 8%
+      is strangling the recovery. Raise taxes a little, cut rates, and spend on the
+      grid - the bond market pays you for a debt that is FALLING, long before it
+      is low.'
