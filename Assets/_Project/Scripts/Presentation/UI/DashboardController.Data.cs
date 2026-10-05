@@ -25,9 +25,15 @@ namespace Sovereign.Presentation
             SetCard(3, "DEBT / GDP", (state.DebtToGdp * 100f).ToString("0") + "%",
                     "balance " + state.budgetBalancePercentGdp.ToString("+0.0;-0.0") + "%",
                     state.DebtToGdp < 1.2f);
-            SetCard(4, "CURRENCY", state.currency.exchangeRateIndex.ToString("0.0"),
-                    "reserves $" + state.currency.fxReservesBillions.ToString("0") + "B",
-                    state.currency.exchangeRateIndex >= 90f);
+            // How many people there are, and how many of them are working. The dependency
+            // ratio is the number under it because that is the one the budget feels:
+            // pensions and schools sit on whoever is working, and it rises for thirty
+            // years whatever the player does. The currency index had this slot and moved
+            // for reasons a player can see on the FX meter and the trade drawer instead.
+            SetCard(4, "POPULATION", state.population.Total.ToString("#,0") + "M",
+                    state.population.laborForce.ToString("#,0") + "M working, "
+                    + state.population.DependencyRatio.ToString("0.00") + " depend",
+                    state.population.DependencyRatio <= 0.70f);
             SetCard(5, "INFRASTRUCTURE", state.infrastructureHealth.ToString("0") + "%",
                     state.infrastructureHealth < 70f ? "dragging on growth" : "above the drag line",
                     state.infrastructureHealth >= 70f);

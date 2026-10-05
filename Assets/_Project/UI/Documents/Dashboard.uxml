@@ -63,9 +63,9 @@
                         <ui:Label text="deficit 4.1%" class="kpi-delta mono warning-text" />
                     </ui:VisualElement>
                     <ui:VisualElement class="kpi-card">
-                        <ui:Label text="CURRENCY" class="kpi-label" />
-                        <ui:Label text="100.0" class="kpi-value mono" />
-                        <ui:Label text="reserves $410B" class="kpi-delta mono" />
+                        <ui:Label text="POPULATION" class="kpi-label" />
+                        <ui:Label text="336M" class="kpi-value mono" />
+                        <ui:Label text="160M working, 0.64 depend" class="kpi-delta mono" />
                     </ui:VisualElement>
                     <ui:VisualElement class="kpi-card">
                         <ui:Label text="INFRASTRUCTURE" class="kpi-label" />
