@@ -30,6 +30,11 @@ namespace Sovereign.Core
                 target += (state.consumerConfidence - 50f) * c.consumerConfidenceSensitivity * 0.3f;
                 target += sector.subsidyLevel * c.subsidySensitivity * 0.08f;
 
+                // The lines that back this industry by name - farm subsidies for farming,
+                // research and higher education for technology, personnel and equipment
+                // for the forces. Authored since Phase 1 and read by nothing until now.
+                target += SpendingSectorEffect(state, policy, c.id);
+
                 // GDD 10: a weak currency helps the exporters and punishes everyone who
                 // buys abroad. One number, opposite signs.
                 target += depreciation * c.currencyExposure * 35f;

@@ -1162,3 +1162,45 @@ compounds underneath it, so a decade held at 9% digs a far worse hole than it us
 actually guard, finiteness and deflation that does not accelerate away, still passes.
 
 Verified: Phase 0 115/115, economy 186/186, play-mode smoke passes.
+
+## Spending that does something
+
+Every spending line carried a list of effects - what it pushes on and how hard, per
+$100B - authored in Phase 1 and read by NOTHING. `SpendingEffect` was defined in the
+data layer, populated on thirty lines, and consumed nowhere in the simulation. So
+research, the space programme and the farm and energy subsidies were pure cost: the
+player paid for them and the economy never noticed. The military bought approval and
+nothing else.
+
+The effects now cross into the core. `SpendLineConfig` carries them, the simulator
+reads them, and they are measured against what each line ran at IN WEEK ONE rather than
+against the authored default - so a scenario that starts on 54% of a normal budget is
+not punished for it, and only the player's own decisions count.
+
+Two channels: growth, which becomes a "Public investment" row on the driver table, and
+sector health, so farm subsidies reach farming and research reaches technology. The
+population targets are deliberately NOT wired, because births and deaths already come
+through PopulationModel's own health-spending path and copying them here would charge
+the same money twice.
+
+**And the military hires now**, which was the request that uncovered all this. Sector
+health could not express it: that only shuffles workers BETWEEN industries, never
+changes how many there are. Personnel and defence research at 0.15 growth points per
+$100B, equipment 0.12, homeland 0.08, intelligence 0.05 - and operations 0.03, because
+that money is spent abroad and burned. All below civilian research at 0.18 and schooling
+at 0.25, which is the trade-off rather than a flat refusal: a soldier and a tank are
+paid for and consumed, where a road or a graduate keeps paying for decades.
+
+Balance improved on every measure without a single coefficient being touched:
+
+| | before | after |
+|---|---|---|
+| survived | 3 of 6 | **4 of 6** |
+| won | 0 of 6 | **1 of 6** |
+| unemployment | 8.6-13.2% | **4.3-11.9%** |
+| economy tests | 186/186 | 186/186 |
+
+Which is its own lesson. Four sessions of tuning coefficients moved the game less than
+connecting data that was already written.
+
+Verified: Phase 0 115/115, economy 186/186, play-mode smoke passes.

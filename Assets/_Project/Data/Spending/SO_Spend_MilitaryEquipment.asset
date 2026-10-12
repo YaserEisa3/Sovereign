@@ -32,6 +32,10 @@ MonoBehaviour:
     strengthPer100B: 1
     sectorSpecific: 1
     sector: 2
+  - target: 0
+    strengthPer100B: 0.12
+    sectorSpecific: 0
+    sector: 0
   poorApproval: 0
   middleApproval: 0
   wealthyApproval: 0

@@ -78,7 +78,12 @@ namespace Sovereign.Core
             board.growth.Clear();
 
             float trend = Potential(state);
-            float beforeInfrastructure = trend + recovery + rateChannel
+            // What the budget BUYS - roads aside, which have their own gauge. Research,
+            // schools, the military and the subsidised industries, all measured against
+            // the opening budget so only the player's own changes count.
+            float publicInvestment = SpendingGrowthEffect(state, policy);
+
+            float beforeInfrastructure = trend + recovery + rateChannel + publicInvestment
                                          + consumption * m.consumptionShare
                                          + investment * m.investmentShare
                                          + government + netExports * 0.5f;
@@ -103,6 +108,10 @@ namespace Sovereign.Core
                 government > 0.01f ? "you are spending more than before"
                 : government < -0.01f ? "your cuts are biting"
                 : "the budget has settled - only CHANGES move growth");
+            DriverBoard.Add(board.growth, "Public investment", publicInvestment,
+                publicInvestment > 0.01f ? "research, schools and industry you have backed"
+                : publicInvestment < -0.01f ? "research and industry you have cut"
+                : "nothing bought beyond the opening budget");
             DriverBoard.Add(board.growth, "Trade", netExports * 0.5f,
                 netExports >= 0f ? "exports are beating imports" : "imports are beating exports");
             DriverBoard.Add(board.growth, "Infrastructure",

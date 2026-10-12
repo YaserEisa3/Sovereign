@@ -94,6 +94,7 @@ namespace Sovereign.Core
             // Pensions and old-age health are measured against this, so what the country
             // promised its retired on day one is what it goes on paying for.
             state.baselineRetired = state.population.retired;
+            CaptureOpeningSpending(state, policy);
             state.Series("realRate").Record(state.RealInterestRate);
             state.RecordWeek();
         }

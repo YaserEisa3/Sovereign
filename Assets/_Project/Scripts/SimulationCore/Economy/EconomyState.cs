@@ -70,6 +70,10 @@ namespace Sovereign.Core
         /// same promise.</summary>
         public float baselineRetired = -1f;
 
+        /// <summary>What each spending line ran at in week one. Effects are measured
+        /// against this, so the opening budget is neutral and only changes count.</summary>
+        public readonly Dictionary<string, float> openingSpendingByLine = new Dictionary<string, float>();
+
         /// <summary>GDD 4: OnRevolt leads to OnGameOver. Nothing else ends a run yet.</summary>
         public bool IsGameOver { get { return approval.revolt; } }
 

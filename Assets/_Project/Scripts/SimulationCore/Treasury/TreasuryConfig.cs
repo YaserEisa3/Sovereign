@@ -18,6 +18,20 @@ namespace Sovereign.Core
         public float maximumValue;
     }
 
+    /// <summary>
+    /// What a spending line does beyond costing money, per $100B above what the
+    /// country was spending on it when the run opened. Measured against the OPENING
+    /// rather than the authored default, so a scenario that starts lean is not
+    /// punished for it and only the player's own changes count.
+    /// </summary>
+    public struct SpendEffectConfig
+    {
+        public ImpactTarget target;
+        public float strengthPer100B;
+        public bool sectorSpecific;
+        public SectorId sector;
+    }
+
     /// <summary>One spending line, copied from a SpendingCategoryDefinition at boot.</summary>
     public struct SpendLineConfig
     {
@@ -31,6 +45,8 @@ namespace Sovereign.Core
         /// <summary>Grows with the retired population - a bill, not a budget line.</summary>
         public bool scalesWithRetired;
         public int lagQuarters;
+        /// <summary>What this line buys besides its own existence. Empty for most.</summary>
+        public SpendEffectConfig[] effects;
     }
 
     /// <summary>

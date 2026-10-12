@@ -49,7 +49,8 @@ namespace Sovereign.Presentation
                     isAutomaticStabiliser = s.isAutomaticStabiliser,
                     stabiliserSensitivity = s.stabiliserSensitivity,
                     scalesWithRetired = s.scalesWithRetired,
-                    lagQuarters = s.lagQuarters
+                    lagQuarters = s.lagQuarters,
+                    effects = CopyEffects(s)
                 };
             }
 
@@ -70,5 +71,33 @@ namespace Sovereign.Presentation
 
             return treasury;
         }
+        /// <summary>
+        /// The per-line effects, copied into the core's own struct. These were authored
+        /// on thirty lines and read by nothing for months: research, the space programme
+        /// and the farm and energy subsidies cost money and did literally nothing.
+        /// Population targets are deliberately NOT copied - births and deaths already
+        /// come from PopulationModel's own health-spending path, and wiring them here
+        /// too would count the same money twice.
+        /// </summary>
+        static SpendEffectConfig[] CopyEffects(SpendingCategoryDefinition s)
+        {
+            if (s.effects == null || s.effects.Count == 0) return System.Array.Empty<SpendEffectConfig>();
+
+            System.Collections.Generic.List<SpendEffectConfig> kept =
+                new System.Collections.Generic.List<SpendEffectConfig>();
+            foreach (SpendingEffect e in s.effects)
+            {
+                if (e.target == ImpactTarget.PopulationDeathRate || e.target == ImpactTarget.PopulationBirthRate) continue;
+                kept.Add(new SpendEffectConfig
+                {
+                    target = e.target,
+                    strengthPer100B = e.strengthPer100B,
+                    sectorSpecific = e.sectorSpecific,
+                    sector = e.sector
+                });
+            }
+            return kept.ToArray();
+        }
+
     }
 }
