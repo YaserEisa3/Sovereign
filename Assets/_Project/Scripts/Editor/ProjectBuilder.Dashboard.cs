@@ -65,6 +65,16 @@ namespace Sovereign.EditorTools
                 steam.ApplyModifiedPropertiesWithoutUndo();
             }
 
+            // The developer run log. Editor and development builds only - the class is
+            // compiled out of a release, so this rides on the same manager object as
+            // saving rather than needing one of its own.
+            if (saveObject != null)
+            {
+                SerializedObject logger = new SerializedObject(saveObject.gameObject.AddComponent<RunLogger>());
+                logger.FindProperty("runner").objectReferenceValue = runner;
+                logger.ApplyModifiedPropertiesWithoutUndo();
+            }
+
             serialised.ApplyModifiedPropertiesWithoutUndo();
 
             // The popup starts inactive, so whatever listens for the ending has to live
