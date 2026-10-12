@@ -93,7 +93,7 @@ namespace Sovereign.Presentation
         void SetDriverView(bool on)
         {
             _driverView = on;
-            if (on) { SetMeterView(false); SetIndustryView(false); }
+            if (on) { SetMeterView(false); SetIndustryView(false); SetProductionView(false); }
             if (_driverContainer != null)
                 _driverContainer.style.display = on ? DisplayStyle.Flex : DisplayStyle.None;
 

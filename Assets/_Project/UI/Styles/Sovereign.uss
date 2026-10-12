@@ -285,3 +285,46 @@
     flex-grow: 1; height: 15px; -unity-text-align: middle-left;
     color: var(--text-muted); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
 }
+
+/* GDD 19. What the country makes. A ScrollView because sixteen products do not fit
+   the chart's 200px box and cutting the list would hide exactly the shortage the
+   player needs to see. Fixed column widths, like every other table here - a long
+   product name must not push its own numbers out of line with the rows above. */
+.production-table { height: 200px; flex-direction: column; }
+
+.product-row { flex-direction: row; align-items: center; height: 15px; flex-shrink: 0; }
+.product-name {
+    width: 132px; min-width: 132px; max-width: 132px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-left;
+    color: var(--text-dim); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
+    padding-left: 6px;
+}
+.product-made {
+    width: 118px; min-width: 118px; max-width: 118px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-right;
+    color: var(--text-muted); font-size: 10px; padding-right: 10px;
+}
+.product-balance {
+    width: 72px; min-width: 72px; max-width: 72px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-right;
+    font-size: 10px; padding-right: 10px;
+}
+.product-price {
+    width: 46px; min-width: 46px; max-width: 46px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-right; font-size: 10px; padding-right: 8px;
+}
+.product-note {
+    flex-grow: 1; height: 15px; -unity-text-align: middle-left;
+    color: var(--text-muted); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
+}
+
+/* Short is the one that matters, so it is the one that shouts. */
+.product-balance.short, .product-price.short { color: var(--danger); }
+.product-balance.spare, .product-price.spare { color: var(--growth); }
+.product-balance.level, .product-price.level { color: var(--text-muted); }
+
+.product-head { flex-direction: row; align-items: center; height: 17px; flex-shrink: 0; }
+.product-head-label {
+    height: 17px; -unity-text-align: middle-left; color: var(--text);
+    font-size: 10px; -unity-font-style: bold; padding-left: 6px;
+}

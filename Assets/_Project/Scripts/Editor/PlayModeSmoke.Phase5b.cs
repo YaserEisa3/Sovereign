@@ -338,6 +338,32 @@ namespace Sovereign.EditorTools
                     if (!Require(growthNote.Contains("heading to"),
                                  "the growth headline does not say where growth is heading: '" + growthNote + "'")) return;
 
+                    // The production table: sixteen products the player can finally see.
+                    // It ran for a whole session invisible, so the test insists it is
+                    // both open AND full - an empty table reads exactly like a working one.
+                    if (!Press(dash.Q<Button>("production-toggle"), "the PRODUCTION toggle")) return;
+                    VisualElement made = dash.Q<VisualElement>("production-container");
+                    if (!Require(made != null && made.style.display != DisplayStyle.None,
+                                 "the production table did not open")) return;
+
+                    List<Label> productNames = made.Query<Label>(className: "product-name").ToList();
+                    List<Label> productMade = made.Query<Label>(className: "product-made").ToList();
+                    int priced = 0;
+                    string worst = "";
+                    for (int i = 0; i < productNames.Count && i < productMade.Count; i++)
+                    {
+                        if (productNames[i].text.Length < 3 || productMade[i].text.Length < 6) continue;
+                        if (priced == 0) worst = productNames[i].text + " " + productMade[i].text;
+                        priced++;
+                    }
+                    Label heading = made.Q<Label>(className: "product-head-label");
+                    Debug.Log("PlayModeSmoke: production shows " + priced + " products, scarcest is "
+                              + worst + "; heading reads '" + (heading == null ? "" : heading.text) + "'");
+                    if (!Require(priced >= 12,
+                                 "the production table filled " + priced + " rows of sixteen")) return;
+                    if (!Require(heading != null && heading.text.Length > 10,
+                                 "the production table has no heading saying how the country is doing")) return;
+
                     // And a series tab must still take you back to the chart.
                     if (!Press(dash.Q<Button>("tab-gdp"), "the GDP tab")) return;
                     if (!Require(dash.Q<VisualElement>("chart-container").style.display != DisplayStyle.None,

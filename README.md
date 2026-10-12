@@ -1326,3 +1326,35 @@ surplus with no domestic cost at all.
 
 Verified: Phase 0 115/115, economy 193/193, play-mode smoke passes, survival 4 of 6 with
 one win at 3.7% unemployment.
+
+### Seeing it
+
+The production model ran for a whole session with nowhere to look at it: sixteen
+products grown, mined and built every week, shortages pushing on inflation, and the only
+view of any of it a table printed by a test. A number that moves the game and cannot be
+looked at is a number the player is entitled to distrust.
+
+A PRODUCTION tab now sits beside WHAT'S MOVING, sorted scarcest first - what a country
+is short of is the thing worth acting on, and nobody should have to read sixteen rows
+hunting for the one in red. Each row says what is made against what is needed, the
+balance, the domestic price, and which kind of problem it is: "spare to sell", "short -
+must be bought abroad", or "SHORT - and people feel this one" for the products whose
+scarcity reaches the cost of living. The heading sums the country up in a line.
+
+It is a ScrollView, because sixteen rows do not fit the chart's 200px box and truncating
+the list would hide exactly the shortage the player needs to see.
+
+The first build of it filled ZERO rows while looking perfectly correct, because the row
+count was read from the live model and this runs before the simulator boots. Counting
+from the enum fixes it. That is the fourth view this session to render beautifully while
+containing nothing - the breakdown geometry checks, the driver table, the map hover, and
+this - and the only reason none of them shipped is that the smoke test counts populated
+rows rather than asserting a panel exists.
+
+What it says at the opening is bleak and correct: **15 of 16 products short**, the
+scarcest being defence services at $74B of the $168B the country needs. A nation four
+months out of a war cannot supply itself with anything, and every sector repaired from
+here shows up on this screen.
+
+Verified: Phase 0 115/115, economy 193/193, play-mode smoke passes with 16 products on
+screen.

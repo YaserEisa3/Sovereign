@@ -69,7 +69,7 @@ namespace Sovereign.Presentation
             {
                 // One tab shows the industries themselves rather than a series.
                 // Any series tab leaves the driver table for the chart it names.
-                if (elementName != "tab-sectors") SetDriverView(false);
+                if (elementName != "tab-sectors") { SetDriverView(false); SetProductionView(false); }
                 SetIndustryView(elementName == "tab-sectors");
                 _chartSeries = series;
                 if (_chart != null) _chart.threshold = threshold;
