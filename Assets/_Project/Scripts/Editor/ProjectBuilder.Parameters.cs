@@ -106,8 +106,16 @@ namespace Sovereign.EditorTools
                 p.veteranMortality = 0.025f;
                 p.militaryShareOfGovernment = 0.09f;
                 p.childCreditBirthElasticity = 0.08f;
+                p.birthRateJobsElasticity = 0.12f;
+                p.birthRateWageElasticity = 0.03f;
                 p.defaultImmigrationInflow = 1.0f;
                 p.immigrationWageSuppression = 0.6f;
+                // New fields must be stamped or the asset keeps whatever it was first
+                // serialised with, and the migration pull would silently stay at zero.
+                p.migrationJobsSpan = 9f;
+                p.migrationHousingSpan = 35f;
+                p.migrationJobsWeight = 0.65f;
+                p.migrationFloor = 0.15f;
                 p.immigrationHousingPressure = 0.8f;
             });
         }

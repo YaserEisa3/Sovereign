@@ -63,6 +63,7 @@ namespace Sovereign.EditorTools
             TestWagesKeepUp(runner);
             TestChildCredit(runner);
             TestImmigration(runner);
+            TestMigrationFollowsConditions(runner);
             TestApproval(runner);
             TestRevolt(runner);
             TestEventStages(runner);

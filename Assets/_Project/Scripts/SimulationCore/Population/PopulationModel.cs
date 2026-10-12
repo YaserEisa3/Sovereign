@@ -41,7 +41,7 @@ namespace Sovereign.Core
             float deaths = p.Total * p.deathRate * 0.001f;
             float ageingIn = p.youth / youthCohorts;
             float retiring = p.workingAge / workingCohorts;
-            float migration = policy.immigrationInflowMillions;
+            float migration = policy.immigrationInflowMillions * MigrationPull(state);
 
             // Deaths fall overwhelmingly on the old - GDD 17.4 will lean on this when
             // a pandemic arrives.
@@ -59,6 +59,31 @@ namespace Sovereign.Core
             UpdateEmployment(state, policy);
         }
 
+        /// <summary>
+        /// GDD 17.4. How much of the immigration quota actually turns up. The policy dial
+        /// is a door, not a magnet: nobody moves to a country with no work and nowhere
+        /// affordable to live, however wide it is opened. Two thirds of the decision is
+        /// whether there are jobs, a third whether housing can be paid for.
+        ///
+        /// A floor remains whatever happens - family, asylum, people with nowhere better
+        /// to go - so the door never closes itself completely.
+        /// </summary>
+        float MigrationPull(EconomyState state)
+        {
+            float slack = MathUtil.Max(0f, state.unemployment - _c.naturalUnemploymentRate);
+            float jobs = MathUtil.Clamp01(1f - slack / MathUtil.Max(0.1f, _c.migrationJobsSpan));
+
+            // Housing measured in real terms against the opening, like everything else the
+            // player is judged on: it is what a wage will buy, not the sticker price.
+            float realHousing = state.priceLevel <= 0f ? 0f
+                              : state.housingCostIndex / state.priceLevel * 100f - 100f;
+            float affordable = MathUtil.Clamp01(1f - MathUtil.Max(0f, realHousing)
+                                                / MathUtil.Max(1f, _c.migrationHousingSpan));
+
+            float pull = jobs * _c.migrationJobsWeight + affordable * (1f - _c.migrationJobsWeight);
+            return MathUtil.Clamp(pull, _c.migrationFloor, 1f);
+        }
+
         void UpdateRates(EconomyState state, PolicyState policy)
         {
             PopulationState p = state.population;
@@ -68,11 +93,20 @@ namespace Sovereign.Core
             float creditThousands = policy.Tax(TaxKeys.ChildCredit) * 0.001f;
             float realHousing = state.priceLevel <= 0f ? 0f : state.housingCostIndex / state.priceLevel * 100f - 100f;
 
+            // GDD 17.4. Whether people start families turns on whether they can see
+            // themselves keeping one: work, and what a wage buys. Neither was an input
+            // here - a country could sit at 16% unemployment with wages a fifth below
+            // pre-war and have babies at exactly the rate it did in peacetime.
+            float jobless = MathUtil.Max(0f, state.unemployment - _c.naturalUnemploymentRate);
+            float wageShortfall = MathUtil.Max(0f, 100f - state.Series("realWage").Latest);
+
             // Event offsets (a pandemic, a disaster) hold only while the event does.
             p.birthRate = MathUtil.Max(4f, _c.baseBirthRate
                 + healthDelta * _c.healthSpendingBirthElasticity
                 + creditThousands * _c.childCreditBirthElasticity
                 - MathUtil.Max(0f, realHousing) * _c.costOfLivingBirthElasticity * 0.1f
+                - jobless * _c.birthRateJobsElasticity
+                - wageShortfall * _c.birthRateWageElasticity
                 + state.events.birthRateOffset);
 
             p.deathRate = MathUtil.Max(4f, _c.baseDeathRate - healthDelta * _c.healthSpendingDeathElasticity

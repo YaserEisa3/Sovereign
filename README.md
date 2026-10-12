@@ -1204,3 +1204,36 @@ Which is its own lesson. Four sessions of tuning coefficients moved the game les
 connecting data that was already written.
 
 Verified: Phase 0 115/115, economy 186/186, play-mode smoke passes.
+
+## People arrive, and people are born
+
+Population answered to nothing the player did. Births turned on health spending, the
+child credit and the price of housing; migration was a dial that delivered exactly what
+it was set to. A country could sit at 16% unemployment with wages a fifth below pre-war
+and have babies at its peacetime rate, while filling its immigration quota as if it were
+the most desirable place on earth.
+
+Both now turn on whether the country is worth living in.
+
+**Births** lose 0.12 per thousand for every point of unemployment above the natural rate
+- at the aftermath opening that is -1.3 against a base of 11.5, an eleventh of the
+country's children not born - and 0.03 for every point real wages run below where they
+started. Affordability measured as pay rather than prices: what a wage buys.
+
+**Migration** treats the dial as a door rather than a magnet. Arrivals are the quota
+times a pull that is two thirds "is there work" and one third "can it be afforded",
+with a floor of 15% that never closes - family, asylum, people with nowhere better. The
+jobs term reaches zero nine points above the natural rate, so a shattered country draws
+almost nobody however wide it opens. Measured, from the new test: **1.05M a year at
+23.7% unemployment against 2.65M at 6.0%, on the same 3M quota.**
+
+The point is the loop this closes. A depression that is not fixed means a smaller
+generation, which arrives in the working-age band eighteen years later as a smaller
+workforce and a worse dependency ratio - which is exactly what drives the ageing pension
+bill that keeps the debt alive. A mistake in year three is felt in year twenty-five, by
+a government that did not make it.
+
+It also fits the rule the rest of this balance obeys: neither of these recovers on its
+own. The country does not repopulate until somebody puts it back to work.
+
+Verified: Phase 0 115/115, economy 189/189, play-mode smoke passes.

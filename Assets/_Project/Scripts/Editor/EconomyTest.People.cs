@@ -1,3 +1,4 @@
+using UnityEngine;
 using Sovereign.Core;
 using Sovereign.Presentation;
 
@@ -103,5 +104,39 @@ namespace Sovereign.EditorTools
                   "immigration: no downward pressure on Services wages - it is a free lunch");
             Check(open.approval.right < closedRight, "immigration: the Conservative faction did not object");
         }
+        /// <summary>
+        /// GDD 17.4. The immigration dial is a door, not a magnet. A country with no
+        /// work and unaffordable housing does not fill its quota however wide it opens
+        /// the door, and a healthy one does.
+        /// </summary>
+        static void TestMigrationFollowsConditions(SimulationRunner runner)
+        {
+            // Same quota in both runs - only the country differs.
+            EconomyState broken = Fresh(runner).State;
+            runner.Policy.immigrationInflowMillions = 3f;
+            // Crush demand: dear money for years is how you manufacture unemployment.
+            runner.Policy.centralBankRate = 12f;
+            runner.Step(6 * Year);
+            float brokenArrivals = broken.population.netMigrationPerYear;
+            float brokenUnemployment = broken.unemployment;
+
+            EconomyState healthy = Fresh(runner).State;
+            runner.Policy.immigrationInflowMillions = 3f;
+            runner.Step(6 * Year);
+            float healthyArrivals = healthy.population.netMigrationPerYear;
+
+            Debug.Log("Migration: " + brokenArrivals.ToString("0.00") + "M a year at "
+                      + brokenUnemployment.ToString("0.0") + "% unemployment, against "
+                      + healthyArrivals.ToString("0.00") + "M at " + healthy.unemployment.ToString("0.0") + "%");
+
+            Check(brokenArrivals < healthyArrivals,
+                  "migration: a country with " + brokenUnemployment.ToString("0.0")
+                  + "% unemployment drew as many people as a healthy one");
+            Check(brokenArrivals > 0f,
+                  "migration: nobody at all arrived - family and asylum should never close entirely");
+            Check(healthyArrivals <= 3.01f,
+                  "migration: more people arrived than the quota allows");
+        }
+
     }
 }

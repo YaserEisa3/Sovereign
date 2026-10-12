@@ -24,6 +24,8 @@ MonoBehaviour:
   healthSpendingBirthElasticity: 0.15
   costOfLivingBirthElasticity: 0.2
   childCreditBirthElasticity: 0.08
+  birthRateJobsElasticity: 0.12
+  birthRateWageElasticity: 0.03
   baseParticipationRate: 0.78
   discouragedWorkerEffect: 0.08
   defaultImmigrationInflow: 1
@@ -32,6 +34,10 @@ MonoBehaviour:
   defaultSkilledShare: 0.2
   immigrationWageSuppression: 0.6
   immigrationHousingPressure: 0.8
+  migrationJobsSpan: 9
+  migrationHousingSpan: 35
+  migrationJobsWeight: 0.65
+  migrationFloor: 0.15
   veteranBenefitCostPerHead: 8400
   veteranMortality: 0.025
   militaryShareOfGovernment: 0.09

@@ -37,6 +37,11 @@ namespace Sovereign.Data
         [Tooltip("Extra births per 1000 per year per $1000 of child credit. Deliberately SMALL: real cash transfers move fertility by fractions of a percent. If you raise this until the lever feels rewarding you have built a cheat code.")]
         [Range(0f, 1f)] public float childCreditBirthElasticity = 0.08f;
 
+        [Tooltip("Births lost per point of unemployment above the natural rate. People do not start families they cannot see themselves feeding - the strongest single thing holding a shattered country's birth rate down.")]
+        [Range(0f, 1f)] public float birthRateJobsElasticity = 0.12f;
+        [Tooltip("Births lost per point real wages run BELOW where they opened. Affordability as pay rather than prices: what a wage actually buys.")]
+        [Range(0f, 1f)] public float birthRateWageElasticity = 0.03f;
+
         [Header("Labour force - GDD 7.3")]
         [Tooltip("Share of the WORKING-AGE band (18-64) in the labour force, 0-1. Not the headline 63%, which is measured against everyone over 16 including retirees - applied to 18-64 it undercounts the workforce by a fifth.")]
         [Range(0f, 1f)] public float baseParticipationRate = 0.78f;
@@ -59,6 +64,16 @@ namespace Sovereign.Data
 
         [Tooltip("Upward pressure on the housing cost index per million of annual inflow. Reaches the poor through real wages, not through a faction opinion.")]
         [Range(0f, 5f)] public float immigrationHousingPressure = 0.8f;
+
+        [Header("What makes people want to come - GDD 17.4")]
+        [Tooltip("Points of unemployment above the natural rate at which the pull of work has gone entirely. Nobody moves to a country with no jobs, whatever its policy says.")]
+        [Range(1f, 25f)] public float migrationJobsSpan = 9f;
+        [Tooltip("Percent that real housing costs can run above their opening level before the country is simply unaffordable to arrive in.")]
+        [Range(5f, 100f)] public float migrationHousingSpan = 35f;
+        [Tooltip("How much of the decision is work rather than affordability. 0.65 means two thirds jobs, one third the cost of living.")]
+        [Range(0f, 1f)] public float migrationJobsWeight = 0.65f;
+        [Tooltip("The share of the quota that arrives however bad things are - family, asylum, people with nowhere better.")]
+        [Range(0f, 1f)] public float migrationFloor = 0.15f;
 
         [Header("Veterans")]
         [Tooltip("Veterans benefits per veteran per year, in dollars. Times the veteran count this IS the Veterans Benefits line. 8,400 x 16 million matches the $135B opening budget.")]

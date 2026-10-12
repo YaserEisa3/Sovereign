@@ -7,7 +7,9 @@ namespace Sovereign.Core
         public float baseBirthRate, baseDeathRate;                                          // per 1000 per year
         public float healthSpendingDeathElasticity, healthSpendingBirthElasticity;
         public float costOfLivingBirthElasticity, childCreditBirthElasticity;
+        public float birthRateJobsElasticity, birthRateWageElasticity;
         public float baseParticipationRate, discouragedWorkerEffect;                        // 0-1
+        public float migrationJobsSpan, migrationHousingSpan, migrationJobsWeight, migrationFloor;
         public float skilledShareDefault;
         public float veteranBenefitCostPerHead;                                             // dollars per year
         public float veteranConversionRate;                                                 // share of military rotating out per year
