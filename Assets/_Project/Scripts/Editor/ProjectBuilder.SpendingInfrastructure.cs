@@ -62,8 +62,14 @@ namespace Sovereign.EditorTools
                 { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 0.7f, SectorId.Technology));
                   s.middleApproval = 0.3f; s.centreApproval = 0.2f; }),
 
+                // Farming is the most labour-hungry thing the budget touches: the money goes
+                // straight to farms that hire, and to the country towns that live off them.
+                // Sector health alone could never say so - that only moves workers BETWEEN
+                // industries. Below research and schooling, because a subsidy keeps people
+                // where they are rather than making the work worth more.
                 Spend("AgriculturalSubsidies", "Agricultural Subsidies", SpendingGroup.Other, 30f, 2, 420, s =>
                 { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 2.2f, SectorId.Agriculture));
+                  s.effects.Add(Fx(ImpactTarget.RealGdpGrowth, 0.13f));
                   s.rightApproval = 0.5f; s.poorApproval = 0.2f; }),
 
                 Spend("EnergySubsidies", "Energy Subsidies", SpendingGroup.Other, 18f, 2, 430, s =>
