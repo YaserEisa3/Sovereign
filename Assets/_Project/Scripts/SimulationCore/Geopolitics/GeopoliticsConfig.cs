@@ -17,6 +17,14 @@ namespace Sovereign.Core
         public float sanctionsRelationship;
         public float signatureMoveIntervalYears;
         public float aggression;
+
+        /// <summary>GDD 19. What this country is good at making, and what it cannot make
+        /// enough of. Geography and history, not policy: an oil state has crude and gas
+        /// to sell and has to buy its food, and no amount of spending changes that.
+        /// These are what a trade deal is FOR - selling your surplus to somebody whose
+        /// ground will not grow it.</summary>
+        public ProductId[] exports;
+        public ProductId[] needs;
     }
 
     /// <summary>GeopoliticsParameters, flattened.</summary>

@@ -70,5 +70,49 @@ namespace Sovereign.EditorTools
                   "production: two years of ruined farming left grain at "
                   + s.production[ProductId.Grain].domesticPrice.ToString("0") + " - shortages are not reaching prices");
         }
+        /// <summary>
+        /// GDD 19. Money must move supply. These effects were authored and read by
+        /// nothing for months, so "the coefficient is in the file" is not evidence.
+        /// </summary>
+        static void TestSupplyResponds(SimulationRunner runner)
+        {
+            EconomyState s = Fresh(runner).State;
+            runner.Step(Year);
+            float grainBefore = s.production[ProductId.Grain].produced;
+            float powerBefore = s.production[ProductId.Electricity].produced;
+            float steelBefore = s.production[ProductId.Steel].produced;
+
+            runner.Policy.spendingBillions["AgriculturalSubsidies"] += 200f;
+            runner.Policy.spendingBillions["EnergySubsidies"] += 200f;
+            runner.Policy.spendingBillions["IndustrialSubsidies"] += 200f;
+            runner.Step(2 * Year);
+
+            float grain = s.production[ProductId.Grain].produced / grainBefore - 1f;
+            float power = s.production[ProductId.Electricity].produced / powerBefore - 1f;
+            float steel = s.production[ProductId.Steel].produced / steelBefore - 1f;
+            Debug.Log("Supply after $200B each for two years: grain " + (grain * 100f).ToString("+0.0;-0.0")
+                      + "%, electricity " + (power * 100f).ToString("+0.0;-0.0")
+                      + "%, steel " + (steel * 100f).ToString("+0.0;-0.0") + "%");
+
+            // Felt, but not a magic wand: a tenth or so for $200B a year sustained.
+            Check(grain > 0.04f, "supply: $200B of farm subsidies moved grain by "
+                  + (grain * 100f).ToString("0.0") + "% - the budget cannot feel that");
+            Check(power > 0.04f, "supply: $200B of energy subsidies moved electricity by "
+                  + (power * 100f).ToString("0.0") + "%");
+            Check(steel > 0.04f, "supply: $200B of industrial subsidies moved steel by "
+                  + (steel * 100f).ToString("0.0") + "%");
+            Check(grain < 0.45f, "supply: farm subsidies moved grain by "
+                  + (grain * 100f).ToString("0.0") + "% - that is a magic wand, not a policy");
+
+            // And countries must not be interchangeable: an oil state cannot grow grain.
+            NationProfile[] nations = runner.Simulator.Geopolitics.Config.nations;
+            int withProfiles = 0;
+            foreach (NationProfile n in nations)
+                if (n.exports != null && n.exports.Length > 0 && n.needs != null && n.needs.Length > 0) withProfiles++;
+            Check(withProfiles >= nations.Length - 1,
+                  "supply: only " + withProfiles + " of " + nations.Length
+                  + " nations know what they make and what they lack");
+        }
+
     }
 }

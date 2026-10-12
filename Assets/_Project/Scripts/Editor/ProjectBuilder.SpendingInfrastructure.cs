@@ -68,12 +68,22 @@ namespace Sovereign.EditorTools
                 // industries. Below research and schooling, because a subsidy keeps people
                 // where they are rather than making the work worth more.
                 Spend("AgriculturalSubsidies", "Agricultural Subsidies", SpendingGroup.Other, 30f, 2, 420, s =>
-                { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 2.2f, SectorId.Agriculture));
+                { // Tripled: at 2.2, a hundred billion of farm money bought three percent more
+                  // food - a rounding error dressed as a policy. Supply should be
+                  // something a budget can MOVE.
+                  s.effects.Add(FxSector(ImpactTarget.SectorHealth, 6.5f, SectorId.Agriculture));
                   s.effects.Add(Fx(ImpactTarget.RealGdpGrowth, 0.13f));
                   s.rightApproval = 0.5f; s.poorApproval = 0.2f; }),
 
+                // Manufacturing had no civilian lever at all - only military equipment,
+                // which is a strange way to ask a government to build up its industry.
+                Spend("IndustrialSubsidies", "Industrial Subsidies", SpendingGroup.Other, 24f, 2, 425, s =>
+                { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 5.5f, SectorId.Manufacturing));
+                  s.effects.Add(Fx(ImpactTarget.RealGdpGrowth, 0.12f));
+                  s.rightApproval = 0.3f; s.leftApproval = 0.2f; }),
+
                 Spend("EnergySubsidies", "Energy Subsidies", SpendingGroup.Other, 18f, 2, 430, s =>
-                { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 1.8f, SectorId.Energy));
+                { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 5.5f, SectorId.Energy));
                   s.effects.Add(Fx(ImpactTarget.Inflation, -0.06f));
                   s.rightApproval = 0.3f; s.leftApproval = -0.4f; }),
 

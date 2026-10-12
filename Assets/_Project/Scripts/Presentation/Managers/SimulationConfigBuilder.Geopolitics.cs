@@ -23,7 +23,8 @@ namespace Sovereign.Presentation
                     quietBondReductionRelationship = n.quietBondReductionRelationship,
                     activeBondDumpingRelationship = n.activeBondDumpingRelationship,
                     sanctionsRelationship = n.sanctionsRelationship,
-                    signatureMoveIntervalYears = n.signatureMoveIntervalYears, aggression = n.aggression
+                    signatureMoveIntervalYears = n.signatureMoveIntervalYears, aggression = n.aggression,
+                    exports = ExportsOf(n.archetype), needs = NeedsOf(n.archetype)
                 };
             }
 
@@ -44,5 +45,50 @@ namespace Sovereign.Presentation
             };
             return config;
         }
+        /// <summary>
+        /// GDD 19. What each kind of country has to sell. Set by archetype rather than
+        /// authored per nation, because it is the archetype that says what a place IS:
+        /// an oil state sells crude and gas and will never grow its own grain, and a
+        /// financial haven sells services and buys literally everything physical.
+        /// </summary>
+        static ProductId[] ExportsOf(NationArchetype archetype)
+        {
+            switch (archetype)
+            {
+                case NationArchetype.OilState:
+                    return new[] { ProductId.CrudeOil, ProductId.NaturalGas };
+                case NationArchetype.ExportManufacturer:
+                    return new[] { ProductId.Vehicles, ProductId.Machinery, ProductId.Semiconductors, ProductId.ConsumerGoods };
+                case NationArchetype.FinancialHaven:
+                    return new[] { ProductId.FinancialServices, ProductId.Tourism };
+                case NationArchetype.ResourceDemocracy:
+                    return new[] { ProductId.Grain, ProductId.MeatDairy, ProductId.Steel, ProductId.CrudeOil };
+                case NationArchetype.EmergingDebtor:
+                    return new[] { ProductId.Produce, ProductId.Steel, ProductId.Tourism };
+                default:
+                    return new[] { ProductId.Software, ProductId.Vehicles, ProductId.FinancialServices };
+            }
+        }
+
+        /// <summary>And what it cannot make enough of, which is what it will pay for.</summary>
+        static ProductId[] NeedsOf(NationArchetype archetype)
+        {
+            switch (archetype)
+            {
+                case NationArchetype.OilState:
+                    return new[] { ProductId.Grain, ProductId.MeatDairy, ProductId.Produce, ProductId.Machinery, ProductId.Arms };
+                case NationArchetype.ExportManufacturer:
+                    return new[] { ProductId.CrudeOil, ProductId.NaturalGas, ProductId.Grain, ProductId.Steel };
+                case NationArchetype.FinancialHaven:
+                    return new[] { ProductId.Grain, ProductId.Produce, ProductId.Electricity, ProductId.ConsumerGoods, ProductId.Vehicles };
+                case NationArchetype.ResourceDemocracy:
+                    return new[] { ProductId.Semiconductors, ProductId.Machinery, ProductId.Software, ProductId.DefenceServices };
+                case NationArchetype.EmergingDebtor:
+                    return new[] { ProductId.Electricity, ProductId.Machinery, ProductId.Semiconductors, ProductId.Arms };
+                default:
+                    return new[] { ProductId.CrudeOil, ProductId.Semiconductors, ProductId.Grain };
+            }
+        }
+
     }
 }

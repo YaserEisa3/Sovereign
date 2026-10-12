@@ -1384,3 +1384,34 @@ products / 1 intervention.
 
 Verified: Phase 0 120/120 - the new panel brought five checks of its own - economy
 193/193, play-mode smoke passes.
+
+### Money that moves supply, and countries that are not interchangeable
+
+A hundred billion of farm subsidy bought three percent more food - a rounding error
+dressed as a policy. The coefficients were set when nothing read them, so nobody had
+ever watched one work. Farm and energy subsidies roughly tripled, to 6.5 and 5.5 health
+per $100B, and **Industrial Subsidies** added because manufacturing had no civilian
+lever at all: the only way to build up industry was to buy tanks.
+
+Measured, rather than asserted: $200B a year on each for two years moves grain +28%,
+electricity +26% and steel +26%. Felt, which was the brief, and not free - fixing a 25%
+shortfall across all three runs about $600B a year sustained, a fifth of the budget,
+with the debt consequences that implies. The test bounds it on BOTH sides, above 4% so
+the lever cannot quietly become decoration and below 45% so a mistyped coefficient
+cannot turn it into a magic wand. Three coefficients had just been tripled by eye, and a
+test that only asked "did it go up" would have passed a tenfold overshoot just as
+happily.
+
+And countries now differ in what they can make. Each archetype carries what it sells and
+what it cannot make enough of: an oil state has crude and gas and buys its grain, a
+financial haven sells services and tourism and buys everything physical, a resource
+democracy sells food and steel and needs chips and software. Set by archetype because
+that is what a place IS - no amount of spending teaches an oil state to farm.
+
+That last part is data nothing reads yet, which is the pattern that has bitten this
+project twice. The test asserts every nation has a non-empty profile, so it cannot rot
+quietly before stage 2 arrives to use it.
+
+Verified: Phase 0 120/120, economy 198/198, play-mode smoke passes, survival 4 of 6 with
+a win - unchanged, because the probe governs by three rules and none of them is a
+subsidy.
