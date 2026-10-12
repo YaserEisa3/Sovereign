@@ -19,6 +19,7 @@ namespace Sovereign.Core
         public int unrestApprovalWeeks;
         public float rapidDeclinePointsPerMonth;
         public float unrestInflationThreshold, unrestUnemploymentThreshold;
+        public float unrestContentApproval, unrestContentRelief;
         public float unrestBuildPerPointBelow, unrestPerCrisis, unrestDecayPerWeek;
 
         public float revoltOverallApproval;

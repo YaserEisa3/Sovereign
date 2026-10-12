@@ -76,6 +76,8 @@ namespace Sovereign.Presentation
                 rapidDeclinePointsPerMonth = a.rapidDeclinePointsPerMonth,
                 unrestInflationThreshold = a.unrestInflationThreshold,
                 unrestUnemploymentThreshold = a.unrestUnemploymentThreshold,
+                unrestContentApproval = a.unrestContentApproval,
+                unrestContentRelief = a.unrestContentRelief,
                 unrestBuildPerPointBelow = a.unrestBuildPerPointBelow,
                 unrestPerCrisis = a.unrestPerCrisis,
                 unrestDecayPerWeek = a.unrestDecayPerWeek,

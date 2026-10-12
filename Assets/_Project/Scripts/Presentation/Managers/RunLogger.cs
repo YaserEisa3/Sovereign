@@ -54,7 +54,19 @@ namespace Sovereign.Presentation
         /// state recorded is close enough to the seed to replay from.</summary>
         void FirstWeek(EconomyState s)
         {
-            if (_log.Length == 0) Open(s);
+            if (_log.Length != 0) return;
+            Open(s);
+            // The diff baseline belongs HERE, not at the first year tick. Taken a year in,
+            // year one could never show a change - which hid whether the opening moves
+            // were ever made, in the one year of a run where they matter most.
+            Snapshot();
+        }
+
+        void Snapshot()
+        {
+            foreach (KeyValuePair<string, float> tax in runner.Policy.taxRates) _lastTaxes[tax.Key] = tax.Value;
+            foreach (KeyValuePair<string, float> line in runner.Policy.spendingBillions) _lastSpending[line.Key] = line.Value;
+            _lastRate = runner.Policy.centralBankRate;
         }
 
         void LogYear(EconomyState s)
@@ -75,10 +87,28 @@ namespace Sovereign.Presentation
                 .Append("   arrivals ").Append(s.population.netMigrationPerYear.ToString("0.00"))
                 .Append("M\n");
 
+            LogStanding(s);
             LogPolicyChanges(s);
             LogNewAlerts(s);
             LogMilestones(s);
             Flush();
+        }
+
+        /// <summary>
+        /// Where policy actually STANDS, not just what moved. A log of diffs could not
+        /// answer "what was the rate when this went wrong" - and the first run read back
+        /// turned on exactly that question.
+        /// </summary>
+        void LogStanding(EconomyState s)
+        {
+            float infra = 0f;
+            foreach (string line in SpendKeys.Infrastructure) infra += runner.Policy.Spending(line);
+
+            _log.Append("SET: rate ").Append(runner.Policy.centralBankRate.ToString("0.00"))
+                .Append("%  (real ").Append((runner.Policy.centralBankRate - s.inflation).ToString("+0.0;-0.0"))
+                .Append("%, neutral 1.0)   infra $").Append(infra.ToString("0"))
+                .Append("B of $192B needed to hold   spending $").Append(runner.Policy.TotalSpendingBillions.ToString("#,0"))
+                .Append("B   revenue $").Append(s.revenueBillions.ToString("#,0")).Append("B\n");
         }
 
         /// <summary>Only what MOVED. A full budget every year is unreadable, and the

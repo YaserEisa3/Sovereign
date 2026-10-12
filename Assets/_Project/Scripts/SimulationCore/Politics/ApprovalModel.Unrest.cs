@@ -20,16 +20,27 @@ namespace Sovereign.Core
         {
             weeksLow = approval < _c.unrestApprovalThreshold ? weeksLow + 1 : 0;
 
-            float change = 0f;
+            float build = 0f;
             // Scaled by depth: resentment at 38% simmers, at 15% it boils.
             if (weeksLow >= _c.unrestApprovalWeeks)
-                change += (_c.unrestApprovalThreshold - approval) * _c.unrestBuildPerPointBelow;
-            if (s.Series(series).Ago(4) - approval > _c.rapidDeclinePointsPerMonth) change += _c.unrestPerCrisis;
-            if (s.inflation > _c.unrestInflationThreshold) change += _c.unrestPerCrisis;
-            if (s.unemployment > _c.unrestUnemploymentThreshold) change += _c.unrestPerCrisis;
-            if (change == 0f) change = -_c.unrestDecayPerWeek;
+                build += (_c.unrestApprovalThreshold - approval) * _c.unrestBuildPerPointBelow;
+            if (s.Series(series).Ago(4) - approval > _c.rapidDeclinePointsPerMonth) build += _c.unrestPerCrisis;
+            if (s.inflation > _c.unrestInflationThreshold) build += _c.unrestPerCrisis;
+            if (s.unemployment > _c.unrestUnemploymentThreshold) build += _c.unrestPerCrisis;
 
-            return MathUtil.Clamp(unrest + change, 0f, 100f);
+            // A class that approves of the government is slow to take to the streets over
+            // it. Without this a run ended with the poor at 71% approval overthrowing a
+            // government they liked: unemployment sat one point over the threshold, unrest
+            // climbed a point a week for ninety weeks, and being popular bought nothing.
+            float relief = MathUtil.Clamp01((approval - _c.unrestContentApproval)
+                                            / MathUtil.Max(1f, 100f - _c.unrestContentApproval));
+            build *= 1f - relief * _c.unrestContentRelief;
+
+            // Cooling is ALWAYS on now, rather than only when nothing at all is wrong.
+            // One grievance borne by a contented class roughly cancels against it and
+            // goes nowhere; two at once, or one carried by a class that has turned on
+            // you, still builds. That is the difference between a problem and a clock.
+            return MathUtil.Clamp(unrest + build - _c.unrestDecayPerWeek, 0f, 100f);
         }
 
         /// <summary>Off only in the economy tests, which check economic mechanics over

@@ -83,6 +83,11 @@ namespace Sovereign.Data
         [Range(0f, 100f)] public float unrestInflationThreshold = 15f;
         [Range(0f, 100f)] public float unrestUnemploymentThreshold = 12f;
 
+        [Tooltip("Approval above which a class is slow to take to the streets. Being liked should buy a government patience - without this, 71% approval still ended in a revolt.")]
+        [Range(0f, 100f)] public float unrestContentApproval = 55f;
+        [Tooltip("How much of the unrest a contented class simply does not feel. 0.7 means a group fully behind you builds unrest at a third of the rate an indifferent one does.")]
+        [Range(0f, 1f)] public float unrestContentRelief = 0.7f;
+
         [Header("How fast unrest moves")]
         [Tooltip("Unrest added per week for EACH point a class sits below the threshold. At 0.12, a class at 38% simmers (+0.24/week, years to boil) while a class at 15% boils (+3/week, months). A flat rate made 38% as dangerous as 5%.")]
         [Range(0f, 1f)] public float unrestBuildPerPointBelow = 0.12f;

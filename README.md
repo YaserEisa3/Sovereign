@@ -1237,3 +1237,45 @@ It also fits the rule the rest of this balance obeys: neither of these recovers 
 own. The country does not repopulate until somebody puts it back to work.
 
 Verified: Phase 0 115/115, economy 189/189, play-mode smoke passes.
+
+## What the first real playthrough found
+
+Every balance decision in this project had come from probes governing by three rules.
+The first run read back out of the new log ended like this:
+
+```
+Year 1:  unemp 12.9%   unrest 52
+GAME OVER year 1 Q4:  approval 75 (poor 71)
+The poor rose up after 9 weeks of open unrest.
+```
+
+A government overthrown by a class that approved of it. Unrest built a point a week for
+ninety weeks because unemployment sat ONE POINT over its threshold, and nothing stopped
+it: the cooling term only applied when nothing at all was wrong, so a single standing
+grievance turned unrest into a one-way ratchet. Being liked bought nothing, and the
+first warning arrived in week 51 with about forty weeks left to act.
+
+Two changes, both from that run:
+
+**Approval buys patience.** A class genuinely behind the government is slow to take to
+the streets over it - at 71% approval unrest builds at about two thirds speed, fully
+behind you about a third.
+
+**Cooling is always on.** One grievance borne by a contented class now roughly cancels
+against the decay and goes nowhere. Two at once, or one carried by a class that has
+turned on you, still builds. That is the difference between a pressure and a countdown.
+
+Survival held at 4 of 6 with one win, so this did not simply make the game kinder - but
+the cause of death moved. Both remaining failures switched from the poor rising to
+capital fleeing: the relief protects the classes a government is actually supporting,
+and the wealthy open at 52% approval and are being taxed to pay down the debt. Raising
+taxes now costs a government politically through the people paying them, rather than
+the poor overthrowing a state that was feeding them.
+
+The log itself gained what the run showed it was missing: the diff baseline moved to
+week one, since taken a year in, year one could never show a change - the year it
+matters most - and a `SET:` line now records where policy STANDS each year, not only
+what moved. A log of diffs could not answer "what was the rate when this went wrong",
+which turned out to be the first question worth asking of it.
+
+Verified: Phase 0 115/115, economy 189/189, play-mode smoke passes.

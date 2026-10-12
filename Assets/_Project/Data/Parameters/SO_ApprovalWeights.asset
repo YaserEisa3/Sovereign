@@ -60,6 +60,8 @@ MonoBehaviour:
   rapidDeclinePointsPerMonth: 5
   unrestInflationThreshold: 15
   unrestUnemploymentThreshold: 12
+  unrestContentApproval: 55
+  unrestContentRelief: 0.7
   unrestBuildPerPointBelow: 0.12
   unrestPerCrisis: 1
   unrestDecayPerWeek: 0.5

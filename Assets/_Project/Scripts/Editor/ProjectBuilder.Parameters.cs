@@ -191,6 +191,8 @@ namespace Sovereign.EditorTools
                 a.startingPoor = 61f; a.startingMiddle = 74f; a.startingWealthy = 52f;
                 a.startingLeft = 58f; a.startingCentre = 72f; a.startingRight = 49f;
                 a.adjustmentSpeed = 0.04f;
+                a.unrestContentApproval = 55f;
+                a.unrestContentRelief = 0.7f;
             });
         }
     }
