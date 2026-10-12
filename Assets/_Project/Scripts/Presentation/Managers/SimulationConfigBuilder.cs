@@ -21,6 +21,7 @@ namespace Sovereign.Presentation
             config.macro = BuildMacro(database.Macro);
             config.infrastructure = BuildInfrastructure(database.Infrastructure, starting);
             config.sectors = BuildSectors(database.Sectors);
+            config.products = BuildProducts();
             config.treasury = BuildTreasury(database, starting);
             config.population = BuildPopulation(database);
             config.approval = BuildApproval(database.ApprovalWeights);

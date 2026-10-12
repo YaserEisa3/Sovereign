@@ -114,6 +114,8 @@ namespace Sovereign.Core
     {
         public MacroConfig macro;
         public SectorConfig[] sectors;
+        /// <summary>GDD 19. What each sector actually makes.</summary>
+        public ProductConfig[] products;
         public InfrastructureConfig infrastructure;
         public TreasuryConfig treasury;
         public PopulationConfig population;

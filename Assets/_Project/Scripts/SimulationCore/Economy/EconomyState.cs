@@ -74,6 +74,9 @@ namespace Sovereign.Core
         /// against this, so the opening budget is neutral and only changes count.</summary>
         public readonly Dictionary<string, float> openingSpendingByLine = new Dictionary<string, float>();
 
+        /// <summary>GDD 19. What the country makes and needs, product by product.</summary>
+        public readonly Dictionary<ProductId, ProductState> production = new Dictionary<ProductId, ProductState>();
+
         /// <summary>GDD 4: OnRevolt leads to OnGameOver. Nothing else ends a run yet.</summary>
         public bool IsGameOver { get { return approval.revolt; } }
 

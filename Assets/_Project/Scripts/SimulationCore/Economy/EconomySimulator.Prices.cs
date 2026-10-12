@@ -168,7 +168,18 @@ namespace Sovereign.Core
             float coreTarget = state.monetary.inflationExpectations + phillips + monetary + taxPush * 0.4f;
             state.coreInflation = MathUtil.Clamp(MathUtil.Approach(state.coreInflation, coreTarget, 0.08f), -8f, 200f);
 
-            float headlineTarget = state.coreInflation + imported + oil + taxPush * 0.6f;
+            // GDD 19. What the country cannot supply itself, in the cost of living. A
+            // shortage of bread or power is headline inflation before it is anything
+            // else - weighted by how much a shortage of each thing actually hurts, so
+            // running short of software moves nothing.
+            // CAPPED, and gently. At 0.05 with no ceiling this alone injected seven points
+            // of inflation, which unanchored expectations and span into a wage-price
+            // spiral - two seeds finished at 30% CPI with real wages at 38% of pre-war
+            // and unemployment pinned to its floor. Shortages should make the cost of
+            // living worse, not detonate the currency by themselves.
+            float shortages = MathUtil.Min(3f, _production.ShortagePressure(state) * 0.02f);
+
+            float headlineTarget = state.coreInflation + imported + oil + taxPush * 0.6f + shortages;
             state.inflation = MathUtil.Clamp(MathUtil.Approach(state.inflation, headlineTarget, 0.12f), -6f, 300f);
 
             UpdateExpectations(state);

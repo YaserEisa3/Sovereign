@@ -33,7 +33,10 @@ namespace Sovereign.EditorTools
             ScenarioDefinition aftermath = AssetDatabase.LoadAssetAtPath<ScenarioDefinition>(ProjectBuilder.PostwarScenarioAsset);
             System.Text.StringBuilder report = new System.Text.StringBuilder();
             report.Append("Sovereign survival probe - sound policy, live world, 30 years each\n");
-            report.Append("seed   outcome        year   debt/GDP   unemp   approval   what happened\n");
+            // Inflation and real wages are here because two seeds once finished pinned at
+            // 0.5% unemployment and nothing in the report could say whether that was a
+            // boom or a price spiral.
+            report.Append("seed   outcome        year   debt/GDP   unemp    CPI   wages   approval   what happened\n");
 
             int survived = 0, won = 0;
             for (uint seed = 1; seed <= 6; seed++)
@@ -71,6 +74,8 @@ namespace Sovereign.EditorTools
                       .Append((fellAt > 0 ? fellAt : wonAt > 0 ? wonAt : 30).ToString().PadLeft(5))
                       .Append((state.DebtToGdp * 100f).ToString("0").PadLeft(11))
                       .Append(state.unemployment.ToString("0.0").PadLeft(8))
+                      .Append(state.inflation.ToString("0.0").PadLeft(7))
+                      .Append(state.Series("realWage").Latest.ToString("0").PadLeft(8))
                       .Append(state.approval.overall.ToString("0").PadLeft(11))
                       .Append("   ")
                       // A run that survives without winning is the interesting case, and

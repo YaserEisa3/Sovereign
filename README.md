@@ -1279,3 +1279,50 @@ what moved. A log of diffs could not answer "what was the rate when this went wr
 which turned out to be the first question worth asking of it.
 
 Verified: Phase 0 115/115, economy 189/189, play-mode smoke passes.
+
+## The country makes things
+
+Sectors were health and headcount and nothing else. Agriculture in fine condition grew
+no food, and the trade balance was an index that moved on the exchange rate whether or
+not a single thing was produced. Output was the missing middle.
+
+Sixteen products across the seven sectors - grain, meat, produce; oil, gas, electricity;
+steel, vehicles, machinery; semiconductors, software; consumer goods, tourism; financial
+services; arms, defence services. A sector's real output is its slice of GDP scaled by
+its health, split across its products. The population eats some of it by headcount, and
+what is left is a surplus worth selling.
+
+Run short of something and its domestic price climbs, and that reaches the cost of
+living weighted by how much a shortage of each thing actually hurts - bread and power,
+not software. So farming is food security before it is an export business, and a
+government that lets agriculture rot pays for it in inflation and then in unrest.
+
+Four faults, each caught by a different instrument, and none by the one before it:
+
+- **Needs set per head from intuition** left every product 1.78x oversupplied, so nothing
+  could ever be scarce. Caught by doing the arithmetic by hand against the sector shares:
+  agriculture is 6% of GDP, so what a country spends on food must be of that order or
+  farming can never feed anybody however healthy it gets.
+- **Arms and defence services produced nothing, forever**, because Government/Military
+  carries a gdpShare of ZERO. Caught by reading the printed table. Their output now comes
+  from the equipment and research budget, which is truer anyway - an arms industry is as
+  big as the state pays for - and means a government that funds its forces has something
+  to sell.
+- **Output measured against NOMINAL GDP**, so inflation inflated production while need
+  stood still and a country could cure a famine by printing money. Caught by the survival
+  probe, which found two seeds pinned at 0.5% unemployment. Bread is bread whatever it
+  costs.
+- **Shortage inflation uncapped** injected seven points of inflation by itself, unanchored
+  expectations and span into a wage-price spiral: 30% CPI, real wages at 38% of pre-war.
+  Caught only after adding CPI and real wages to the probe's report - unemployment, debt
+  and approval alone could not tell a boom from a catastrophe. Capped at three points.
+
+The test prints the whole table and holds the calibration between 0.85x and 1.45x cover,
+because the first version of that guard was loose enough to pass a feature that did
+nothing. Three things fell out of the numbers that were not designed: consumer goods run
+a permanent deficit, so there is always something worth importing; arms and defence are
+the dearest things on the board unless the budget funds them; and tourism is a large
+surplus with no domestic cost at all.
+
+Verified: Phase 0 115/115, economy 193/193, play-mode smoke passes, survival 4 of 6 with
+one win at 3.7% unemployment.

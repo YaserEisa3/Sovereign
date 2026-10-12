@@ -23,6 +23,7 @@ namespace Sovereign.Core
         readonly AchievementModel _achievements;
         readonly VictoryModel _victory;
         readonly MilestoneModel _milestones = new MilestoneModel();
+        readonly ProductionModel _production;
 
         public EconomySimulator(SimulationConfig config)
         {
@@ -36,12 +37,14 @@ namespace Sovereign.Core
             _headlines = new HeadlineGenerator(config.headlines, config.headlineIntervalWeeks, config.headlineTopicRest);
             _achievements = new AchievementModel(config.achievements);
             _victory = new VictoryModel(config.victory);
+            _production = new ProductionModel(config.products == null ? new ProductConfig[0] : config.products);
         }
 
         public HeadlineGenerator Headlines { get { return _headlines; } }
         public AchievementModel Achievements { get { return _achievements; } }
         public VictoryModel Victory { get { return _victory; } }
         public MilestoneModel Milestones { get { return _milestones; } }
+        public ProductionModel Production { get { return _production; } }
 
         public TreasuryModel Treasury { get { return _treasury; } }
         public PopulationModel Population { get { return _population; } }
@@ -93,6 +96,7 @@ namespace Sovereign.Core
             // Captured after the opening, because a scenario can change the population.
             // Pensions and old-age health are measured against this, so what the country
             // promised its retired on day one is what it goes on paying for.
+            _production.Prepare(state);
             state.baselineRetired = state.population.retired;
             CaptureOpeningSpending(state, policy);
             state.Series("realRate").Record(state.RealInterestRate);
@@ -187,6 +191,7 @@ namespace Sovereign.Core
             _achievements.TickWeek(state);
             _victory.TickWeek(state);
             _milestones.TickWeek(state);
+            _production.TickWeek(state, policy);
 
             state.RecordWeek();
         }
