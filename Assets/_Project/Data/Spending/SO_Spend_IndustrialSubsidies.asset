@@ -28,7 +28,7 @@ MonoBehaviour:
   infrastructureCategory: 0
   effects:
   - target: 14
-    strengthPer100B: 5.5
+    strengthPer100B: 4
     sectorSpecific: 1
     sector: 2
   - target: 0

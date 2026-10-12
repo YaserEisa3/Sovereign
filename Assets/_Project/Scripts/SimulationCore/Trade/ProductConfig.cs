@@ -20,6 +20,17 @@ namespace Sovereign.Core
         /// a shortage of bread or power is a political emergency.</summary>
         public float shortageSeverity;
 
+        /// <summary>
+        /// GDD 19. How much of this the country is CAPABLE of making, whatever it
+        /// spends. Geography and endowment, not policy: a country with no oil under it
+        /// does not drill its way to self-sufficiency, and no subsidy grows coffee in a
+        /// cold climate. 1 is unconstrained, 0.3 means a third of what the sector would
+        /// otherwise manage, 0 means never.
+        ///
+        /// This is what makes a trade deal necessary rather than merely profitable.
+        /// </summary>
+        public float capability;
+
         /// <summary>Starting world price index. Always 100 at the opening - scarcity moves
         /// it from there.</summary>
         public float basePrice;

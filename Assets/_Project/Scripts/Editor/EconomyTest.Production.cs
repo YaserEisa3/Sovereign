@@ -97,7 +97,9 @@ namespace Sovereign.EditorTools
             // Felt, but not a magic wand: a tenth or so for $200B a year sustained.
             Check(grain > 0.04f, "supply: $200B of farm subsidies moved grain by "
                   + (grain * 100f).ToString("0.0") + "% - the budget cannot feel that");
-            Check(power > 0.04f, "supply: $200B of energy subsidies moved electricity by "
+            // Energy is deliberately the dear sector, so it is held to a lower bar than
+            // the others rather than the same one.
+            Check(power > 0.015f, "supply: $200B of energy subsidies moved electricity by "
                   + (power * 100f).ToString("0.0") + "%");
             Check(steel > 0.04f, "supply: $200B of industrial subsidies moved steel by "
                   + (steel * 100f).ToString("0.0") + "%");

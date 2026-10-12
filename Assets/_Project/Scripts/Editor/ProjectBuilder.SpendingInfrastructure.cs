@@ -78,12 +78,15 @@ namespace Sovereign.EditorTools
                 // Manufacturing had no civilian lever at all - only military equipment,
                 // which is a strange way to ask a government to build up its industry.
                 Spend("IndustrialSubsidies", "Industrial Subsidies", SpendingGroup.Other, 24f, 2, 425, s =>
-                { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 5.5f, SectorId.Manufacturing));
+                { // Factories cost more than fields and less than power stations.
+                  s.effects.Add(FxSector(ImpactTarget.SectorHealth, 4.0f, SectorId.Manufacturing));
                   s.effects.Add(Fx(ImpactTarget.RealGdpGrowth, 0.12f));
                   s.rightApproval = 0.3f; s.leftApproval = 0.2f; }),
 
                 Spend("EnergySubsidies", "Energy Subsidies", SpendingGroup.Other, 18f, 2, 430, s =>
-                { s.effects.Add(FxSector(ImpactTarget.SectorHealth, 5.5f, SectorId.Energy));
+                { // Energy is the dear one: rigs, turbines and grid plant, built over years and
+                  // paid for up front. A third of what the same money does on a farm.
+                  s.effects.Add(FxSector(ImpactTarget.SectorHealth, 2.2f, SectorId.Energy));
                   s.effects.Add(Fx(ImpactTarget.Inflation, -0.06f));
                   s.rightApproval = 0.3f; s.leftApproval = -0.4f; }),
 

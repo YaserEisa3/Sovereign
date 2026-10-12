@@ -25,17 +25,22 @@ namespace Sovereign.Presentation
                 // or farming can never feed anybody however healthy it gets.
                 Product(ProductId.Grain, "Grain", SectorId.Agriculture, 0.45f, 200f, 1.0f),
                 Product(ProductId.MeatDairy, "Meat and Dairy", SectorId.Agriculture, 0.35f, 155f, 0.8f),
-                Product(ProductId.Produce, "Fruit and Vegetables", SectorId.Agriculture, 0.20f, 86f, 0.7f),
+                // A cold country grows roots and grain, not year-round fruit.
+                Product(ProductId.Produce, "Fruit and Vegetables", SectorId.Agriculture, 0.20f, 86f, 0.7f, 0.70f),
 
-                Product(ProductId.CrudeOil, "Crude Oil", SectorId.Energy, 0.40f, 281f, 0.9f),
-                Product(ProductId.NaturalGas, "Natural Gas", SectorId.Energy, 0.25f, 170f, 0.9f),
+                // CAPABILITY. What the ground allows, whatever the budget says. The country
+                // has almost no oil under it and never will: this is the dependency that
+                // makes a trade deal necessary rather than merely profitable.
+                Product(ProductId.CrudeOil, "Crude Oil", SectorId.Energy, 0.40f, 281f, 0.9f, 0.30f),
+                Product(ProductId.NaturalGas, "Natural Gas", SectorId.Energy, 0.25f, 170f, 0.9f, 0.55f),
                 Product(ProductId.Electricity, "Electricity", SectorId.Energy, 0.35f, 253f, 1.0f),
 
                 Product(ProductId.Steel, "Steel", SectorId.Manufacturing, 0.30f, 237f, 0.4f),
                 Product(ProductId.Vehicles, "Vehicles", SectorId.Manufacturing, 0.40f, 318f, 0.3f),
                 Product(ProductId.Machinery, "Machinery", SectorId.Manufacturing, 0.30f, 238f, 0.4f),
 
-                Product(ProductId.Semiconductors, "Semiconductors", SectorId.Technology, 0.45f, 474f, 0.3f),
+                // Fabs need inputs nobody here mines.
+                Product(ProductId.Semiconductors, "Semiconductors", SectorId.Technology, 0.45f, 474f, 0.3f, 0.85f),
                 Product(ProductId.Software, "Software", SectorId.Technology, 0.55f, 583f, 0.1f),
 
                 Product(ProductId.ConsumerGoods, "Consumer Goods", SectorId.ServicesRetail, 0.70f, 2516f, 0.6f),
@@ -49,7 +54,8 @@ namespace Sovereign.Presentation
         }
 
         static ProductConfig Product(ProductId id, string name, SectorId sector,
-                                     float sectorShare, float needPer100M, float shortageSeverity)
+                                     float sectorShare, float needPer100M, float shortageSeverity,
+                                     float capability = 1f)
         {
             return new ProductConfig
             {
@@ -59,6 +65,7 @@ namespace Sovereign.Presentation
                 sectorShare = sectorShare,
                 needPer100M = needPer100M,
                 shortageSeverity = shortageSeverity,
+                capability = capability,
                 basePrice = 100f
             };
         }

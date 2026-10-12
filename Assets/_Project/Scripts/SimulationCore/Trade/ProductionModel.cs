@@ -58,7 +58,8 @@ namespace Sovereign.Core
                     ? (policy.Spending("MilitaryEquipment") + policy.Spending("MilitaryRnD")) * condition
                     : sector == null ? 0f : realGdp * sector.gdpShare * condition;
 
-                p.produced = sectorOutput * c.sectorShare;
+                // What the ground and the climate allow, before any budget is considered.
+                p.produced = sectorOutput * c.sectorShare * c.capability;
                 p.needed = c.needPer100M * people * 0.01f;
 
                 // Scarcity at home, in prices. A country making half what it needs of
@@ -70,9 +71,18 @@ namespace Sovereign.Core
                 // being given away. Dividing straight through gave a third off the price
                 // of food for being comfortably supplied, which no shopper has ever seen.
                 float cover = p.needed <= 0.01f ? 2f : p.produced / p.needed;
+                // IMPORT PARITY. A country short of oil does not watch its own price climb
+                // forever - it buys oil abroad and pays the world price plus freight. Without
+                // this a shortage the player CANNOT fix pressed on inflation permanently,
+                // and permanent pressure unanchors expectations however hard the direct
+                // contribution is capped: two seeds ended at 31% and 37% CPI with real
+                // wages at a third of pre-war, purely because the country has no oil.
+                // Scarcity is expensive, not unbounded.
+                float scarcity = MathUtil.Min(250f, 100f / MathUtil.Max(0.4f, cover));
+                float importParity = p.worldPrice * 1.2f;
                 float target = cover >= 1f
                     ? 100f - 10f * MathUtil.Clamp01(cover - 1f)
-                    : MathUtil.Min(250f, 100f / MathUtil.Max(0.4f, cover));
+                    : MathUtil.Min(scarcity, importParity);
                 p.domesticPrice = MathUtil.Approach(p.domesticPrice, target, 0.04f);
             }
         }

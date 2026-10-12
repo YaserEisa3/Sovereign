@@ -1415,3 +1415,44 @@ quietly before stage 2 arrives to use it.
 Verified: Phase 0 120/120, economy 198/198, play-mode smoke passes, survival 4 of 6 with
 a win - unchanged, because the probe governs by three rules and none of them is a
 subsidy.
+
+### What the ground allows, and what it costs to build
+
+Two things were missing. Spending moved every sector by roughly the same amount, and
+there was nothing a country simply could not make.
+
+**Capability** is what the ground allows, whatever the budget says: crude oil 30%,
+natural gas 55%, fruit and vegetables 70% in a cold country, semiconductors 85% because
+fabs need inputs nobody here mines. Oil is the one that matters - 24% cover, the worst
+shortage on the board, the dearest thing bought, and no amount of spending will fix it.
+That is the dependency that makes a trade deal necessary rather than merely profitable,
+and the report carries a "can make" column so it reads as geography rather than a policy
+failure the player keeps not solving.
+
+**Cost** now differs by sector: agriculture 6.5 health per $100B, manufacturing 4.0,
+energy 2.2 - rigs and turbines and grid plant, built over years and paid for up front.
+Measured, $200B a year on each for two years moves grain +30.6%, steel +24.2% and
+electricity +18.0%. So energy is doubly hard, limited in what it can make AND dearest to
+expand, while food is cheap to fix and the shortage people feel most.
+
+And that combination broke the model, which is the part worth recording. A shortage the
+player CANNOT fix pressed on prices forever, and permanent pressure unanchors
+expectations however hard the direct contribution is capped: two seeds finished at 31%
+and 37% CPI with real wages at a third of pre-war, purely because the country has no oil.
+
+The tempting fix was to raise oil capability until the symptom went away. The real one
+was that the model had no imports: a country short of oil does not watch its own price
+climb forever, it buys oil abroad and pays the world price plus freight. Shortage prices
+are bounded at import parity now - expensive, not unbounded.
+
+| | before import parity | after |
+|---|---|---|
+| seed 1 | fell, CPI 31%, wages 39 | survived, CPI 0.7%, wages 119 |
+| seed 5 | fell, CPI 37%, wages 35 | survived, CPI 0.7%, wages 118, 4.0% unemployment |
+| survived | 3 of 6 | 4 of 6 |
+
+Every surviving seed now runs 0.4-1.7% inflation with wages between 112 and 126, and two
+of them miss prosperity by a third of a point of unemployment and six points of debt -
+the closest this has come.
+
+Verified: Phase 0 120/120, economy 198/198, play-mode smoke passes.
