@@ -17,7 +17,7 @@ namespace Sovereign.Presentation
     {
         class ProductLine
         {
-            public Label name, made, balance, note;
+            public Label name, made, balance, limit, note;
         }
 
         readonly List<ProductLine> _productLines = new List<ProductLine>();
@@ -43,11 +43,13 @@ namespace Sovereign.Presentation
                     name = Labelled("product-name"),
                     made = Labelled("product-made"),
                     balance = Labelled("product-balance"),
+                    limit = Labelled("product-limit"),
                     note = Labelled("product-note")
                 };
                 row.Add(line.name);
                 row.Add(line.made);
                 row.Add(line.balance);
+                row.Add(line.limit);
                 row.Add(line.note);
 
                 _productLines.Add(line);
@@ -68,7 +70,11 @@ namespace Sovereign.Presentation
 
             _sortedProducts.Clear();
             _sortedProducts.AddRange(runner.Simulator.Production.Products);
-            _sortedProducts.Sort((a, b) => Price(state, b.id).CompareTo(Price(state, a.id)));
+            // By COVER, not by price. Prices all start at 100 and crawl toward their
+            // target at 4% a week, so in the first months the price order is noise - the
+            // list opened on a run calling grain scarcer than oil, with grain at 75% of
+            // what the country needs and oil at 24%. Cover is true from week one.
+            _sortedProducts.Sort((a, b) => Cover(state, a.id).CompareTo(Cover(state, b.id)));
 
             int short_ = 0;
             float spare = 0f;
@@ -85,9 +91,19 @@ namespace Sovereign.Presentation
                 line.name.text = c.name;
                 line.made.text = "$" + p.produced.ToString("#,0") + "B of $" + p.needed.ToString("#,0") + "B";
                 line.balance.text = p.Balance.ToString("+#,0;-#,0") + "B";
-                line.note.text = p.Balance >= 0f
-                    ? "spare to sell"
-                    : c.shortageSeverity >= 0.7f ? "SHORT - people feel this one" : "short - bought abroad";
+                // What the ground allows, which no budget changes.
+                line.limit.text = c.capability >= 0.999f ? "" : (c.capability * 100f).ToString("0") + "% max";
+
+                // And whether this is worth fixing or has to be lived with. The three
+                // facts a player needs in a row are: am I short, CAN I make more, and
+                // what will it cost me to try.
+                float effort = runner.Simulator.SupplyEffort(c.sector);
+                line.note.text = p.Balance >= 0f ? "spare to sell"
+                    : c.capability <= 0.35f ? "cannot make enough - must import"
+                    : effort <= 0.01f ? "no lever - grows only with the economy"
+                    : effort >= 5f ? "cheap to expand - subsidise it"
+                    : effort >= 3f ? "costly to expand"
+                    : "very costly to expand";
 
                 string mood = p.domesticPrice > 108f ? "short" : p.domesticPrice < 97f ? "spare" : "level";
                 Restyle(line.balance, mood);
@@ -99,10 +115,11 @@ namespace Sovereign.Presentation
                   + Billions(spare) + " spare elsewhere");
         }
 
-        static float Price(EconomyState state, ProductId id)
+        static float Cover(EconomyState state, ProductId id)
         {
             ProductState p;
-            return state.production.TryGetValue(id, out p) ? p.domesticPrice : 0f;
+            if (!state.production.TryGetValue(id, out p)) return 9f;
+            return p.needed <= 0.01f ? 9f : p.produced / p.needed;
         }
 
         static void Restyle(Label label, string mood)

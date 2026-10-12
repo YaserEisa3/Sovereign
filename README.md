@@ -1456,3 +1456,35 @@ of them miss prosperity by a third of a point of unemployment and six points of 
 the closest this has come.
 
 Verified: Phase 0 120/120, economy 198/198, play-mode smoke passes.
+
+### Saying which shortages can be fixed
+
+The list showed what the country was short of and nothing about whether that could be
+helped, which is the actual decision. Each row now answers three questions in order: am
+I short, CAN I make more, and what will it cost to try.
+
+```
+Crude Oil        $225B of $945B   -720B   30% max   cannot make enough - must import
+Natural Gas      $258B of $571B   -314B   55% max   very costly to expand
+Grain            $507B of $672B   -165B             cheap to expand - subsidise it
+Consumer Goods $5,210B of $8,457B -3,246B           no lever - grows only with the economy
+Tourism        $2,233B of $1,761B  +472B            spare to sell
+```
+
+The effort rating is DERIVED from the same coefficients the simulation charges - the
+best health a hundred billion buys in that sector, across every line that backs it - so
+retuning farm subsidies moves the label with it. A screen that says a sector is cheap to
+build while the model quietly charges more is the same drift that let exportShare and
+the whole spending-effects table sit dead for months.
+
+The list also sorted by domestic PRICE, which is noise in the first months: prices all
+start at 100 and crawl toward their target at 4% a week, so a new run opened on a panel
+calling grain scarcer than oil - grain at 75% of what the country needs, oil at 24%. It
+sorts by cover now, which is true from week one.
+
+That bug is the four empty-but-perfect views one layer up: the data was right and the
+presentation was wrong in a way no structural check catches. It surfaced only because
+the smoke test logs WHICH product is scarcest rather than counting that sixteen rows
+exist.
+
+Verified: Phase 0 120/120, economy 198/198, play-mode smoke passes.

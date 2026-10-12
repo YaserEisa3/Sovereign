@@ -313,6 +313,11 @@
     width: 46px; min-width: 46px; max-width: 46px; flex-shrink: 0;
     height: 15px; -unity-text-align: middle-right; font-size: 10px; padding-right: 8px;
 }
+.product-limit {
+    width: 62px; min-width: 62px; max-width: 62px; flex-shrink: 0;
+    height: 15px; -unity-text-align: middle-right;
+    color: var(--warning); font-size: 10px; padding-right: 10px;
+}
 .product-note {
     flex-grow: 1; height: 15px; -unity-text-align: middle-left;
     color: var(--text-muted); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;

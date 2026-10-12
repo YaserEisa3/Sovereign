@@ -61,6 +61,28 @@ namespace Sovereign.Core
             return points;
         }
 
+        /// <summary>
+        /// GDD 19. The best health a hundred billion can buy in this sector, across every
+        /// line that backs it. Derived from the same effects the simulation reads, so the
+        /// screen cannot tell the player a sector is cheap to build while the model
+        /// charges them for it.
+        /// </summary>
+        public float SupplyEffort(SectorId sector)
+        {
+            float best = 0f;
+            for (int i = 0; i < _config.treasury.spending.Length; i++)
+            {
+                SpendEffectConfig[] effects = _config.treasury.spending[i].effects;
+                if (effects == null) continue;
+                for (int e = 0; e < effects.Length; e++)
+                    if (effects[e].sectorSpecific && effects[e].sector == sector
+                        && effects[e].target == ImpactTarget.SectorHealth
+                        && effects[e].strengthPer100B > best)
+                        best = effects[e].strengthPer100B;
+            }
+            return best;
+        }
+
         /// <summary>$B this line is running above what it ran at in week one.</summary>
         float AboveOpening(EconomyState state, PolicyState policy, string key)
         {
