@@ -23,11 +23,23 @@ namespace Sovereign.EditorTools
                     int tariffs = CountChildren(root, "tariff-list");
                     int nationTariffs = CountChildren(root, "nation-tariff-list");
                     int diplomacy = CountChildren(root, "agreement-list");
-                    int intervention = CountChildren(root, "intervention-list");
+                    int products = CountChildren(root, "production-list");
+
+                    // Currency intervention moved to its own drawer: tariffs are a bargain
+                    // with one country, the exchange rate is a position against the whole
+                    // market, and the reserves were six nations down a shared scroll.
+                    GameObject money = FindPanel("Panel_Currency");
+                    if (!Require(money != null, "Panel_Currency is missing")) return;
+                    money.SetActive(true);
+                    int intervention = CountChildren(PanelRoot(money), "intervention-list");
+                    money.SetActive(false);
+
                     Debug.Log("PlayModeSmoke: trade drawer - " + tariffs + " tariff rows, " + nationTariffs + " nation tariffs, "
-                              + diplomacy + " diplomacy rows, " + intervention + " intervention");
-                    if (!Require(tariffs == 2 && nationTariffs == 6 && diplomacy == 6 && intervention == 1,
-                                 "trade drawer built " + tariffs + "/" + nationTariffs + "/" + diplomacy + "/" + intervention + ", expected 2/6/6/1")) return;
+                              + diplomacy + " diplomacy rows, " + products + " products; currency drawer - "
+                              + intervention + " intervention");
+                    if (!Require(tariffs == 2 && nationTariffs == 6 && diplomacy == 6 && products == 16 && intervention == 1,
+                                 "built " + tariffs + "/" + nationTariffs + "/" + diplomacy + "/" + products + "/" + intervention
+                                 + ", expected 2/6/6/16/1")) return;
 
                     // A tariff has to say what it is charged on and what it raises.
                     Label tariffImpact = null;

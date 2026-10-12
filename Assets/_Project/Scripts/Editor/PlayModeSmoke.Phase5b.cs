@@ -338,13 +338,13 @@ namespace Sovereign.EditorTools
                     if (!Require(growthNote.Contains("heading to"),
                                  "the growth headline does not say where growth is heading: '" + growthNote + "'")) return;
 
-                    // The production table: sixteen products the player can finally see.
-                    // It ran for a whole session invisible, so the test insists it is
-                    // both open AND full - an empty table reads exactly like a working one.
-                    if (!Press(dash.Q<Button>("production-toggle"), "the PRODUCTION toggle")) return;
-                    VisualElement made = dash.Q<VisualElement>("production-container");
-                    if (!Require(made != null && made.style.display != DisplayStyle.None,
-                                 "the production table did not open")) return;
+                    // The production list now lives in the Trade drawer, which is where
+                    // a surplus is actually used. Checked there instead.
+                    GameObject tradeDrawer = FindPanel("Panel_TradeCurrency");
+                    if (!Require(tradeDrawer != null, "Panel_TradeCurrency is missing")) return;
+                    tradeDrawer.SetActive(true);
+                    VisualElement made = tradeDrawer.GetComponent<UIDocument>().rootVisualElement;
+                    if (!Require(made != null, "the trade drawer has no visual tree")) return;
 
                     List<Label> productNames = made.Query<Label>(className: "product-name").ToList();
                     List<Label> productMade = made.Query<Label>(className: "product-made").ToList();
@@ -356,13 +356,14 @@ namespace Sovereign.EditorTools
                         if (priced == 0) worst = productNames[i].text + " " + productMade[i].text;
                         priced++;
                     }
-                    Label heading = made.Q<Label>(className: "product-head-label");
+                    Label heading = made.Q<Label>("production-summary");
                     Debug.Log("PlayModeSmoke: production shows " + priced + " products, scarcest is "
                               + worst + "; heading reads '" + (heading == null ? "" : heading.text) + "'");
                     if (!Require(priced >= 12,
-                                 "the production table filled " + priced + " rows of sixteen")) return;
+                                 "the production list filled " + priced + " rows of sixteen")) return;
                     if (!Require(heading != null && heading.text.Length > 10,
-                                 "the production table has no heading saying how the country is doing")) return;
+                                 "the production list has no summary saying how the country is doing")) return;
+                    tradeDrawer.SetActive(false);
 
                     // And a series tab must still take you back to the chart.
                     if (!Press(dash.Q<Button>("tab-gdp"), "the GDP tab")) return;

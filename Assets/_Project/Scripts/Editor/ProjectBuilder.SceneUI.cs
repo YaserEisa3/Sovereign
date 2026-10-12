@@ -36,6 +36,7 @@ namespace Sovereign.EditorTools
             new PanelSpec("Panel_Fiscal", "PanelFiscal", 10, false),
             new PanelSpec("Panel_MonetaryBonds", "PanelMonetaryBonds", 11, false),
             new PanelSpec("Panel_TradeCurrency", "PanelTradeCurrency", 12, false),
+            new PanelSpec("Panel_Currency", "PanelCurrency", 12, false),
             new PanelSpec("Panel_Regulatory", "PanelRegulatory", 13, false),
             new PanelSpec("Panel_Population", "PanelPopulation", 14, false),
             new PanelSpec("Panel_WorldEvents", "PanelWorldEvents", 15, false),

@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="../Styles/Sovereign.uss" />
+    <ui:VisualElement name="panel-currency" class="drawer">
+        <ui:VisualElement class="drawer-header">
+            <ui:Label text="CURRENCY" class="panel-heading" />
+            <ui:VisualElement class="spacer" />
+            <ui:Button name="close-panel" text="X" class="close-btn" />
+        </ui:VisualElement>
+        <ui:ScrollView name="currency-scroll" class="drawer-body">
+            <ui:Label text="THE EXCHANGE RATE" class="section-heading" />
+            <ui:Label name="exchange-rate-index" text="Currency index --" class="mono strong" />
+            <ui:VisualElement name="exchange-rate-list" class="policy-list" />
+
+            <ui:Label text="RESERVES AND INTERVENTION" class="section-heading" />
+            <ui:Label name="fx-reserves" text="FX reserves $--B" class="mono" />
+            <ui:Label name="reserve-burn" text="Burn rate $--B/qtr" class="mono" />
+            <ui:VisualElement name="intervention-list" class="policy-list" />
+
+            <ui:Label text="WHAT THE RATE IS DOING TO YOU" class="section-heading" />
+            <ui:Label name="fdi-readout" text="FDI inflow $--B/yr" class="mono" />
+            <ui:Label name="competitiveness-readout" text="Manufacturing competitiveness --" class="mono" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

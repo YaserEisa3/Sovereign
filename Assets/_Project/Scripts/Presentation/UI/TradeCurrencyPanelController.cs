@@ -22,9 +22,6 @@ namespace Sovereign.Presentation
         [SerializeField] float nationTariffStep = 1f;
         [SerializeField] float exportSubsidyMax = 200f;
         [SerializeField] float exportSubsidyStep = 5f;
-        [Tooltip("Currency intervention, $B a quarter. Positive defends the currency with reserves, negative sells it to weaken it.")]
-        [SerializeField] float interventionLimit = 300f;
-        [SerializeField] float interventionStep = 25f;
         [Tooltip("Share of the foreign aid budget one press moves toward or away from a nation.")]
         [SerializeField] float aidStep = 0.05f;
 
@@ -46,7 +43,7 @@ namespace Sovereign.Presentation
             BuildTariffs();
             BuildNationTariffs();
             BuildDiplomacy();
-            BuildIntervention();
+            BuildProductionList();
         }
 
         void BuildTariffs()
@@ -96,22 +93,6 @@ namespace Sovereign.Presentation
                     (c, v) => TariffImpact(nations[i2], v, c, threshold))
                     .Resting(v => TariffImpact(nations[i2], v, v, threshold)));
             }
-        }
-
-        void BuildIntervention()
-        {
-            VisualElement list = Clear("intervention-list");
-            if (list == null || policyRowTemplate == null) return;
-
-            _steppers.Add(new PolicyStepper(policyRowTemplate, list, "Currency intervention per quarter").Bind(
-                () => Policy.currencyIntervention,
-                () => Policy.PendingScalar("currencyIntervention", Policy.currencyIntervention),
-                v => Policy.QueueScalar("currencyIntervention", v, Policy.currencyIntervention),
-                interventionStep, -interventionLimit, interventionLimit,
-                v => v > 0f ? "defend $" + v.ToString("0") + "B" : v < 0f ? "sell $" + (-v).ToString("0") + "B" : "none",
-                (c, v) => InterventionLine(v) + ",  " + (v > 0f ? "a doubted defence buys less"
-                        : v < 0f ? "invites a manipulation charge" : "let the market decide"))
-                .Resting(InterventionLine));
         }
 
         VisualElement Clear(string name)

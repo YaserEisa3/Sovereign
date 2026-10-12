@@ -41,6 +41,7 @@ namespace Sovereign.EditorTools
             AssignPanel(serialised, "panelFiscal", "Panel_Fiscal");
             AssignPanel(serialised, "panelMonetaryBonds", "Panel_MonetaryBonds");
             AssignPanel(serialised, "panelTradeCurrency", "Panel_TradeCurrency");
+            AssignPanel(serialised, "panelCurrency", "Panel_Currency");
             AssignPanel(serialised, "panelRegulatory", "Panel_Regulatory");
             AssignPanel(serialised, "panelPopulation", "Panel_Population");
             AssignPanel(serialised, "panelWorldEvents", "Panel_WorldEvents");

@@ -72,7 +72,7 @@ namespace Sovereign.EditorTools
 
             foreach (string panel in new[]
             {
-                "UIRoot", "Panel_Fiscal", "Panel_MonetaryBonds", "Panel_TradeCurrency", "Panel_Regulatory",
+                "UIRoot", "Panel_Fiscal", "Panel_MonetaryBonds", "Panel_TradeCurrency", "Panel_Currency", "Panel_Regulatory",
                 "Panel_Population", "Panel_WorldEvents", "Panel_Advisor", "Panel_EventPopup"
             })
             {

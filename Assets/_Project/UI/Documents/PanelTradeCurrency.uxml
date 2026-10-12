@@ -2,7 +2,7 @@
     <Style src="../Styles/Sovereign.uss" />
     <ui:VisualElement name="panel-trade-currency" class="drawer">
         <ui:VisualElement class="drawer-header">
-            <ui:Label text="TRADE AND CURRENCY" class="panel-heading" />
+            <ui:Label text="TRADE" class="panel-heading" />
             <ui:VisualElement class="spacer" />
             <ui:Button name="close-panel" text="X" class="close-btn" />
         </ui:VisualElement>
@@ -16,14 +16,9 @@
             <ui:Label text="AGREEMENTS" class="section-heading" />
             <ui:VisualElement name="agreement-list" class="policy-list" />
 
-            <ui:Label text="CURRENCY" class="section-heading" />
-            <ui:Label name="exchange-rate-index" text="Currency index --" class="mono strong" />
-            <ui:VisualElement name="exchange-rate-list" class="policy-list" />
-            <ui:Label name="fx-reserves" text="FX reserves $--B" class="mono" />
-            <ui:Label name="reserve-burn" text="Burn rate $--B/qtr" class="mono" />
-            <ui:VisualElement name="intervention-list" class="policy-list" />
-            <ui:Label name="fdi-readout" text="FDI inflow $--B/yr" class="mono" />
-            <ui:Label name="competitiveness-readout" text="Manufacturing competitiveness --" class="mono" />
+            <ui:Label text="WHAT THE COUNTRY MAKES" class="section-heading" />
+            <ui:Label name="production-summary" text="--" class="mono strong" />
+            <ui:VisualElement name="production-list" class="policy-list" />
         </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>

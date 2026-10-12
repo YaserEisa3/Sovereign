@@ -77,7 +77,6 @@
                 <ui:VisualElement name="chart-panel" class="panel">
                     <ui:VisualElement name="chart-tabs" class="row wrap">
                         <ui:Button name="drivers-toggle" text="WHAT'S MOVING" class="tab view-toggle" />
-                        <ui:Button name="production-toggle" text="PRODUCTION" class="tab view-toggle" />
                         <ui:Button name="view-toggle" text="ALL METERS" class="tab view-toggle" />
                         <ui:Button name="tab-gdp" text="GDP" class="tab selected" />
                         <ui:Button name="tab-inflation" text="Inflation" class="tab" />
@@ -95,7 +94,6 @@
                     <ui:VisualElement name="meter-container" class="chart-container meter-container" />
                     <ui:VisualElement name="industry-container" class="chart-container breakdown-list" />
                     <ui:VisualElement name="driver-container" class="chart-container driver-table" />
-                    <ui:ScrollView name="production-container" class="chart-container production-table" />
                     <ui:Label name="chart-readout" text="10-year series - no simulation running" class="mono caption" />
                 </ui:VisualElement>
 
@@ -172,7 +170,8 @@
         <ui:VisualElement name="drawer-bar" class="drawer-bar">
             <ui:Button name="open-fiscal" text="Fiscal" class="drawer-btn" />
             <ui:Button name="open-monetary" text="Monetary and Bonds" class="drawer-btn" />
-            <ui:Button name="open-trade" text="Trade and Currency" class="drawer-btn" />
+            <ui:Button name="open-trade" text="Trade" class="drawer-btn" />
+            <ui:Button name="open-currency" text="Currency" class="drawer-btn" />
             <ui:Button name="open-regulatory" text="Regulatory" class="drawer-btn" />
             <ui:Button name="open-population" text="Population" class="drawer-btn" />
             <ui:Button name="open-events" text="World Events" class="drawer-btn" />

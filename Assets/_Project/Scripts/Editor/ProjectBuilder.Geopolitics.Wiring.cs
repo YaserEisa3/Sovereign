@@ -20,6 +20,11 @@ namespace Sovereign.EditorTools
                 s.ApplyModifiedPropertiesWithoutUndo();
             }
 
+            GameObject currency;
+            if (BuiltPanels.TryGetValue("Panel_Currency", out currency))
+                WireDrawerBase(currency.AddComponent<CurrencyPanelController>(), runner, database, policyRow)
+                    .ApplyModifiedPropertiesWithoutUndo();
+
             GameObject regulatory;
             if (BuiltPanels.TryGetValue("Panel_Regulatory", out regulatory))
                 WireDrawerBase(regulatory.AddComponent<RegulatoryPanelController>(), runner, database, policyRow)

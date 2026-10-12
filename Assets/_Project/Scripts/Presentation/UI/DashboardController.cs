@@ -37,6 +37,7 @@ namespace Sovereign.Presentation
         [SerializeField] GameObject panelFiscal;
         [SerializeField] GameObject panelMonetaryBonds;
         [SerializeField] GameObject panelTradeCurrency;
+        [SerializeField] GameObject panelCurrency;
         [SerializeField] GameObject panelRegulatory;
         [SerializeField] GameObject panelPopulation;
         [SerializeField] GameObject panelWorldEvents;
@@ -73,7 +74,6 @@ namespace Sovereign.Presentation
             BindSaveLoad();
             BuildMeters();
             BuildDrivers();
-            BuildProduction();
             BuildIndustry();
             BindMapControls();
 

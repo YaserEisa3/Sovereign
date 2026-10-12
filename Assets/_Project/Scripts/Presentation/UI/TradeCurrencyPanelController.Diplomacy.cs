@@ -69,6 +69,7 @@ namespace Sovereign.Presentation
 
         protected override void Refresh(EconomyState state)
         {
+            RefreshProductionList(state);
             foreach (PolicyStepper stepper in _steppers) stepper.Refresh();
 
             GeopoliticsState g = state.geopolitics;
@@ -107,7 +108,6 @@ namespace Sovereign.Presentation
 
             SetLabel("retaliation-warning", retaliation.Length == 0 ? "No one is tariffing your exports."
                                                                    : "Tariffs on your exports: " + retaliation.Trim());
-            RefreshCurrency(state, g);
         }
 
         void ShowToggle(Button button, string nation, string field)
@@ -119,23 +119,6 @@ namespace Sovereign.Presentation
             if (live != pending) button.AddToClassList("queued"); else button.RemoveFromClassList("queued");
         }
 
-        void RefreshCurrency(EconomyState state, GeopoliticsState g)
-        {
-            CurrencyState fx = state.currency;
-            SetLabel("exchange-rate-index", "Currency index " + fx.exchangeRateIndex.ToString("0.0")
-                     + "   real effective " + fx.realEffectiveExchangeRate.ToString("0.0"));
-            VisualElement rates = Root.Q<VisualElement>("exchange-rate-list");
-            if (rates != null) rates.Clear();
-            SetLabel("fx-reserves", "FX reserves " + Billions(fx.fxReservesBillions)
-                     + (g.swapBackstop > 0f ? "  + " + Billions(g.swapBackstop) + " in swap lines" : ""));
-            SetLabel("reserve-burn", Policy.currencyIntervention > 0f
-                ? "Burning " + Billions(Policy.currencyIntervention) + " a quarter defending the currency"
-                : Policy.currencyIntervention < 0f ? "Adding " + Billions(-Policy.currencyIntervention) + " a quarter by selling the currency"
-                : "No intervention");
-            SetLabel("fdi-readout", "FDI inflow " + Billions(fx.fdiInflowRate) + "/yr   trade volume " + state.tradeVolumeIndex.ToString("0"));
-            SetLabel("competitiveness-readout", "Manufacturing competitiveness " + fx.manufacturingCompetitiveness.ToString("0")
-                     + "   capital sheltering offshore " + (g.capitalFlight * 100f).ToString("0") + "%");
-        }
     }
 }
 
@@ -202,17 +185,5 @@ namespace Sovereign.Presentation
                    + "% of GDP,  next step " + SignedBillions(step) + "/yr";
         }
 
-        string InterventionLine(float billionsPerQuarter)
-        {
-            float reserves = runner.State.currency.fxReservesBillions;
-            if (billionsPerQuarter == 0f)
-                return "reserves " + Billions(reserves) + ", untouched";
-
-            float yearly = billionsPerQuarter * 4f;
-            float quarters = billionsPerQuarter > 0f ? reserves / Mathf.Max(0.01f, billionsPerQuarter) : 0f;
-            return (billionsPerQuarter > 0f ? "spends " : "buys ") + Billions(Mathf.Abs(yearly))
-                   + "/yr from reserves of " + Billions(reserves)
-                   + (billionsPerQuarter > 0f ? " - " + quarters.ToString("0") + " quarters of ammunition" : "");
-        }
     }
 }

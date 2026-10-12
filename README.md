@@ -1358,3 +1358,29 @@ here shows up on this screen.
 
 Verified: Phase 0 115/115, economy 193/193, play-mode smoke passes with 16 products on
 screen.
+
+### Where it belongs
+
+Production first went in as a tab beside the charts, which was the wrong room for it.
+What a country has spare is the opening line of every trade negotiation, and reading it
+meant leaving the screen where tariffs and agreements are set. It now sits at the foot
+of the Trade drawer, under WHAT THE COUNTRY MAKES, scarcest first.
+
+The currency half of that drawer moved out to its own. They were always two jobs sharing
+a scroll: a tariff is a bargain struck with one country, the exchange rate is a position
+held against the whole market, and finding the reserves meant scrolling past six nations
+to reach them. Currency now has the rate, the reserves, intervention, and what the rate
+is doing to foreign investment and manufacturing competitiveness.
+
+The drawer row reads Fiscal, Monetary and Bonds, Trade, Currency, Regulatory,
+Population, World Events, Advisor.
+
+Moving UI is where checks get quietly deleted. The smoke test's trade assertion had
+counted an intervention row that now lives elsewhere, and the lazy repair is to drop it -
+after which nothing would ever notice if currency intervention stopped being built at
+all. It now opens the currency drawer and counts the row there, and the trade assertion
+gained the sixteen products: 2 tariffs / 6 nation tariffs / 6 diplomacy rows / 16
+products / 1 intervention.
+
+Verified: Phase 0 120/120 - the new panel brought five checks of its own - economy
+193/193, play-mode smoke passes.

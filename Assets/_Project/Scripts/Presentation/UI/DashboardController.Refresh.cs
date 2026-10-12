@@ -27,6 +27,7 @@ namespace Sovereign.Presentation
             BindDrawer("open-fiscal", panelFiscal);
             BindDrawer("open-monetary", panelMonetaryBonds);
             BindDrawer("open-trade", panelTradeCurrency);
+            BindDrawer("open-currency", panelCurrency);
             BindDrawer("open-regulatory", panelRegulatory);
             BindDrawer("open-population", panelPopulation);
             BindDrawer("open-events", panelWorldEvents);
@@ -69,7 +70,7 @@ namespace Sovereign.Presentation
             {
                 // One tab shows the industries themselves rather than a series.
                 // Any series tab leaves the driver table for the chart it names.
-                if (elementName != "tab-sectors") { SetDriverView(false); SetProductionView(false); }
+                if (elementName != "tab-sectors") SetDriverView(false);
                 SetIndustryView(elementName == "tab-sectors");
                 _chartSeries = series;
                 if (_chart != null) _chart.threshold = threshold;
@@ -101,7 +102,7 @@ namespace Sovereign.Presentation
         {
             foreach (GameObject panel in new[]
             {
-                panelFiscal, panelMonetaryBonds, panelTradeCurrency, panelRegulatory,
+                panelFiscal, panelMonetaryBonds, panelTradeCurrency, panelCurrency, panelRegulatory,
                 panelPopulation, panelWorldEvents, panelAdvisor
             })
                 if (panel != null) panel.SetActive(false);
