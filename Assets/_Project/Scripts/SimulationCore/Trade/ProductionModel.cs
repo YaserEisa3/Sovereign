@@ -70,7 +70,11 @@ namespace Sovereign.Core
                 // discount and no more, because the surplus goes abroad rather than
                 // being given away. Dividing straight through gave a third off the price
                 // of food for being comfortably supplied, which no shopper has ever seen.
-                float cover = p.needed <= 0.01f ? 2f : p.produced / p.needed;
+                // Contracted goods have left the country. What is available at home is what
+                // was made MINUS what has been promised abroad - which is how selling grain
+                // during a drought turns into a shortage the player chose.
+                float athome = MathUtil.Max(0f, p.produced - p.contracted);
+                float cover = p.needed <= 0.01f ? 2f : athome / p.needed;
                 // IMPORT PARITY. A country short of oil does not watch its own price climb
                 // forever - it buys oil abroad and pays the world price plus freight. Without
                 // this a shortage the player CANNOT fix pressed on inflation permanently,

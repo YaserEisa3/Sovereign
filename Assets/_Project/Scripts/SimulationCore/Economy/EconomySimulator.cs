@@ -24,6 +24,7 @@ namespace Sovereign.Core
         readonly VictoryModel _victory;
         readonly MilestoneModel _milestones = new MilestoneModel();
         readonly ProductionModel _production;
+        readonly TradeModel _trade = new TradeModel();
 
         public EconomySimulator(SimulationConfig config)
         {
@@ -45,6 +46,7 @@ namespace Sovereign.Core
         public VictoryModel Victory { get { return _victory; } }
         public MilestoneModel Milestones { get { return _milestones; } }
         public ProductionModel Production { get { return _production; } }
+        public TradeModel Trade { get { return _trade; } }
 
         public TreasuryModel Treasury { get { return _treasury; } }
         public PopulationModel Population { get { return _population; } }
@@ -192,6 +194,8 @@ namespace Sovereign.Core
             _victory.TickWeek(state);
             _milestones.TickWeek(state);
             _production.TickWeek(state, policy);
+            // After production, because a contract takes from what was made this week.
+            _trade.TickWeek(state);
 
             state.RecordWeek();
         }

@@ -1488,3 +1488,34 @@ the smoke test logs WHICH product is scarcest rather than counting that sixteen 
 exist.
 
 Verified: Phase 0 120/120, economy 198/198, play-mode smoke passes.
+
+## Selling it
+
+Production said what the country had; trade is what happens to it. A contract is an
+obligation to deliver a product to a named country, at a price agreed on signing, for
+two to ten years.
+
+The commitment is the point. A flexible willingness to trade is a tap you open once and
+forget. A contract is a bet that you will still have the goods in five years: sign to
+sell grain, watch a drought halve the harvest, and you are still obliged - deliver and
+your own people go short, break it and the country you broke it with remembers.
+
+- **Only to countries that need it.** A nation buys a product only if its archetype
+  cannot make enough of its own, which is what makes a deal worth having rather than a
+  favour being asked.
+- **Price is the world price moved by the relationship**, about a sixth either way
+  across the range. A country that likes you pays a premium for the security of a long
+  term; one that does not takes your goods cheaply.
+- **It does not reprice when the market does.** That is the risk on both sides.
+- **The goods leave.** Contracted volume comes off what is available at home before
+  cover is computed, so selling grain during a drought is a shortage the player chose.
+- **Earnings are foreign currency**, landing in the reserves rather than in tax revenue
+  - which is what makes exports worth having when the currency is under pressure.
+- **Breaking one costs 22 points of relationship** and says so on the ticker.
+
+Measured by the new test, which walks the whole life of a deal: 36B of grain a year to
+Euroland at 112 for five years, 40B a year earned. The assertion worth having is
+"selling abroad left just as much at home, which is a free lunch" - an export channel
+that pays without costing is how this feature would quietly become a money button.
+
+Verified: economy 207/207.

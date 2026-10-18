@@ -77,6 +77,11 @@ namespace Sovereign.Core
         /// <summary>GDD 19. What the country makes and needs, product by product.</summary>
         public readonly Dictionary<ProductId, ProductState> production = new Dictionary<ProductId, ProductState>();
 
+        /// <summary>GDD 19. Signed obligations to deliver goods abroad. Saved, because a
+        /// contract outlives the government that signed it.</summary>
+        public readonly List<TradeContract> contracts = new List<TradeContract>();
+        public float contractEarningsPerYear;
+
         /// <summary>GDD 4: OnRevolt leads to OnGameOver. Nothing else ends a run yet.</summary>
         public bool IsGameOver { get { return approval.revolt; } }
 
