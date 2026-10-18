@@ -60,6 +60,11 @@ namespace Sovereign.EditorTools
             Check(TradeModel.Sign(s, nations[buyer], buyer, unwanted, 10f, 5) == null,
                   "trade: " + nations[buyer].name + " bought " + unwanted + ", which it does not need");
 
+            // And nothing may be promised that does not exist. Signing away food the
+            // country has not grown is refused, not merely warned about.
+            Check(TradeModel.Sign(s, nations[buyer], buyer, sell, TradeModel.Spare(s, sell) + 500f, 5) == null,
+                  "trade: the country promised " + sell + " it does not have");
+
             // Breaking one has to cost, or a contract is not a commitment.
             float standing = s.geopolitics.nations[buyer].relationship;
             TradeModel.Break(s, deal);

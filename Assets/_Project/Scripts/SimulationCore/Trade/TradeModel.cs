@@ -49,9 +49,10 @@ namespace Sovereign.Core
         }
 
         /// <summary>
-        /// The largest order worth signing: what the country has spare of this product
-        /// today. A government may sign beyond it - that is its right and its mistake -
-        /// but this is the line past which it is selling food off its own table.
+        /// The largest order that can be signed: what the country has spare of this
+        /// product today. Promising goods that do not exist is refused outright rather
+        /// than merely discouraged - a government cannot contract away food off its own
+        /// table, and a rule that lives only in the UI is not a rule.
         /// </summary>
         public static float Spare(EconomyState state, ProductId product)
         {
@@ -106,6 +107,10 @@ namespace Sovereign.Core
                                          ProductId product, float volumeBillions, int termYears)
         {
             if (!Wants(nation, product) || volumeBillions <= 0f) return null;
+
+            // Nothing may be promised that the country does not already have going spare.
+            // Existing contracts have taken their share before this is asked.
+            if (volumeBillions > Spare(state, product) + 0.01f) return null;
 
             TradeContract contract = new TradeContract
             {

@@ -333,3 +333,26 @@
     height: 17px; -unity-text-align: middle-left; color: var(--text);
     font-size: 10px; -unity-font-style: bold; padding-left: 6px;
 }
+
+/* GDD 19. A deal on offer, or one already signed. Fixed columns like every other
+   table here, and the button last so the eye reads nation, terms, then action. */
+.deal-row { flex-direction: row; align-items: center; height: 19px; flex-shrink: 0; }
+.deal-name {
+    width: 196px; min-width: 196px; max-width: 196px; flex-shrink: 0;
+    height: 19px; -unity-text-align: middle-left;
+    color: var(--text); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
+    padding-left: 6px;
+}
+.deal-terms {
+    flex-grow: 1; height: 19px; -unity-text-align: middle-left;
+    color: var(--text-dim); font-size: 10px; white-space: nowrap; text-overflow: ellipsis;
+}
+.deal-button {
+    width: 64px; min-width: 64px; max-width: 64px; flex-shrink: 0;
+    height: 15px; font-size: 9px; margin-right: 6px;
+    background-color: var(--bg); color: var(--growth);
+    border-width: 1px; border-color: var(--border); border-radius: 2px;
+}
+.deal-button:hover { color: var(--bg); background-color: var(--growth); }
+.deal-button.danger { color: var(--danger); }
+.deal-button.danger:hover { color: var(--bg); background-color: var(--danger); }

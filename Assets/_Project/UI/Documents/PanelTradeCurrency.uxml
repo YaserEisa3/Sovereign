@@ -16,6 +16,14 @@
             <ui:Label text="AGREEMENTS" class="section-heading" />
             <ui:VisualElement name="agreement-list" class="policy-list" />
 
+            <ui:Label text="DEALS ON OFFER" class="section-heading" />
+            <ui:Label name="deal-summary" text="--" class="mono strong" />
+            <ui:VisualElement name="deal-list" class="policy-list" />
+
+            <ui:Label text="CONTRACTS SIGNED" class="section-heading" />
+            <ui:Label name="contract-summary" text="--" class="mono strong" />
+            <ui:VisualElement name="contract-list" class="policy-list" />
+
             <ui:Label text="WHAT THE COUNTRY MAKES" class="section-heading" />
             <ui:Label name="production-summary" text="--" class="mono strong" />
             <ui:VisualElement name="production-list" class="policy-list" />

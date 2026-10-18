@@ -70,6 +70,7 @@ namespace Sovereign.Presentation
         protected override void Refresh(EconomyState state)
         {
             RefreshProductionList(state);
+            RefreshDeals(state);
             foreach (PolicyStepper stepper in _steppers) stepper.Refresh();
 
             GeopoliticsState g = state.geopolitics;

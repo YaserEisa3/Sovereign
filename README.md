@@ -1519,3 +1519,29 @@ Euroland at 112 for five years, 40B a year earned. The assertion worth having is
 that pays without costing is how this feature would quietly become a money button.
 
 Verified: economy 207/207.
+
+### Signing them
+
+Two sections at the top of the Trade drawer. **DEALS ON OFFER** carries one row per
+country that wants something the country has spare, with the volume, the price they
+would pay and what it earns a year; **CONTRACTS SIGNED** carries what has been promised,
+the years left on it, and a red BREAK.
+
+```
+Euroland wants Grain        $36B/yr at 112  =  $40B/yr      [SIGN 5y]
+Island Finance wants Grain  $36B/yr at 104  =  $37B/yr      [SIGN 5y]
+```
+
+A government cannot promise goods it does not have, and that is enforced in the MODEL
+rather than the screen: Sign refuses anything above the current surplus, and the test
+asks for surplus plus $500B and requires a refusal. A rule that lives only in the UI is
+not a rule - a later screen, or a loaded save, walks straight past it.
+
+Each offer commits 60% of the surplus rather than all of it. Sell every last tonne and
+the first bad harvest is a crisis, so leaving headroom is built into what is offered.
+And the list is rebuilt weekly rather than bound once: a row appears when a country needs
+something there is a surplus of and vanishes when the surplus does, which is the honest
+way to show that a trading position is something a government maintains rather than
+something it wins.
+
+Verified: economy 208/208, play-mode smoke passes.
