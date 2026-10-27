@@ -1545,3 +1545,52 @@ way to show that a trading position is something a government maintains rather t
 something it wins.
 
 Verified: economy 208/208, play-mode smoke passes.
+
+## Things made out of other things
+
+Sectors grew in isolation: farms with no tractors, steel mills with no power. The
+textbook answer is an input-output matrix, which over sixteen products is 256
+coefficients, and worse, it is circular - steel needs electricity and power stations
+need steel - so it has to be iterated to convergence every tick.
+
+What is here instead: each product names two or three inputs, and **its output is held to
+the scarcest of them**.
+
+```
+output = capacity x min over inputs of (available / required)
+```
+
+Having plenty of power does not make up for having no steel. Four dependencies to start,
+chosen so the mechanic can be proved before electricity is wired into everything: grain
+needs machinery, steel and semiconductors need electricity, vehicles need steel. That is
+already a chain two steps deep - a power cut reaches cars through steel.
+
+**The circularity is solved with a one-week lag.** Inputs read LAST week's output, so
+there is no solver and no convergence, and it is honest as well as cheap: this week's
+steel was made with last week's electricity.
+
+**Adequacy never falls below 0.25.** Production limps on with whatever can be scraped
+together or bought in, and a hard zero would be unrecoverable - no power, no steel, no
+cars, forever.
+
+The first coefficients were picked by feel and did nothing whatever. Grain wanted $92B
+of machinery out of a $679B output, so the constraint could not bind even with
+manufacturing in ruins: adequacy read a flat 1.00 and the whole mechanic was inert while
+compiling perfectly. **A requirement has to be sized against what the input sector
+actually produces** - grain now wants about 40% of machinery output, steel 30% of
+electricity, vehicles 35% of steel.
+
+Measured, with manufacturing held at health 12 for a year:
+
+| | adequacy | output |
+|---|---|---|
+| Grain | **0.79** | 79% of before |
+| Vehicles | 1.00 | 21% of before |
+
+Two different causes of lost output, correctly separated. Grain is throttled by missing
+tractors while its own farms are fine; vehicles collapsed with their own sector, and
+their adequacy is untouched because steel shrank alongside them. The chain binds when one
+side shrinks and the other does not - which is also a correction to the test, which had
+asserted vehicle adequacy would fall.
+
+Verified: economy 213/213.

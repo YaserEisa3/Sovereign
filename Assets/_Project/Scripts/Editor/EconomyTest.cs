@@ -66,6 +66,7 @@ namespace Sovereign.EditorTools
             TestProduction(runner);
             TestTradeContracts(runner);
             TestSupplyResponds(runner);
+            TestSupplyChain(runner);
             TestMigrationFollowsConditions(runner);
             TestApproval(runner);
             TestRevolt(runner);

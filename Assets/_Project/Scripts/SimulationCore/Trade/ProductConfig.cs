@@ -1,5 +1,17 @@
 namespace Sovereign.Core
 {
+    /// <summary>
+    /// GDD 19. Something a product is made OUT of. Grain needs tractors, steel needs
+    /// power: spend on farms without the machinery to work them and the money buys
+    /// nothing, which is the point.
+    /// </summary>
+    public struct ProductInput
+    {
+        public ProductId product;
+        /// <summary>Units of the input needed per unit of output, at base prices.</summary>
+        public float perUnit;
+    }
+
     /// <summary>One product: who makes it, who needs it, what the world pays.</summary>
     public struct ProductConfig
     {
@@ -31,6 +43,10 @@ namespace Sovereign.Core
         /// </summary>
         public float capability;
 
+        /// <summary>What it is made out of. Empty for the things that need nothing but
+        /// land and people.</summary>
+        public ProductInput[] inputs;
+
         /// <summary>Starting world price index. Always 100 at the opening - scarcity moves
         /// it from there.</summary>
         public float basePrice;
@@ -49,12 +65,21 @@ namespace Sovereign.Core
         public float Balance { get { return produced - needed; } }
 
         /// <summary>Committed to contracts, and so not available at home however short
-        /// the country gets. Stage 2 fills this in; until then it is zero.</summary>
+        /// the country gets.</summary>
         public float contracted;
 
         /// <summary>100 is what it cost the day the run opened. Rises as the country runs
         /// short of it.</summary>
         public float domesticPrice = 100f;
         public float worldPrice = 100f;
+
+        /// <summary>What was made LAST week, which is what this week is built out of.
+        /// Reading the current week would be circular - steel needs power and power
+        /// stations need steel - and a week behind is honest as well as simple.</summary>
+        public float availableLastWeek;
+
+        /// <summary>0 to 1. How much of what this product needed was actually there.
+        /// Below 1, something else is the binding constraint on it.</summary>
+        public float inputAdequacy = 1f;
     }
 }

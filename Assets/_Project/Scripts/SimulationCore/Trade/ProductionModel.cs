@@ -31,6 +31,12 @@ namespace Sovereign.Core
         {
             float people = state.population.Total;
 
+            // Last week's output becomes this week's raw material. Taken BEFORE anything
+            // is recomputed, because reading the current week would be circular: steel
+            // needs power, and power stations need steel.
+            foreach (KeyValuePair<ProductId, ProductState> carried in state.production)
+                carried.Value.availableLastWeek = carried.Value.produced;
+
             for (int i = 0; i < _products.Length; i++)
             {
                 ProductConfig c = _products[i];
@@ -59,7 +65,14 @@ namespace Sovereign.Core
                     : sector == null ? 0f : realGdp * sector.gdpShare * condition;
 
                 // What the ground and the climate allow, before any budget is considered.
-                p.produced = sectorOutput * c.sectorShare * c.capability;
+                float capacity = sectorOutput * c.sectorShare * c.capability;
+
+                // ...and then what it can actually be built OUT of. A product is held to
+                // its scarcest input: all the farms in the world grow nothing without
+                // tractors, and 60% of the machinery you need means 60% of the grain
+                // however much the subsidy was.
+                p.inputAdequacy = InputAdequacy(state, c, capacity);
+                p.produced = capacity * p.inputAdequacy;
                 p.needed = c.needPer100M * people * 0.01f;
 
                 // Scarcity at home, in prices. A country making half what it needs of
@@ -89,6 +102,40 @@ namespace Sovereign.Core
                     : MathUtil.Min(scarcity, importParity);
                 p.domesticPrice = MathUtil.Approach(p.domesticPrice, target, 0.04f);
             }
+        }
+
+        /// <summary>
+        /// How much of what a product needed to be made was actually there, 0 to 1. The
+        /// SCARCEST input binds: a factory short of steel is short of cars, and having
+        /// plenty of electricity does not make up for it.
+        ///
+        /// Measured against LAST week, so there is no circularity and no solver - which
+        /// matters more than it sounds. A full input-output matrix over sixteen products
+        /// is 256 coefficients iterated to convergence every tick, and steel needing power
+        /// while power stations need steel has no answer without one.
+        /// </summary>
+        static float InputAdequacy(EconomyState state, ProductConfig c, float capacity)
+        {
+            if (c.inputs == null || c.inputs.Length == 0 || capacity <= 0.01f) return 1f;
+
+            float worst = 1f;
+            for (int i = 0; i < c.inputs.Length; i++)
+            {
+                float wanted = capacity * c.inputs[i].perUnit;
+                if (wanted <= 0.01f) continue;
+
+                ProductState input;
+                float had = state.production.TryGetValue(c.inputs[i].product, out input)
+                    ? input.availableLastWeek : 0f;
+
+                float adequacy = MathUtil.Clamp01(had / wanted);
+                if (adequacy < worst) worst = adequacy;
+            }
+
+            // Never all the way to nothing: some production limps on with whatever can be
+            // scraped together or bought in, and a hard zero would make one bad week
+            // unrecoverable.
+            return MathUtil.Max(0.25f, worst);
         }
 
         /// <summary>

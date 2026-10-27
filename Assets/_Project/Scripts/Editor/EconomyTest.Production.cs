@@ -116,5 +116,54 @@ namespace Sovereign.EditorTools
                   + " nations know what they make and what they lack");
         }
 
+        /// <summary>
+        /// GDD 19. A product is held to its scarcest input. Spend on farms without the
+        /// tractors to work them and the money buys nothing - that is the whole point of
+        /// a supply chain, and it has to be visible in the numbers.
+        /// </summary>
+        static void TestSupplyChain(SimulationRunner runner)
+        {
+            EconomyState s = Fresh(runner).State;
+            runner.Step(Year);
+
+            float grainBefore = s.production[ProductId.Grain].produced;
+            float carsBefore = s.production[ProductId.Vehicles].produced;
+            Check(s.production[ProductId.Grain].inputAdequacy > 0.95f,
+                  "chain: a healthy country cannot build its own grain - adequacy "
+                  + s.production[ProductId.Grain].inputAdequacy.ToString("0.00"));
+
+            // Starve manufacturing: no machinery for the farms, no steel for the cars.
+            // Held down, because the sector model pulls health back at 4% a week.
+            for (int week = 0; week < Year; week++)
+            {
+                s.GetSector(SectorId.Manufacturing).health = 12f;
+                runner.Step(1);
+            }
+
+            float grainAdequacy = s.production[ProductId.Grain].inputAdequacy;
+            float carAdequacy = s.production[ProductId.Vehicles].inputAdequacy;
+            Debug.Log("Chain: with manufacturing wrecked, grain input adequacy "
+                      + grainAdequacy.ToString("0.00") + " and vehicles " + carAdequacy.ToString("0.00")
+                      + "; grain output " + (s.production[ProductId.Grain].produced / grainBefore * 100f).ToString("0")
+                      + "% of before, vehicles " + (s.production[ProductId.Vehicles].produced / carsBefore * 100f).ToString("0") + "%");
+
+            Check(grainAdequacy < 0.95f,
+                  "chain: no machinery and the farms produced exactly as much grain - the input does nothing");
+            Check(s.production[ProductId.Grain].produced < grainBefore * 0.92f,
+                  "chain: grain output barely moved when the tractors stopped coming");
+
+            // And it must never go to zero, or one bad week is unrecoverable.
+            // Vehicles adequacy should NOT fall here, and that is correct: steel and cars
+            // shrank together, so a smaller car industry needs less steel. The chain binds
+            // when one side shrinks and the other does not.
+            Check(grainAdequacy >= 0.25f && carAdequacy >= 0.25f,
+                  "chain: an input shortage shut production down completely, which nothing recovers from");
+
+            // Letting manufacturing heal has to bring the grain back.
+            runner.Step(3 * Year);
+            Check(s.production[ProductId.Grain].inputAdequacy > grainAdequacy + 0.02f,
+                  "chain: manufacturing recovered and the farms never got their tractors back");
+        }
+
     }
 }
